@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 
-module.exports = function ({app}) {
+module.exports = function ({ app }) {
     const apiRouter = new express.Router();
 
     apiRouter.get('/', function (req, res) {
