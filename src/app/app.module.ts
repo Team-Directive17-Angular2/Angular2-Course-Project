@@ -1,4 +1,3 @@
-
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
@@ -10,7 +9,7 @@ import { AppComponent } from './app.component';
 
 //  Pages
 import {HomeComponent} from './components/home.component/home.component';
-import {LoginComponent} from './components/login.component/login.component'; 
+import {LoginComponent} from './components/login.component/login.component';
 import {NavComponent} from './components/app-nav.component/app-nav.component';
 import { RegisterComponent } from './components/register.component/register.component'
 
