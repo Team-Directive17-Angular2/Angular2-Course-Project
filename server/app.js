@@ -7,10 +7,13 @@ const config = require('./configurations/config')({ environment });
 const app = express();
 
 const data = require("./data")();
-const controllers = require("./controllers")({ data, passport });
+const controllers = require("./controllers")({ data, passport, config });
 
 require('./configurations/database')({ config });
 require('./configurations/express')({ app });
+
+const User = require("./models/user-model");
+require('./configurations/local-passport.js')({ User });
 
 require('./routes')({ app, controllers });
 

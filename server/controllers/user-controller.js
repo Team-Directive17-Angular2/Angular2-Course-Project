@@ -1,4 +1,8 @@
-module.exports = function( { data, passport }) {
+const jsonwebtoken = require('jsonwebtoken');
+
+module.exports = function( { data, passport, config }) {
+
+    const webTokenSecret = config.webToken;
 
     function registerUser(req, res) {
         const user = req.body;
@@ -15,6 +19,12 @@ module.exports = function( { data, passport }) {
     }
 
     function loginUser(req, res, next) {
+
+        const webTokenObject = {
+          username: req.body.username,
+          password: req.body.password
+        };
+
         passport.authenticate("local", (err, user) => {
             if (err) {
                 return next(err);
@@ -23,15 +33,17 @@ module.exports = function( { data, passport }) {
                 req.login(user, (err2) => {
                     if (err2) {
                         res.status(200);
-                        return res.json(`{"error": "${constants.errorMessages.user}"}`);
+                        return res.json("Invalid username or password.");
                     }
 
-                    res.status(200);
-                    return res.json(`{"success": "${constants.successfulMessages.user.login} Welcome ${user.username}"}`);
+                    res.status(200).json({
+                        username: req.body.username,
+                        auth_token: jsonwebtoken.sign(webTokenObject, webTokenSecret)
+                    });
                 });
             } else {
                 res.status(200);
-                return res.json(`{"error": "${constants.errorMessages.user}"}`);
+                return res.json("Invalid username or password.");
             }
 
         })(req, res, next);
