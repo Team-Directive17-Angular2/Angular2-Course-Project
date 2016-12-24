@@ -26,18 +26,19 @@ export class RegisterComponent implements OnInit {
         if(this.model.password == this.model.confirmPass){
         this.loading = true;
         this.authenticationService.register(this.model.username, this.model.password, this.model.firstName, this.model.lastName, this.model.email)
-            .subscribe(result => {
-                if (result === true) {
-                    this.router.navigate(['login']);
-                } else {
-                    this.error = 'Username or password is incorrect';
-                    this.loading = false;
+            .subscribe(
+                result => {
+                    if (result === true) {
+                        this.router.navigate(['login']);
+                    }
+                },
+                error => {
+                    this.error = JSON.parse(error._body);
                 }
-            });
+            );
         }
         else{
             this.error = "Password is not the same as Confirm password";
-
         }
     }
 }

@@ -6,10 +6,13 @@ const config = require('./configurations/config')({ environment });
 
 const app = express();
 
-require('./configurations/database')( { config } );
+const data = require("./data")();
+const controllers = require("./controllers")({ data, passport });
+
+require('./configurations/database')({ config });
 require('./configurations/express')({ app });
 
-require('./routes')({ app });
+require('./routes')({ app, controllers });
 
 app.listen(config.port, function () {
     console.log('App listening on port: ' + config.port);

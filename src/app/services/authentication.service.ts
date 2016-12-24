@@ -42,11 +42,12 @@ export class AuthenticationService {
     register(username:string, password:string, firstName:string, lastName:string, email:string) : Observable<boolean> {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
+        let body = JSON.stringify({username: username, password: password, firstName:firstName, lastName:lastName, email:email});
 
-        return this.http.post('/api/register', JSON.stringify({username: username, password: password, firstName:firstName, lastName:lastName, email:email}), options)
+        return this.http.post('/api/register', body, options)
         .map((response:Response) => {
             console.log(response);
-            if(response.status === 200){
+            if(response.status === 201){
                 return true;
             }
             else{
