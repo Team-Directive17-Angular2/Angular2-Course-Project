@@ -12,9 +12,10 @@ import {HomeComponent} from './components/home.component/home.component';
 import {LoginComponent} from './components/login.component/login.component';
 import {NavComponent} from './components/app-nav.component/app-nav.component';
 import { RegisterComponent } from './components/register.component/register.component'
-
+import { ProfileComponent } from './components/profile.component/profile.component'
 //  Services
 import {AuthenticationService} from './services/authentication.service'
+import { UserService } from './services/user.service';
 //import {UserService} from './services/user.service';
 import {GlobalEventsManager} from './services/globalEventsManager'
 //  Guards
@@ -32,13 +33,15 @@ import {AuthGuard} from './guards/auth.guard';
     HomeComponent,
     LoginComponent,
     NavComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   bootstrap: [AppComponent],
   providers: [
     AuthenticationService,
     AuthGuard,
-    GlobalEventsManager
+    GlobalEventsManager,
+    UserService
   ]
 })
 export class AppModule { }
