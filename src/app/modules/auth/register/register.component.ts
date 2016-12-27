@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {GlobalEventsManager} from '../../services/globalEventsManager';
-import {AuthenticationService} from '../../services/authentication.service';
+import {GlobalEventsManager} from '../../../services/globalEventsManager';
+import {AuthenticationService} from '../../../services/authentication.service';
 
 @Component({
-    templateUrl: './register.component.html'
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css']
 })
 
 export class RegisterComponent implements OnInit {

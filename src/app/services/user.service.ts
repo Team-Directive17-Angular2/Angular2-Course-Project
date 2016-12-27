@@ -16,7 +16,7 @@ export class UserService {
     // this.username = currentUser.username;
   }
 
-  myProfile(): Observable<User> {
+  getUserProfile(): Observable<User> {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.username = currentUser.username;
     return this.http.get('/api/user/' + this.username)

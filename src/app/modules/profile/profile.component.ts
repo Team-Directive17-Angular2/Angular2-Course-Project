@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { User } from '../../models/user.model';
-import { UserService } from '../../services/user.service'
+import { UserService } from '../../services/user.service';
 
 @Component({
-    templateUrl: './profile.component.html'
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css']
 })
 
 export class ProfileComponent implements OnInit {
@@ -15,12 +16,12 @@ export class ProfileComponent implements OnInit {
     email:string;
 
     constructor(private userService:UserService ) {
-            
+
      }
 
     ngOnInit() {
-       this.userService.myProfile()
-       .subscribe( user => {  
+       this.userService.getUserProfile()
+       .subscribe( user => {
            this.user = user;
            this.username = user.username;
            this.email = user.email;
