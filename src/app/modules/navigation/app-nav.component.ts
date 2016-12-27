@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, SimpleChanges, Input} from '@angular/core';
+import {Component, OnInit, DoCheck} from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service'
 import {GlobalEventsManager} from '../../services/globalEventsManager';
 import {Router} from '@angular/router';
@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
     templateUrl: './app-nav.component.html',
     styleUrls: ['./app-nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, DoCheck {
 
     user: boolean = localStorage.getItem('currentUser') ? true : false;
     auth: AuthenticationService;
@@ -28,11 +28,11 @@ export class NavComponent implements OnInit {
         this.username = currentUser && currentUser.username;
     }
 
-    onProfileRoute(){
-        event.preventDefault();
-        var currentUser = localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser'));
-        this.username = currentUser && currentUser.username;
-        this.router.navigate(['/profile',this.username]);
+    ngDoCheck() {
+        if(localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser')).username !== this.username)
+        {
+            var currentUser = localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser'));
+            this.username = currentUser && currentUser.username;
+        }
     }
-
 }
