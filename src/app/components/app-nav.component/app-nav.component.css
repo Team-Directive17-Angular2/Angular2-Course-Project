@@ -1,0 +1,39 @@
+.navbar-default .navbar-nav .login:before{
+    width: 13px;
+    height: 10px;
+    content: "";
+    background: url("../../../assets/images/login-icon.png");
+    position: relative;
+    display: inline-block;
+    margin-right: 7px;
+}
+
+.navbar-default .navbar-nav .login:hover:before, .navbar-default .navbar-nav .login:focus:before{
+    width: 13px;
+    height: 10px;
+    content: "";
+    background: url("../../../assets/images/login-icon-active.png");
+    position: relative;
+    display: inline-block;
+    margin-right: 7px;
+}
+
+.navbar-default .navbar-nav .logout:before{
+    width: 14px;
+    height: 10px;
+    content: "";
+    background: url("../../../assets/images/logout-icon.png");
+    position: relative;
+    display: inline-block;
+    margin-right: 7px;
+}
+
+.navbar-default .navbar-nav .logout:hover:before, .navbar-default .navbar-nav .logout:focus:before{
+    width: 14px;
+    height: 10px;
+    content: "";
+    background: url("../../../assets/images/logout-icon-active.png");
+    position: relative;
+    display: inline-block;
+    margin-right: 7px;
+}

@@ -18,10 +18,14 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css",
-        "bootstrap-custom-theme.css"
+        "styles/bootstrap.min.css",
+        "styles/bootstrap-custom-theme.min.css",
+        "styles/styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "scripts/jquery.min.js",
+        "scripts/bootstrap.min.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
