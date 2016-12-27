@@ -5,13 +5,13 @@
                 <a class="navbar-brand" href="#">Angular Project</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#home">Home</a></li>
-                <li *ngIf="user"><a (click)="onClck($event)" href="" >My Profile</a></li>
+                <li class="active"><a [routerLink]="['/']">Home</a></li>
+                <li *ngIf="user"><a (click)="onProfileRoute($event)" href="">My Profile</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right"(login)="isAuth($event)">
                 <li [style.display]="user? 'none' : 'inherit'"><a [routerLink]="['/register']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li [style.display]="user? 'none' : 'inherit'"><a [routerLink]="['/login']" id="nav-login" ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li [style.display]="user? 'inherit' : 'none'"><a [routerLink]="['/login']" id="nav-logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li [style.display]="user? 'inherit' : 'none'"><a [routerLink]="['/logout']" id="nav-logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
         </div>
     </nav>

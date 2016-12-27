@@ -2,6 +2,7 @@ import {Component, OnInit, OnChanges, SimpleChanges, Input} from '@angular/core'
 import {AuthenticationService} from '../../services/authentication.service'
 import {GlobalEventsManager} from '../../services/globalEventsManager';
 import {Router} from '@angular/router';
+
 @Component({
     selector: 'app-nav',
     templateUrl: './app-nav.component.html'
@@ -18,19 +19,15 @@ export class NavComponent implements OnInit {
                 this.user = mode;
             }
         });
-
-        
     }
 
     ngOnInit() {
         this.user = localStorage.getItem('currentUser') ? true : false;
-        console.log(this.user);
         var currentUser = localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser'));
         this.username = currentUser && currentUser.username;
-
     }
 
-    onClck(){
+    onProfileRoute(){
         event.preventDefault();
         var currentUser = localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser'));
         this.username = currentUser && currentUser.username;

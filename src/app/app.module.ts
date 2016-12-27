@@ -11,8 +11,9 @@ import { AppComponent } from './app.component';
 import {HomeComponent} from './components/home.component/home.component';
 import {LoginComponent} from './components/login.component/login.component';
 import {NavComponent} from './components/app-nav.component/app-nav.component';
-import { RegisterComponent } from './components/register.component/register.component'
-import { ProfileComponent } from './components/profile.component/profile.component'
+import { RegisterComponent } from './components/register.component/register.component';
+import { ProfileComponent } from './components/profile.component/profile.component';
+import { LogoutComponent } from './components/logout.component/logout.component';
 //  Services
 import {AuthenticationService} from './services/authentication.service'
 import { UserService } from './services/user.service';
@@ -32,6 +33,7 @@ import {AuthGuard} from './guards/auth.guard';
     AppComponent,
     HomeComponent,
     LoginComponent,
+    LogoutComponent,
     NavComponent,
     RegisterComponent,
     ProfileComponent
