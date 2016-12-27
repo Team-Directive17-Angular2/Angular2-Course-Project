@@ -9,9 +9,3 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-
-.vertical-center {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-}

@@ -24,7 +24,6 @@ import {GlobalEventsManager} from './services/globalEventsManager'
 //  Guards
 import {AuthGuard} from './guards/auth.guard';
 
-
 @NgModule({
   imports: [
     BrowserModule,
