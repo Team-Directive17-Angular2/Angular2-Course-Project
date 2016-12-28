@@ -9,6 +9,13 @@ body {
     background-size: auto;
 }
 
+main {
+    display: inline-block;
+    width: 100%;
+    min-height: 70vh;
+    margin: 65px 0px;
+}
+
 .simple-notification {
     width: 100%;
     padding: 10px 20px;

@@ -16,6 +16,7 @@ import { appRoutes } from './config/routes';
 
 import { AppComponent } from './app.component';
 import {NavComponent} from './modules/navigation/app-nav.component';
+import {FooterComponent} from './modules/footer/app-footer.component';
 
 //  Services
 import {AuthenticationService} from './services/authentication.service'
@@ -42,7 +43,8 @@ import {AuthGuard} from './guards/auth.guard';
   ],
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    FooterComponent
   ],
   bootstrap: [AppComponent],
   providers: [
