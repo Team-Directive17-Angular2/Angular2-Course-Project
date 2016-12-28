@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const auth = require('../configurations/auth');
+const adminRole = 'Admin';
 
 module.exports = function ({ app, controllers }) {
     const apiRouter = new express.Router();
@@ -10,6 +11,7 @@ module.exports = function ({ app, controllers }) {
              .post('/contact', controllers.contact.send)
              .get('/users', controllers.user.getUsers)
              .get('/user/:username', controllers.user.getUserByName)
+             .post('/artist',auth.isInRole(adminRole),controllers.artist.AddArtist)
 
 
     app.use('/api', apiRouter);

@@ -8,10 +8,12 @@ module.exports = {
   },
   isInRole: (role) => {
     return (req, res, next) => {
-      if (req.user && req.user.roles.indexOf(role) > -1) {
+      if (req.user && req.user.role== role) {
+        console.log(req.user);
+        console.log(req.user.role);
         next();
       } else {
-        res.redirect('/users/login');
+        res.status(404).send();
       }
     };
   }

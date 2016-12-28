@@ -13,6 +13,7 @@ import { AlbumsModule } from './modules/albums/albums.module';
 import { SongsModule } from './modules/songs/songs.module';
 import { UsersModule } from './modules/users/users.module';
 import { appRoutes } from './config/routes';
+import { AdminModule } from './modules/admin/admin.module';
 
 import { AppComponent } from './app.component';
 import {NavComponent} from './modules/navigation/app-nav.component';
@@ -22,8 +23,10 @@ import {FooterComponent} from './modules/footer/app-footer.component';
 import {AuthenticationService} from './services/authentication.service'
 import { UserService } from './services/user.service';
 import {GlobalEventsManager} from './services/globalEventsManager'
+import { IsAdminEventsManager } from './services/isAdminEventManager';
 //  Guards
 import {AuthGuard} from './guards/auth.guard';
+import {AdminGuard} from './guards/admin.guard';
 
 @NgModule({
   imports: [
@@ -39,7 +42,8 @@ import {AuthGuard} from './guards/auth.guard';
     ArtistsModule,
     AlbumsModule,
     SongsModule,
-    UsersModule
+    UsersModule,
+    AdminModule
   ],
   declarations: [
     AppComponent,
@@ -50,7 +54,9 @@ import {AuthGuard} from './guards/auth.guard';
   providers: [
     AuthenticationService,
     AuthGuard,
+    AdminGuard,
     GlobalEventsManager,
+    IsAdminEventsManager,
     UserService
   ]
 })

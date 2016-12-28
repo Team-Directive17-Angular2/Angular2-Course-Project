@@ -22,3 +22,22 @@ userSchema.methods = {
 const User = mongoose.model("user", userSchema);
 
 module.exports = User;
+
+module.exports.seedAdminUser = () => {
+    User.find({}).then(users => {
+        if (users.length === 0) {
+            let salt = encryption.generateSalt();
+            let hashedPass = encryption.generateHashedPassword(salt, 'admin');
+
+            User.create({
+                username: 'admin',
+                firstName: 'Admin',
+                lastName: 'Adminov',
+                email:'Admin@Angular2Project.com',
+                salt: salt,
+                hashedPassword: hashedPass,
+                role: 'Admin'
+            })
+        }
+    })
+};

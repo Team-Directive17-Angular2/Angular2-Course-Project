@@ -38,7 +38,8 @@ module.exports = function ({data, passport, config}) {
 
           res.status(200).json({
             username: req.body.username,
-            auth_token: jsonwebtoken.sign(webTokenObject, webTokenSecret)
+            auth_token: jsonwebtoken.sign(webTokenObject, webTokenSecret),
+            role:user.role
           });
         });
       } else {

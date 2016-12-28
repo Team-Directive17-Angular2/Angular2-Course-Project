@@ -3,13 +3,14 @@ import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map'
 import {GlobalEventsManager} from './globalEventsManager';
+import { IsAdminEventsManager } from './isAdminEventManager';
 import { User } from '../models/user.model';
 
 @Injectable()
 export class AuthenticationService {
     public token: string;
 
-    constructor(private http: Http, private globalEventsManager: GlobalEventsManager) {
+    constructor(private http: Http, private globalEventsManager: GlobalEventsManager, private isAdminEventManager:IsAdminEventsManager) {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
@@ -25,18 +26,26 @@ export class AuthenticationService {
                 //console.log(response.json().result);
                 // login successful if there's a jwt token in the response
                 let token = response.json().auth_token;
+                let role = response.json().role;
+
                 if (token) {
                     // set token property
                     this.token = token;
-
+                     if(role == 'Admin'){
+                        this.isAdminEventManager.showAdminNav(true);
+                    }
+                    else{
+                        this.isAdminEventManager.showAdminNav(false);
+                    }
                     // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({username: username, token: token}));
+                    localStorage.setItem('currentUser', JSON.stringify({username: username, token: token, role:role}));
                     this.globalEventsManager.showNavBar(true);
                     // return true to indicate successful login
                     return true;
                 } else {
                     // return false to indicate failed login
                     this.globalEventsManager.showNavBar(false);
+                    this.isAdminEventManager.showAdminNav(false);
                     return false;
                 }
             });
@@ -62,6 +71,7 @@ export class AuthenticationService {
         // clear token remove user from local storage to log user out
         this.token = null;
         this.globalEventsManager.showNavBar(false);
+        this.isAdminEventManager.showAdminNav(false);
         localStorage.removeItem('currentUser');
     }
 }

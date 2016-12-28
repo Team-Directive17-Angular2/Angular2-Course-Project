@@ -12,6 +12,14 @@
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
                     <li><a [routerLink]="['/']">Home</a></li>
+                     <li *ngIf ="user && isAdmin" class="dropdown">
+                        <a class="dropdown-toggle" id="services" data-toggle="dropdown" href="#" aria-expanded="true">Administration<span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="services">
+                        <li><a [routerLink]="['admin/addArtist']">Add Artists</a></li>
+                        <li><a href="#">Add Albums</a></li>
+                        <li><a href="#">Add Songs</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" id="services" data-toggle="dropdown" href="#" aria-expanded="true">Browse<span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="services">

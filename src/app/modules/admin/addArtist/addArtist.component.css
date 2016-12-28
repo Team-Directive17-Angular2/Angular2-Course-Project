@@ -1,0 +1,17 @@
+.addArtist-content {
+    background-color: #FFFFFF;
+    padding: 40px 0px;
+}
+
+.addArtist-content .form-legend {
+    text-align: center;
+}
+
+.addArtist-content .btn-addArtist {
+    width: 195px;
+    margin: 15px 0px;
+}
+
+.addArtist-content  .artist-submit {
+    text-align: center;
+}

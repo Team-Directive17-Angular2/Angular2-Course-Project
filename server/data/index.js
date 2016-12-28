@@ -4,8 +4,8 @@ const fs = require("fs");
 module.exports = function() {
     const User = require("../models/user-model");
     const Message = require("../models/message-model")
-
-    const models = { User, Message };
+    const Artist = require("../models/artist-model")
+    const models = { User, Message, Artist };
 
     let data = {};
 
