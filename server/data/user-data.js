@@ -62,8 +62,19 @@ module.exports = function (models) {
     });
   }
 
+  function getUsers() {
+      return new Promise((resolve, reject) => {
+        User.find({}, '_id username firstName lastName avatar')
+          .then(users => {
+
+            return resolve(users);
+          });
+      });
+  }
+
   return {
     getUserByName,
+    getUsers,
     registerUser
   };
 };

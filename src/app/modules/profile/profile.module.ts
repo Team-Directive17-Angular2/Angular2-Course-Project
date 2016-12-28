@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileComponent } from './profile.component';
 
-import { UserService } from '../../services/user.service';
-
 @NgModule({
    declarations: [
         ProfileComponent

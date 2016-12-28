@@ -8,6 +8,7 @@ module.exports = function ({ app, controllers }) {
     apiRouter.post('/authenticate', controllers.user.loginUser)
              .post('/register', controllers.user.registerUser)
              .post('/contact', controllers.contact.send)
+             .get('/users', controllers.user.getUsers)
              .get('/user/:username', controllers.user.getUserByName)
 
 

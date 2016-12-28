@@ -26,4 +26,10 @@ export class UserService {
       })
   }
 
+  getUsers(): Observable<any[]> {
+    return this.http.get('/api/users')
+        .map((response: Response) => {
+            return response.json().data;
+        })
+  }
 }

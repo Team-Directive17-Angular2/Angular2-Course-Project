@@ -69,10 +69,24 @@ module.exports = function ({data, passport, config}) {
       })
   }
 
+  function getUsers(req, res) {
+    data.getUsers()
+      .then((users) => {
+
+        res.status(200).json({data: users})
+      })
+      .catch((err) => {
+
+        res.status(404);
+        return res.json(err.message);
+
+      })
+  }
   return {
     name: "user",
     registerUser,
     loginUser,
-    getUserByName
+    getUserByName,
+    getUsers
   };
 };

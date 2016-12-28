@@ -1,0 +1,45 @@
+.users-content {
+    background-color: #FFFFFF;
+    height: 100%;
+    padding: 30px 15px;
+}
+
+.users-content ul{
+    list-style: none;
+    padding: 0px;
+}
+
+.users-content .users-form {
+    margin: 15px 0px;
+    display:block;
+    overflow:auto;
+}
+
+.users-content .users-option {
+    padding: 0px 0px 0px 15px;
+    display: inline-block;
+}
+
+.users-content .users-option .users-sub-option{
+    padding: 0px 0px 0px 15px;
+}
+
+.users-content .users-option .users-sub-option-label{
+    text-align: right;
+    vertical-align: middle;
+    padding: 10px 0px;
+}
+
+.user-info {
+    background-color: #F5F5F5;
+    text-align: center;
+}
+
+.user-info .username {
+    font-size: 18px;
+    margin: 5px 0px;
+}
+
+.user-info .name {
+    padding: 5px 0px 10px 0px;
+}

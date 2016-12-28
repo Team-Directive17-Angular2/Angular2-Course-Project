@@ -19,13 +19,13 @@ export class ProfileComponent implements OnInit {
     lastName:string;
     email:string;
 
-    constructor(private userService:UserService ) {
+    constructor(private userService:UserService) {
 
      }
 
     ngOnInit() {
-       this.userService.getUserProfile()
-       .subscribe( user => {
+        this.userService.getUserProfile()
+        .subscribe( user => {
            this.user = user;
            this.username = user.username;
            this.email = user.email;
