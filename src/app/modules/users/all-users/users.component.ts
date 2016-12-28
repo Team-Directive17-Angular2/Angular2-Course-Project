@@ -1,7 +1,7 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { UserService } from '../../../services/user.service';
 
-import { routerTransition } from '../../animations/router.animations';
+import { routerTransition } from '../../../animations/router.animations';
 
 @Component({
   selector: 'app-users',
@@ -11,15 +11,16 @@ import { routerTransition } from '../../animations/router.animations';
   host: {'[@routerTransition]': ''},
   encapsulation: ViewEncapsulation.None
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
     users: any[];
     searchPattern: string;
     parameters: string[];
     sortTypes: string[];
     sortOrders: string[];
-
     sortType: string;
     sortOrder: string;
+
+    private subscription: any;
 
     constructor(private userService:UserService)
     {
@@ -34,11 +35,15 @@ export class UsersComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.userService.getUsers()
+        this.subscription = this.userService.getUsers()
         .subscribe( users => {
             this.users = users;
             console.log(this.users);
         });
-  }
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 
 }
