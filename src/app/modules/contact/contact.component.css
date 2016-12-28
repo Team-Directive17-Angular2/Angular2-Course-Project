@@ -1,0 +1,17 @@
+.contact-content {
+    background-color: #FFFFFF;
+    padding: 40px 0px;
+}
+
+.contact-content .form-legend {
+    text-align: center;
+}
+
+.contact-content .btn-contact {
+    width: 195px;
+    margin-top: 15px;
+}
+
+.contact-content .contact-submit {
+    text-align: center;
+}

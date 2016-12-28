@@ -24,7 +24,7 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
     LogoutComponent
   ],
   providers: [
-      AuthenticationService, 
+      AuthenticationService,
       NotificationsService
   ]
 })

@@ -3,8 +3,9 @@ const fs = require("fs");
 
 module.exports = function() {
     const User = require("../models/user-model");
+    const Message = require("../models/message-model")
 
-    const models = { User };
+    const models = { User, Message };
 
     let data = {};
 

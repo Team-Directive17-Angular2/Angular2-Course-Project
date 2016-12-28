@@ -3,6 +3,7 @@ import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map'
 import {GlobalEventsManager} from './globalEventsManager';
+import { User } from '../models/user.model';
 
 @Injectable()
 export class AuthenticationService {
@@ -41,10 +42,10 @@ export class AuthenticationService {
             });
     }
 
-    register(username:string, password:string, firstName:string, lastName:string, email:string) : Observable<boolean> {
+    register(user: User) : Observable<boolean> {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
-        let body = JSON.stringify({username: username, password: password, firstName:firstName, lastName:lastName, email:email});
+        let body = JSON.stringify(user);
 
         return this.http.post('/api/register', body, options)
         .map((response:Response) => {

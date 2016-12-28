@@ -4,6 +4,7 @@ import {GlobalEventsManager} from '../../../services/globalEventsManager';
 import {AuthenticationService} from '../../../services/authentication.service';
 import { NotificationsService } from 'angular2-notifications';
 import { routerTransition } from '../../../animations/router.animations';
+import { User } from '../../../models/user.model';
 
 @Component({
     selector: 'app-register',
@@ -30,14 +31,15 @@ export class RegisterComponent implements OnInit {
 
     register() {
         if(this.model.password == this.model.confirmPass) {
-            this.authenticationService.register(this.model.username, this.model.password, this.model.firstName, this.model.lastName, this.model.email)
+            let user = new User(this.model.username, this.model.password, this.model.firstName, this.model.lastName, this.model.email);
+
+            this.authenticationService.register(user)
                 .subscribe(
                     result => {
                         if (result === true) {
                             this.notificationsService.success('', 'Successful registration. Please login.');
 
                             setTimeout(() => this.router.navigate(['login']), 2000);
-                            this.router.navigate(['login']);
                         }
                     },
                     error => {
