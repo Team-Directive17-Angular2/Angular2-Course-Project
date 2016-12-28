@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 
 import { routerTransition } from '../../animations/router.animations';
@@ -8,7 +8,8 @@ import { routerTransition } from '../../animations/router.animations';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
   animations: [routerTransition()],
-  host: {'[@routerTransition]': ''}
+  host: {'[@routerTransition]': ''},
+  encapsulation: ViewEncapsulation.None
 })
 export class UsersComponent implements OnInit {
     users: any[];
