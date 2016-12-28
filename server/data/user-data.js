@@ -35,7 +35,7 @@ module.exports = function (models) {
       })
         .then(user => {
           if (user) {
-            return reject(new Error("A user with this username or email already exists"));
+            return reject(new Error("A user with this username or email already exists."));
           }
 
           return createNewUser(body);

@@ -9,12 +9,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthenticationService } from '../../services/authentication.service';
-/* import { SimpleNotificationsModule, NotificationsService } from '../../../node_modules/angular2-notifications'; */
+import { SimpleNotificationsModule, NotificationsService } from '../../../../node_modules/angular2-notifications';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    SimpleNotificationsModule,
     RouterModule.forRoot(appRoutes, { useHash: true })
   ],
   declarations: [
@@ -22,6 +23,9 @@ import { AuthenticationService } from '../../services/authentication.service';
     LoginComponent,
     LogoutComponent
   ],
-  providers: [AuthenticationService]
+  providers: [
+      AuthenticationService, 
+      NotificationsService
+  ]
 })
 export class AuthModule { }

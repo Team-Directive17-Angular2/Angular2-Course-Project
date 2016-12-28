@@ -10,7 +10,7 @@ module.exports = function ({data, passport, config}) {
     data.registerUser(user)
       .then(() => {
         res.status(201);
-        return res.json("Successfully registered user");
+        return res.json("Successfully registered user.");
       })
       .catch((err) => {
         res.status(400);
