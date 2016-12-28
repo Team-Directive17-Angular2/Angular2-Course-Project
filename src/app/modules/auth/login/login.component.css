@@ -1,0 +1,17 @@
+.login-content {
+    background-color: #FFFFFF;
+    padding: 40px 0px;
+}
+
+.login-content .form-legend {
+    text-align: center;
+}
+
+.login-content .btn-login {
+    width: 195px;
+    margin: 15px 0px;
+}
+
+.login-content .login-submit {
+    text-align: center;
+}

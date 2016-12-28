@@ -4,7 +4,8 @@ import {GlobalEventsManager} from '../../../services/globalEventsManager';
 import {AuthenticationService} from '../../../services/authentication.service';
 
 @Component({
-    templateUrl: './login.component.html'
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 
 export class LoginComponent implements OnInit {

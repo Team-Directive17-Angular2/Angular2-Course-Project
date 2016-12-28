@@ -1,0 +1,17 @@
+.register-content {
+    background-color: #FFFFFF;
+    padding: 40px 0px;
+}
+
+.register-content .form-legend {
+    text-align: center;
+}
+
+.register-content .btn-register {
+    width: 195px;
+    margin-top: 15px;
+}
+
+.register-content .register-submit {
+    text-align: center;
+}
