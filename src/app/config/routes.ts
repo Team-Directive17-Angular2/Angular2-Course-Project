@@ -8,7 +8,8 @@ import { ContactComponent } from '../modules/contact/contact.component';
 import { ArtistsComponent } from '../modules/artists/artists.component';
 import { AlbumsComponent } from '../modules/albums/albums.component';
 import { SongsComponent } from '../modules/songs/songs.component';
-import { UsersComponent } from '../modules/users/users.component';
+import { UsersComponent } from '../modules/users/all-users/users.component';
+import { DetailedUserComponent } from '../modules/users/detailed-user/detailed-user.component';
 import { AddArtistComponent } from '../modules/admin/addArtist/addArtist.component';
 
 import {AuthGuard} from '../guards/auth.guard';
@@ -20,11 +21,12 @@ export const appRoutes: Routes = [
     { path: 'albums', component: AlbumsComponent },
     { path: 'songs', component: SongsComponent },
     { path: 'users', component: UsersComponent },
+    { path: 'users/:username', component: DetailedUserComponent, canActivate: [AuthGuard] },
     { path: 'contact', component: ContactComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
     { path: 'logout', component: LogoutComponent},
-    { path: 'profile/:name', component:ProfileComponent, canActivate: [AuthGuard] },
+    { path: 'profile', component:ProfileComponent, canActivate: [AuthGuard] },
     { path: 'admin/addArtist', component:AddArtistComponent, canActivate:[AuthGuard,AdminGuard]},
     { path: '**', redirectTo: '' }
 
