@@ -2,10 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { routerTransition } from '../../animations/router.animations';
 
 @Component({
+    selector: 'app-profile',
     templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.css']
+    styleUrls: ['./profile.component.css'],
+    animations: [routerTransition()],
+    host: {'[@routerTransition]': ''}
 })
 
 export class ProfileComponent implements OnInit {

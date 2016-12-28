@@ -3,10 +3,14 @@ import {Router} from '@angular/router';
 import {GlobalEventsManager} from '../../../services/globalEventsManager';
 import {AuthenticationService} from '../../../services/authentication.service';
 import { NotificationsService } from 'angular2-notifications';
+import { routerTransition } from '../../../animations/router.animations';
 
 @Component({
+    selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.css'],
+    animations: [routerTransition()],
+    host: {'[@routerTransition]': ''}
 })
 
 export class LoginComponent implements OnInit {
