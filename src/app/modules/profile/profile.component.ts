@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { NotificationsService } from 'angular2-notifications';
 import { routerTransition } from '../../animations/router.animations';
 
 @Component({
@@ -10,7 +12,7 @@ import { routerTransition } from '../../animations/router.animations';
     styleUrls: ['./profile.component.css'],
     animations: [routerTransition()],
     host: {'[@routerTransition]': ''},
-    inputs: ['username']
+    encapsulation: ViewEncapsulation.None
 })
 
 export class ProfileComponent implements OnInit, OnDestroy {
@@ -19,36 +21,51 @@ export class ProfileComponent implements OnInit, OnDestroy {
     firstName:string;
     lastName:string;
     email:string;
+    avatar:string;
+    followers: any[];
+    followings: any[];
+    favoriteArtists: any[];
+    favoriteAlbums: any[];
+    favoriteSongs: any[];
+    options: Object;
+
     private subscription:any;
 
-    constructor(private userService:UserService) {
+    constructor(private routeParams: ActivatedRoute,
+        private notificationsService: NotificationsService,
+        private userService:UserService) {
 
     }
 
     ngOnInit() {
+        this.options = { timeOut: 2000, pauseOnHover: true, showProgressBar: false, animate: 'fromRight', position: ['right', 'bottom'], theClass: 'custom-notification', icons: null };
+
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-        this.subscription = this.userService.getUser(currentUser.username)
-        .subscribe( user => {
-           this.user = user;
-           this.username = user.username;
-           this.email = user.email;
-           this.firstName = user.firstName;
-           this.lastName = user.lastName;
-        });
+        this.updateUserInformation(currentUser.username);
     }
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
 
-    IsAuthUsersProfie():boolean{
-        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if(currentUser.username == this.username){
-            return true;
-        }
-
-        return false;
-    }
-
+    updateUserInformation(username: string) {
+        this.subscription = this.userService.getUser(username)
+        .subscribe( user => {
+            this.user = user;
+            this.username = user.username;
+            this.email = user.email;
+            this.firstName = user.firstName;
+            this.lastName = user.lastName;
+            this.avatar = user.avatar;
+            this.followers = user.followers;
+            this.followings = user.followings;
+            this.favoriteArtists = user.favoriteArtists;
+            this.favoriteAlbums = user.favoriteAlbums;
+            this.favoriteSongs = user.favoriteSongs;
+        },
+        error => {
+            console.log('REDIRECT TO ERROR PAGE');
+        });
+    };
 }

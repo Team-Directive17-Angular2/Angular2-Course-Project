@@ -1,44 +1,91 @@
-<div class="row">
-    <div class="col-md-9">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-12 lead">My profile<hr></div>
-          </div>
-          <div class="row">
-			<div class="col-md-4 text-center">
-              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none;
-              display:block; margin:auto;" src="http://robohash.org/sitsequiquia.png?size=120x120">
-            </div>
-            <div class="col-md-8">
-              <div class="row">
-                <div class="col-md-12">
-                  <h1 class="only-bottom-margin">{{username}}</h1>
+<div class="col-xs-10 col-xs-offset-1 profile-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row main-row profile-header">
+                <div class="col-sm-3 col-md-2 profile-image">
+                    <img src="../../../../assets/images/{{avatar}}" alt="{{username}}">
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <span class="text-muted">Email:</span> {{email}}<br>
-                  <span class="text-muted">First name:</span> {{firstName}}<br>
-                  <span class="text-muted">Last name:</span> {{lastName}}<br><br>
+                <div class="col-sm-9 col-md-10 profile-information">
+                    <div>
+                        <div class="row">
+                            <h1 class="profile-username">{{username}}</h1></div>
+                        <div class="row">
+                            <h2 class="profile-names">{{firstName}} {{lastName}}</h2></div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="activity-mini">
-                    <i class="glyphicon glyphicon-comment text-muted"></i> 500
-                  </div>
-                  <div class="activity-mini">
-                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i> 1500
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-          <div *ngIf="username && IsAuthUsersProfie()" class="row">
-            <div class="col-md-12">
-              <hr><button class="btn btn-default pull-right"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
-            </div>
-          </div>
+            <hr>
         </div>
-      </div>
     </div>
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#settings" data-toggle="pill" aria-expanded="true">Settings</a></li>
+                <li><a href="#artists" data-toggle="pill" aria-expanded="true">Artists</a></li>
+                <li><a href="#albums" data-toggle="pill" aria-expanded="true">Albums</a></li>
+                <li><a href="#songs" data-toggle="pill" aria-expanded="false">Songs</a></li>
+                <li><a href="#followers" data-toggle="pill" aria-expanded="false">Followers</a></li>
+                <li><a href="#followings" data-toggle="pill" aria-expanded="false">Followings</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="tab-content" id="my-tab-content">
+                <div class="tab-pane fade active in" id="settings">
+                    <div id="settings-container">
+                        <h1>Settings</h1>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="artists">
+                    <div id="artists-info">
+                        <h1>Favorite Artists</h1>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="albums">
+                    <div id="albums-info">
+                        <h1>Favorite Albums</h1>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="songs">
+                    <div id="songs-info">
+                        <h1>Favorite Songs</h1>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="followers">
+                    <div class="users-list">
+                        <ul>
+                            <li *ngFor="let follower of followers | paginate: { id: 'followers', itemsPerPage: 6, currentPage: s }" class="col-xs-4 col-sm-3 col-md-2 container">
+                                <div class="user-info">
+                                    <a [routerLink]="['/users/',follower.username]" [routerLinkActive]="['active']">
+                                        <img src="../../../assets/images/{{follower.avatar}}" alt="{{user.username}}" class="img-responsive">
+                                        <p class="username">{{follower.username}}</p>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="users-pagination">
+                        <pagination-controls id="followers" directionLinks="false" maxSize="3" (pageChange)="s = $event"></pagination-controls>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="followings">
+                    <div class="users-list">
+                        <ul>
+                            <li *ngFor="let following of followings | paginate: { id: 'followings', itemsPerPage: 6, currentPage: q }" class="col-xs-4 col-sm-3 col-md-2 container">
+                                <div class="user-info">
+                                    <a [routerLink]="['/users/',following.username]" [routerLinkActive]="['active']">
+                                        <img src="../../../assets/images/{{following.avatar}}" alt="{{user.username}}" class="img-responsive">
+                                        <p class="username">{{following.username}}</p>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="users-pagination">
+                        <pagination-controls id="followings" directionLinks="false" maxSize="3" (pageChange)="q = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <simple-notifications [options]="options "></simple-notifications>
 </div>

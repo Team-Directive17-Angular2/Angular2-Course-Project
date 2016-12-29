@@ -25,7 +25,6 @@ export class ArtistService {
     nationality: model.nationality,
     imgUrl: model.imgUrl,
     bio: model.bio,
-    user: localStorage.getItem('currentUser')
     };
     console.log(body);
     return this.http.post('/api/artist', body, options)
