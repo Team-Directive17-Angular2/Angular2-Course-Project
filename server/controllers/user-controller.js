@@ -50,6 +50,48 @@ module.exports = function ({data, passport, config}) {
     })(req, res, next);
   }
 
+  function follow(req, res) {
+    const currentUsername = req.body.currentUsername;
+    const username = req.body.username;
+    let currentFollower;
+    let currentFollowing;
+
+    data.getUserByName(currentUsername)
+        .then((follower) => {
+            currentFollower = follower;
+
+            return data.getUserByName(username);
+        })
+        .then((following) => {
+            currentFollowing = following;
+
+            currentFollowing.followers.push({ _id: currentFollower._id,
+                username: currentFollower.username,
+                avatar: currentFollower.avatar });
+
+            return data.updateFollowers(currentFollowing);
+        })
+        .then(() => {
+
+            currentFollower.followings.push({ _id: currentFollowing._id,
+                username: currentFollowing.username,
+                avatar: currentFollowing.avatar });
+
+            return data.updateFollowings(currentFollower);
+        })
+        .then(() => {
+          res.status(201);
+          return res.json("Successfully followed the person.");
+        })
+        .catch((err) => {
+          res.status(400);
+          return res.json(err.message);
+        });
+  }
+
+  function unfollow(req, res) {
+
+  }
   function getUserByName(req, res) {
     data.getUserByName(req.params.username)
       .then((user) => {
@@ -59,8 +101,14 @@ module.exports = function ({data, passport, config}) {
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
-          avatar: user.avatar
+          avatar: user.avatar,
+          followers: user.followers,
+          followings: user.followings,
+          favoriteArtists: user.favoriteArtists,
+          favoriteAlbums: user.favoriteAlbums,
+          favoriteSongs: user.favoriteSongs
         }
+        
         res.status(200).json({data: foundUser})
       })
       .catch((err) => {
@@ -88,6 +136,8 @@ module.exports = function ({data, passport, config}) {
     name: "user",
     registerUser,
     loginUser,
+    follow,
+    unfollow,
     getUserByName,
     getUsers
   };

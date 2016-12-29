@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
 
     register() {
         if(this.model.password == this.model.confirmPass) {
-            let user = new User(this.model.username, this.model.password, this.model.firstName, this.model.lastName, this.model.email, 'default-avatar.jpg');
+            let user = new User(this.model.username, this.model.password, this.model.firstName, this.model.lastName, this.model.email, 'default-avatar.jpg', [], [], [], [], []);
 
             this.authenticationService.register(user)
                 .subscribe(

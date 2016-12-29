@@ -11,6 +11,8 @@ module.exports = function ({ app, controllers }) {
              .post('/contact', controllers.contact.send)
              .get('/users', controllers.user.getUsers)
              .get('/user/:username', controllers.user.getUserByName)
+             .put('/follow', controllers.user.follow)
+             .put('/unfollow', controllers.user.unfollow)
              .post('/artist',auth.isInRole(adminRole),controllers.artist.AddArtist)
 
 

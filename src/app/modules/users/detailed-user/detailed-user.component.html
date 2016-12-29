@@ -5,13 +5,17 @@
                 <div class="col-sm-3 col-md-2 profile-image">
                     <img src="../../../../assets/images/{{avatar}}" alt="{{username}}">
                 </div>
-                <div class="col-sm-9 col-md-10 profile-information">
+                <div class="col-sm-7 col-md-8 profile-information">
                     <div>
                         <div class="row">
                             <h1 class="profile-username">{{username}}</h1></div>
                         <div class="row">
                             <h2 class="profile-names">{{firstName}} {{lastName}}</h2></div>
                     </div>
+                </div>
+                <div *ngIf="currentUsername != username" class="col-sm-2 col-md-2 profile-follow">
+                    <button *ngIf="!followed" (click)="follow()" class="btn btn-primary btn-follow">FOLLOW</button>
+                    <button *ngIf="followed" (click)="unfollow()" class="btn btn-default btn-follow">UNFOLLOW</button>
                 </div>
             </div>
             <hr>
@@ -51,4 +55,5 @@
             </div>
         </div>
     </div>
+    <simple-notifications [options]="options "></simple-notifications>
 </div>

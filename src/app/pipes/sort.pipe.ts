@@ -9,8 +9,6 @@ export class SortPipe implements PipeTransform {
             return null;
         }
 
-        console.log(sortType);
-        console.log(sortOrder);
         sortType = sortType.replace(/^./, (m) => { return m.toLowerCase(); }).replace(/\s/, "");
         sortOrder = sortOrder.toLowerCase();
         let order = sortOrder === 'descending' ? -1 : 1;

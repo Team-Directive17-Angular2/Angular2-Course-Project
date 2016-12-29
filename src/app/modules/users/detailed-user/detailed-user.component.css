@@ -36,6 +36,15 @@
     color: #25b09c;
 }
 
+.detailed-user-content .profile-follow {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.detailed-user-content .btn-follow {
+    width: 100%;
+}
+
 @media (max-width: 767px) {
     .detailed-user-content .profile-information {
         text-align: center;
@@ -43,5 +52,9 @@
 
     .detailed-user-content .profile-header{
         display: initial;
+    }
+
+    .detailed-user-content .profile-follow {
+        text-align: center;
     }
 }

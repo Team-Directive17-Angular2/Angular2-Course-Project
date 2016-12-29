@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 
 import { User } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
+import { NotificationsService } from 'angular2-notifications';
 import { routerTransition } from '../../../animations/router.animations';
 
 @Component({
@@ -19,31 +20,80 @@ export class DetailedUserComponent implements OnInit, OnDestroy {
     lastName:string;
     email:string;
     avatar:string;
+    followers: any[];
+    followings: any[];
+    favoriteArtists: any[];
+    favoriteAlbums: any[];
+    favoriteSongs: any[];
+    options: Object;
 
+    private currentUsername: string;
+    private followed: boolean;
     private subscription: any;
 
     constructor(private routeParams: ActivatedRoute,
+        private notificationsService: NotificationsService,
         private userService:UserService)
     { }
 
-  ngOnInit() {
-    this.subscription = this.routeParams.params.subscribe(params => {
-        let username = params['username'];
+    ngOnInit() {
+        this.options = { timeOut: 2000, pauseOnHover: true, showProgressBar: false, animate: 'fromRight', position: ['right', 'bottom'], theClass: 'custom-notification', icons: null };
 
-        this.userService.getUser(username)
-        .subscribe( user => {
-            this.user = user;
-            this.username = user.username;
-            this.email = user.email;
-            this.firstName = user.firstName;
-            this.lastName = user.lastName;
-            this.avatar = user.avatar;
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.currentUsername = currentUser.username;
+
+        this.subscription = this.routeParams.params.subscribe(params => {
+            let username = params['username'];
+
+            this.userService.getUser(username)
+            .subscribe( user => {
+                this.user = user;
+                this.username = user.username;
+                this.email = user.email;
+                this.firstName = user.firstName;
+                this.lastName = user.lastName;
+                this.avatar = user.avatar;
+                this.followers = user.followers;
+                this.followings = user.followings;
+                this.favoriteArtists = user.favoriteArtists;
+                this.favoriteAlbums = user.favoriteAlbums;
+                this.favoriteSongs = user.favoriteSongs;
+
+                this.followed = false;
+
+                for (let follower of this.followers) {
+                    if(follower.username === this.currentUsername) {
+                        this.followed = true;
+                        break;
+                    }
+                }
+            });
         });
-    });
-  }
 
-  ngOnDestroy() {
-      this.subscription.unsubscribe();
-  }
+
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
+
+    follow() {
+        this.userService.follow(this.currentUsername, this.username)
+        .subscribe( result => {
+            console.log(result);
+            if(result) {
+                this.notificationsService.success('', `Successfully followed ${this.username}.`);
+                this.followed = true;
+            } else{
+                this.notificationsService.error('', `Unsuccessfully followed ${this.username}. Please try again later.`);
+            }
+        })
+
+    }
+
+    unfollow() {
+        console.log("Unfollow");
+        this.followed = false;
+    }
 
 }

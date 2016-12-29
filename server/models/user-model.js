@@ -10,7 +10,12 @@ const userSchema = mongooseSchema({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     role: { type: String, enum: ["User", "Admin"], default: "User" },
-    avatar: { type: String, default: "default-avatar.jpg" }
+    avatar: { type: String, default: "default-avatar.jpg" },
+    followers: { type: [] },
+    followings: { type: [] },
+    favoriteArtists: { type: [] },
+    favoriteAlbums: { type: [] },
+    favoriteSongs: { type: [] }
 });
 
 userSchema.methods = {

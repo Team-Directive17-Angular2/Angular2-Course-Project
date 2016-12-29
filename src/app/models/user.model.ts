@@ -5,6 +5,11 @@ export class User {
         public firstName: string,
         public lastName: string,
         public email: string,
-        public avatar: string
+        public avatar: string,
+        public followers: any[],
+        public followings: any[],
+        public favoriteArtists: any[],
+        public favoriteAlbums: any[],
+        public favoriteSongs: any[]
     ) { }
 }

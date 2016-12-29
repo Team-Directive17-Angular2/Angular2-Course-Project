@@ -49,6 +49,30 @@ module.exports = function (models) {
     });
   }
 
+  function updateFollowers(user) {
+    return new Promise((resolve, reject) => {
+        User.update({ _id: user._id }, { followers: user.followers }, null, (err) => {
+              if (err) {
+                  return reject(err);
+              }
+
+              return resolve();
+          });
+    });
+  }
+
+  function updateFollowings(user) {
+    return new Promise((resolve, reject) => {
+        User.update({ _id: user._id }, { followings: user.followings }, null, (err) => {
+              if (err) {
+                  return reject(err);
+              }
+
+              return resolve();
+          });
+    });
+  }
+
   function getUserByName(name) {
     return new Promise((resolve, reject) => {
       User.findOne({username: name})
@@ -75,6 +99,8 @@ module.exports = function (models) {
   return {
     getUserByName,
     getUsers,
-    registerUser
+    registerUser,
+    updateFollowers,
+    updateFollowings
   };
 };
