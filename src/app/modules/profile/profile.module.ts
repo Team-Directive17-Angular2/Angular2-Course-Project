@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { DirectivesModule } from '../../directives/directives.module';
 import { appRoutes } from '../../config/routes';
 
 import { Ng2PaginationModule } from 'ng2-pagination';
@@ -16,6 +17,7 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
         FormsModule,
         SimpleNotificationsModule,
         Ng2PaginationModule,
+        DirectivesModule,
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     declarations: [

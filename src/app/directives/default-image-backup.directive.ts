@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, OnInit, Input } from '@angular/core';
 
 @Directive({
   selector: 'img[default]',
@@ -7,14 +7,16 @@ import { Directive, ElementRef, Input } from '@angular/core';
     '[src]':'src'
    }
 })
-export class DefaultImageDirective {
+export class DefaultImageDirective implements OnInit {
 
-    constructor(el: ElementRef){
-
+    constructor(el: ElementRef){ 
     }
+
     @Input() src:string;
     @Input() default:string;
 
+    ngOnInit() {
+    }
     updateUrl() {
         this.src = this.default;
     }

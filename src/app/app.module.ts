@@ -14,11 +14,11 @@ import { SongsModule } from './modules/songs/songs.module';
 import { UsersModule } from './modules/users/users.module';
 import { appRoutes } from './config/routes';
 import { AdminModule } from './modules/admin/admin.module';
+import { DirectivesModule } from './directives/directives.module';
 
 import { AppComponent } from './app.component';
 import {NavComponent} from './modules/navigation/app-nav.component';
 import {FooterComponent} from './modules/footer/app-footer.component';
-import { DefaultImageDirective } from './directives/default-image-backup.directive';
 
 //  Services
 import {AuthenticationService} from './services/authentication.service'
@@ -44,13 +44,13 @@ import {AdminGuard} from './guards/admin.guard';
     AlbumsModule,
     SongsModule,
     UsersModule,
-    AdminModule
+    AdminModule,
+    DirectivesModule
   ],
   declarations: [
     AppComponent,
     NavComponent,
-    FooterComponent,
-    DefaultImageDirective
+    FooterComponent
   ],
   bootstrap: [AppComponent],
   providers: [
@@ -60,6 +60,7 @@ import {AdminGuard} from './guards/admin.guard';
     GlobalEventsManager,
     IsAdminEventsManager,
     UserService
-  ]
+],
+exports: []
 })
 export class AppModule { }
