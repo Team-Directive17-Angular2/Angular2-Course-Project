@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 import { User } from '../../../models/user.model';
@@ -11,7 +11,8 @@ import { routerTransition } from '../../../animations/router.animations';
   templateUrl: './detailed-user.component.html',
   styleUrls: ['./detailed-user.component.css'],
   animations: [routerTransition()],
-  host: {'[@routerTransition]': ''}
+  host: {'[@routerTransition]': ''},
+  encapsulation: ViewEncapsulation.None
 })
 export class DetailedUserComponent implements OnInit, OnDestroy {
     user:User;
@@ -45,32 +46,7 @@ export class DetailedUserComponent implements OnInit, OnDestroy {
         this.subscription = this.routeParams.params.subscribe(params => {
             let username = params['username'];
 
-            this.userService.getUser(username)
-            .subscribe( user => {
-                this.user = user;
-                this.username = user.username;
-                this.email = user.email;
-                this.firstName = user.firstName;
-                this.lastName = user.lastName;
-                this.avatar = user.avatar;
-                this.followers = user.followers;
-                this.followings = user.followings;
-                this.favoriteArtists = user.favoriteArtists;
-                this.favoriteAlbums = user.favoriteAlbums;
-                this.favoriteSongs = user.favoriteSongs;
-
-                this.followed = false;
-
-                for (let follower of this.followers) {
-                    if(follower.username === this.currentUsername) {
-                        this.followed = true;
-                        break;
-                    }
-                }
-            },
-            error => {
-                console.log('REDIRECT TO ERROR PAGE');
-            });
+            this.updateUserInformation(username);
         });
 
 
@@ -80,18 +56,45 @@ export class DetailedUserComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
+    updateUserInformation(username: string) {
+        this.userService.getUser(username)
+        .subscribe( user => {
+            this.user = user;
+            this.username = user.username;
+            this.email = user.email;
+            this.firstName = user.firstName;
+            this.lastName = user.lastName;
+            this.avatar = user.avatar;
+            this.followers = user.followers;
+            this.followings = user.followings;
+            this.favoriteArtists = user.favoriteArtists;
+            this.favoriteAlbums = user.favoriteAlbums;
+            this.favoriteSongs = user.favoriteSongs;
+
+            this.followed = false;
+
+            for (let follower of this.followers) {
+                if(follower.username === this.currentUsername) {
+                    this.followed = true;
+                    break;
+                }
+            }
+        },
+        error => {
+            console.log('REDIRECT TO ERROR PAGE');
+        });
+    };
+
     follow() {
         this.userService.follow(this.currentUsername, this.username, true)
         .subscribe( result => {
-            console.log(result);
             if(result) {
                 this.notificationsService.success('', `Successfully followed ${this.username}.`);
-                this.followed = true;
+                this.updateUserInformation(this.username);
             } else{
                 this.notificationsService.error('', `Unsuccessfully followed ${this.username}. Please try again later.`);
             }
         })
-
     }
 
     unfollow() {
@@ -100,7 +103,7 @@ export class DetailedUserComponent implements OnInit, OnDestroy {
             console.log(result);
             if(result) {
                 this.notificationsService.success('', `Successfully unfollowed ${this.username}.`);
-                this.followed = false;
+                this.updateUserInformation(this.username);
             } else{
                 this.notificationsService.error('', `Unsuccessfully unfollowed ${this.username}. Please try again later.`);
             }

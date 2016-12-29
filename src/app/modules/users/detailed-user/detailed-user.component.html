@@ -2,10 +2,10 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="row main-row profile-header">
-                <div class="col-sm-3 col-md-2 profile-image">
+                <div class="col-sm-3 col-md-2 col-lg-2 profile-image">
                     <img src="../../../../assets/images/{{avatar}}" alt="{{username}}">
                 </div>
-                <div class="col-sm-7 col-md-8 profile-information">
+                <div class="col-sm-6 col-md-8 col-lg-8 profile-information">
                     <div>
                         <div class="row">
                             <h1 class="profile-username">{{username}}</h1></div>
@@ -13,7 +13,7 @@
                             <h2 class="profile-names">{{firstName}} {{lastName}}</h2></div>
                     </div>
                 </div>
-                <div *ngIf="currentUsername != username" class="col-sm-2 col-md-2 profile-follow">
+                <div *ngIf="currentUsername != username" class="col-sm-3 col-md-3 col-lg-2 profile-follow">
                     <button *ngIf="!followed" (click)="follow()" class="btn btn-primary btn-follow">FOLLOW</button>
                     <button *ngIf="followed" (click)="unfollow()" class="btn btn-default btn-follow">UNFOLLOW</button>
                 </div>
@@ -27,7 +27,8 @@
                 <li class="active"><a href="#artists" data-toggle="pill" aria-expanded="true">Artists</a></li>
                 <li class=""><a href="#albums" data-toggle="pill" aria-expanded="true">Albums</a></li>
                 <li><a href="#songs" data-toggle="pill" aria-expanded="false">Songs</a></li>
-                <li><a href="#friends" data-toggle="pill" aria-expanded="false">Friends</a></li>
+                <li><a href="#followers" data-toggle="pill" aria-expanded="false">Followers</a></li>
+                <li><a href="#followings" data-toggle="pill" aria-expanded="false">Followings</a></li>
             </ul>
         </div>
         <div class="col-md-9">
@@ -47,9 +48,38 @@
                         <h1>Favorite Songs</h1>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="friends">
-                    <div id="friends-info">
-                        <h1>Friends</h1>
+                <div class="tab-pane fade" id="followers">
+                    <div class="users-list">
+                        <ul>
+                            <li *ngFor="let follower of followers | paginate: { id: 'followers', itemsPerPage: 6, currentPage: s }" class="col-xs-4 col-sm-3 col-md-2 container">
+                                <div class="user-info">
+                                    <a [routerLink]="['/users/',follower.username]" [routerLinkActive]="['active']">
+                                        <img src="../../../assets/images/{{follower.avatar}}" alt="{{user.username}}" class="img-responsive">
+                                        <p class="username">{{follower.username}}</p>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="users-pagination">
+                        <pagination-controls id="followers" directionLinks="false" maxSize="3" (pageChange)="s = $event"></pagination-controls>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="followings">
+                    <div class="users-list">
+                        <ul>
+                            <li *ngFor="let following of followings | paginate: { id: 'followings', itemsPerPage: 6, currentPage: q }" class="col-xs-4 col-sm-3 col-md-2 container">
+                                <div class="user-info">
+                                    <a [routerLink]="['/users/',following.username]" [routerLinkActive]="['active']">
+                                        <img src="../../../assets/images/{{following.avatar}}" alt="{{user.username}}" class="img-responsive">
+                                        <p class="username">{{following.username}}</p>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="users-pagination">
+                        <pagination-controls id="followings" directionLinks="false" maxSize="3" (pageChange)="q = $event"></pagination-controls>
                     </div>
                 </div>
             </div>
