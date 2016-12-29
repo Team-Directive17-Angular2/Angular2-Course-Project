@@ -11,7 +11,7 @@ export class ArtistService {
   public username: string;
 
   constructor(private http: Http, private globalEventsManager: GlobalEventsManager) {
-   
+
   }
 
   AddArtist(model:Artist): Observable<string> {
@@ -24,7 +24,8 @@ export class ArtistService {
     albums:model.albums,
     nationality: model.nationality,
     imgUrl: model.imgUrl,
-    bio: model.bio
+    bio: model.bio,
+    user: localStorage.getItem('currentUser')
     };
     console.log(body);
     return this.http.post('/api/artist', body, options)
