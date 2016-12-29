@@ -19,7 +19,7 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     declarations: [
-        ProfileComponent,
+        ProfileComponent
     ],
     providers: [
         UserService,

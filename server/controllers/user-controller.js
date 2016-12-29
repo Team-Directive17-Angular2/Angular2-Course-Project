@@ -1,6 +1,6 @@
 const jsonwebtoken = require('jsonwebtoken');
 
-module.exports = function ({data, passport, config}) {
+module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
 
   const webTokenSecret = config.webToken;
 
@@ -103,9 +103,37 @@ module.exports = function ({data, passport, config}) {
         });
   }
 
-  function unfollow(req, res) {
+  function uploadProfilePicture(req, res) {
+      const username = req.body.username;
+      const imageData = req.body.data;
+
+      let imageBuffer = imageDecoder.decode(imageData);
+      let imageName = "profile-" + Date.now() + ".jpg";
+      let imagePath = path.join(__dirname, "..", "..", "/src/assets/images/profile-pictures/", imageName)
+
+      fs.writeFile(imagePath, imageBuffer.data, (err) => {
+          if(err) {
+              res.status(400);
+              return res.json("Problem with saving the image. Please try again later.");
+          } else {
+              data.getUserByName(username)
+                  .then((user) => {
+                      return data.updateUserProfilePicture(user, imageName);
+                  })
+                  .then(() => {
+                      res.status(201);
+                      return res.json('Profile picture was successfully saved');
+                  })
+                  .catch((err) => {
+                      res.status(400);
+                      return res.json('Problem occured with saving the picture. Please try again later.');
+                  });
+          }
+      });
+
 
   }
+
   function getUserByName(req, res) {
     data.getUserByName(req.params.username)
       .then((user) => {
@@ -151,7 +179,7 @@ module.exports = function ({data, passport, config}) {
     registerUser,
     loginUser,
     follow,
-    unfollow,
+    uploadProfilePicture,
     getUserByName,
     getUsers
   };

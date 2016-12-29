@@ -42,4 +42,20 @@ export class UserService {
           }
       })
   }
+
+  updateUserProfilePicture(username: string, data: string): Observable<boolean> {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      let body = { username: username, data: data };
+
+      return this.http.put('/api/profile/profile-picture', body, options)
+      .map((response:Response) => {
+          if(response.status === 201){
+              return true;
+          }
+          else{
+              return false;
+          }
+      })
+  }
 }

@@ -2,10 +2,10 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="row main-row profile-header">
-                <div class="col-sm-3 col-md-2 profile-image">
-                    <img src="../../../../assets/images/{{avatar}}" alt="{{username}}">
+                <div class="col-sm-3 col-md-2 profile-image matchheight-profile-header">
+                    <img src="../../../assets/images/profile-pictures/{{avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg">
                 </div>
-                <div class="col-sm-9 col-md-10 profile-information">
+                <div class="col-sm-9 col-md-10 profile-information matchheight-profile-header">
                     <div>
                         <div class="row">
                             <h1 class="profile-username">{{username}}</h1></div>
@@ -32,7 +32,8 @@
             <div class="tab-content" id="my-tab-content">
                 <div class="tab-pane fade active in" id="settings">
                     <div id="settings-container">
-                        <h1>Settings</h1>
+                        <label for="input-avatar" class="btn btn-primary">Upload avatar</label>
+                            <input type="file" (change)="onProfilePictureUpload($event)" id="input-avatar" class="hidden">
                     </div>
                 </div>
                 <div class="tab-pane fade" id="artists">
@@ -56,7 +57,7 @@
                             <li *ngFor="let follower of followers | paginate: { id: 'followers', itemsPerPage: 6, currentPage: s }" class="col-xs-4 col-sm-3 col-md-2 container">
                                 <div class="user-info">
                                     <a [routerLink]="['/users/',follower.username]" [routerLinkActive]="['active']">
-                                        <img src="../../../assets/images/{{follower.avatar}}" alt="{{user.username}}" class="img-responsive">
+                                        <img src="../../../assets/images/profile-pictures/{{follower.avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg" alt="{{follower.username}}" class="img-responsive matchheight-profile-picture">
                                         <p class="username">{{follower.username}}</p>
                                     </a>
                                 </div>
@@ -73,7 +74,7 @@
                             <li *ngFor="let following of followings | paginate: { id: 'followings', itemsPerPage: 6, currentPage: q }" class="col-xs-4 col-sm-3 col-md-2 container">
                                 <div class="user-info">
                                     <a [routerLink]="['/users/',following.username]" [routerLinkActive]="['active']">
-                                        <img src="../../../assets/images/{{following.avatar}}" alt="{{user.username}}" class="img-responsive">
+                                        <img src="../../../assets/images/profile-pictures/{{following.avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg" alt="{{following.username}}" class="img-responsive matchheight-profile-picture">
                                         <p class="username">{{following.username}}</p>
                                     </a>
                                 </div>

@@ -6,6 +6,7 @@ import { appRoutes } from '../../config/routes';
 
 import { Ng2PaginationModule } from 'ng2-pagination';
 
+
 import { UsersComponent } from './all-users/users.component';
 import { SearchPipe, SortPipe } from '../../pipes';
 import { DetailedUserComponent } from './detailed-user/detailed-user.component';

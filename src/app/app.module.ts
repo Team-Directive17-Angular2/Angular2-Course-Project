@@ -18,6 +18,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { AppComponent } from './app.component';
 import {NavComponent} from './modules/navigation/app-nav.component';
 import {FooterComponent} from './modules/footer/app-footer.component';
+import { DefaultImageDirective } from './directives/default-image-backup.directive';
 
 //  Services
 import {AuthenticationService} from './services/authentication.service'
@@ -48,7 +49,8 @@ import {AdminGuard} from './guards/admin.guard';
   declarations: [
     AppComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    DefaultImageDirective
   ],
   bootstrap: [AppComponent],
   providers: [
