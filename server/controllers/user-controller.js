@@ -53,6 +53,8 @@ module.exports = function ({data, passport, config}) {
   function follow(req, res) {
     const currentUsername = req.body.currentUsername;
     const username = req.body.username;
+    // if operation is true - follow; if operation is false - unfollow
+    const operation = req.body.operation;
     let currentFollower;
     let currentFollowing;
 
@@ -65,17 +67,29 @@ module.exports = function ({data, passport, config}) {
         .then((following) => {
             currentFollowing = following;
 
-            currentFollowing.followers.push({ _id: currentFollower._id,
-                username: currentFollower.username,
-                avatar: currentFollower.avatar });
+            if(operation) {
+                currentFollowing.followers.push({ _id: currentFollower._id,
+                    username: currentFollower.username,
+                    avatar: currentFollower.avatar });
+            } else {
+                currentFollowing.followers = currentFollowing.followers.filter((f) => {
+                    return f.username !== currentUsername;
+                })
+            }
 
             return data.updateFollowers(currentFollowing);
         })
         .then(() => {
 
+            if(operation) {
             currentFollower.followings.push({ _id: currentFollowing._id,
                 username: currentFollowing.username,
                 avatar: currentFollowing.avatar });
+            } else {
+                currentFollower.followings = currentFollower.followings.filter((f) => {
+                    return f.username !== username;
+                })
+            }
 
             return data.updateFollowings(currentFollower);
         })
@@ -108,7 +122,7 @@ module.exports = function ({data, passport, config}) {
           favoriteAlbums: user.favoriteAlbums,
           favoriteSongs: user.favoriteSongs
         }
-        
+
         res.status(200).json({data: foundUser})
       })
       .catch((err) => {

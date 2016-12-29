@@ -26,10 +26,11 @@ export class UserService {
         })
   }
 
-  follow(currentUsername: string, username: string): Observable<boolean> {
+  follow(currentUsername: string, username: string, operation: boolean): Observable<boolean> {
       let headers = new Headers({'Content-Type': 'application/json'});
       let options = new RequestOptions({headers: headers});
-      let body = { currentUsername: currentUsername, username: username };
+      // if operation is true - follow; if operation is false - unfollow
+      let body = { currentUsername: currentUsername, username: username, operation: operation };
 
       return this.http.put('/api/follow', body, options)
       .map((response:Response) => {

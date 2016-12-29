@@ -67,6 +67,9 @@ export class DetailedUserComponent implements OnInit, OnDestroy {
                         break;
                     }
                 }
+            },
+            error => {
+                console.log('REDIRECT TO ERROR PAGE');
             });
         });
 
@@ -78,7 +81,7 @@ export class DetailedUserComponent implements OnInit, OnDestroy {
     }
 
     follow() {
-        this.userService.follow(this.currentUsername, this.username)
+        this.userService.follow(this.currentUsername, this.username, true)
         .subscribe( result => {
             console.log(result);
             if(result) {
@@ -92,8 +95,16 @@ export class DetailedUserComponent implements OnInit, OnDestroy {
     }
 
     unfollow() {
-        console.log("Unfollow");
-        this.followed = false;
+        this.userService.follow(this.currentUsername, this.username, false)
+        .subscribe( result => {
+            console.log(result);
+            if(result) {
+                this.notificationsService.success('', `Successfully unfollowed ${this.username}.`);
+                this.followed = false;
+            } else{
+                this.notificationsService.error('', `Unsuccessfully unfollowed ${this.username}. Please try again later.`);
+            }
+        })
     }
 
 }
