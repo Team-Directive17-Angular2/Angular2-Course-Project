@@ -1,0 +1,20 @@
+<div class="users-list">
+    <ul>
+        <li *ngFor="let user of users | search: parameters:searchPattern | sort: sortType:sortOrder | paginate: { itemsPerPage: 12, currentPage: p }" class="col-xs-6 col-sm-3 col-md-2 container">
+            <div class="user-info">
+                <a [routerLink]="['/users/',user.username]" [routerLinkActive]="['active']">
+                    <div class="user-container">
+                        <div class="image-container">
+                            <img src="../../../assets/images/profile-pictures/{{user.avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg" alt="{{user.username}}" />
+                        </div>
+                        <p class="username">{{user.username}}</p>
+                        <p class="name">{{user.firstName}} {{user.lastName}}</p>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="users-pagination">
+    <pagination-controls directionLinks="false" maxSize="3" (pageChange)="p = $event"></pagination-controls>
+</div>

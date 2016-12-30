@@ -8,6 +8,8 @@ import { appRoutes } from '../../config/routes';
 import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { ProfileComponent } from './profile.component';
+import { SettingsComponent } from './settings/settings.component';
+import { FollowListComponent } from './follow-list/follow-list.component';
 import { UserService } from '../../services/user.service';
 import { SimpleNotificationsModule, NotificationsService } from '../../../../node_modules/angular2-notifications';
 
@@ -21,7 +23,9 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     declarations: [
-        ProfileComponent
+        ProfileComponent,
+        SettingsComponent,
+        FollowListComponent
     ],
     providers: [
         UserService,

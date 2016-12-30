@@ -32,11 +32,8 @@
         </div>
         <div class="col-md-9">
             <div class="tab-content" id="my-tab-content">
-                <div class="tab-pane fade" id="settings">
-                    <div id="settings-container">
-                        <label for="input-avatar">Upload avatar</label>
-                            <input type="file" (change)="onProfilePictureUpload($event)" id="input-avatar">
-                    </div>
+                <div class="tab-pane fade active in" id="settings">
+                    <app-settings></app-settings>
                 </div>
                 <div class="tab-pane fade" id="artists">
                     <div id="artists-info">
@@ -54,46 +51,10 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="followers">
-                    <div class="users-list">
-                        <ul>
-                            <li *ngFor="let follower of followers | paginate: { id: 'followers', itemsPerPage: 6, currentPage: s }" class="col-xs-4 col-sm-3 col-md-2 container">
-                                <div class="user-info">
-                                    <a [routerLink]="['/users/',follower.username]" [routerLinkActive]="['active']">
-                                        <div class="user-container">
-                                            <div class="image-container">
-                                                <img src="../../../assets/images/profile-pictures/{{follower.avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg" alt="{{follower.username}}"/>
-                                            </div>
-                                            <p class="username">{{follower.username}}</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="users-pagination">
-                        <pagination-controls id="followers" directionLinks="false" maxSize="3" (pageChange)="s = $event"></pagination-controls>
-                    </div>
+                    <app-follow-list [followList]="followers"></app-follow-list>
                 </div>
                 <div class="tab-pane fade" id="followings">
-                    <div class="users-list">
-                        <ul>
-                            <li *ngFor="let following of followings | paginate: { id: 'followings', itemsPerPage: 6, currentPage: q }" class="col-xs-4 col-sm-3 col-md-2 container">
-                                <div class="user-info">
-                                    <a [routerLink]="['/users/',following.username]" [routerLinkActive]="['active']">
-                                        <div class="user-container">
-                                            <div class="image-container">
-                                                <img src="../../../assets/images/profile-pictures/{{following.avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg" alt="{{following.username}}"/>
-                                            </div>
-                                            <p class="username">{{following.username}}</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="users-pagination">
-                        <pagination-controls id="followings" directionLinks="false" maxSize="3" (pageChange)="q = $event"></pagination-controls>
-                    </div>
+                    <app-follow-list [followList]="followings"></app-follow-list>
                 </div>
             </div>
         </div>
