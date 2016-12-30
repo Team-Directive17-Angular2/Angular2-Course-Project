@@ -1,0 +1,17 @@
+.addAlbum-content {
+    background-color: #FFFFFF;
+    padding: 40px 0px;
+}
+
+.addAlbum-content .form-legend {
+    text-align: center;
+}
+
+.addAlbum-content .btn-addAlbum {
+    width: 195px;
+    margin: 15px 0px;
+}
+
+.addAlbum-content  .album-submit {
+    text-align: center;
+}

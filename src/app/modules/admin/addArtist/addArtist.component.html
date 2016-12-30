@@ -8,13 +8,10 @@
             <label for="artist">Artist</label>
             <input type="text" class="form-control" name="artist" [(ngModel)]="model.artist" #artist="ngModel" required />
         </div>
-        <div class="form-group">
-            <label for="albums">Albums</label>
-            <input type="text" placeholder="Split by comma" class="form-control" name="albums" [(ngModel)]="model.albums" #albums="ngModel" required />
-        </div>
-          <div class="form-group">
-            <label for="genres">Genres</label>
-            <input type="text" placeholder="Split by comma" class="form-control" name="genres" [(ngModel)]="model.genres" #genres="ngModel" required />
+        <div>
+         <select multiple="" class="form-control"  (change)="change($event.target.options)" >
+          <option *ngFor="let genre of genresCollection" value="{{genre}}">{{genre}}</option>
+        </select>
         </div>
         <div class="row">        
             <div class="form-group col-xs-6">

@@ -1,6 +1,6 @@
 export class Artist {
     artist: string;
-    genres: string;
+    genres: string[];
     yearsActive:string;
     albums:string;
     nationality: string;

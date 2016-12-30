@@ -18,24 +18,31 @@ export class AddArtistComponent implements OnInit {
     loading = false;
     error = '';
     successMsg = '';
-
+    genr:any;
+    genresCollection:string[];
+    
     constructor(private router: Router,
           private artistService: ArtistService, private globalEventsManager: GlobalEventsManager) {
     }
     
     ngOnInit() {
-       
+       this.genresCollection = ["Pop", "Jazz", "Metal", "Rock", "Hip-Hop", "Rap", "Electronic", "Country", "Blues"];
     }
-
+    change(options) {
+    this.genr = Array.apply(null,options)  // convert to real array
+      .filter(option => option.selected)
+      .map(option => option.value)
+  }
     AddArtist(){
         this.loading = true;
         this.model.yearsActive = this.model.from +' - ' + this.model.to
+        this.model.genres = this.genr
         console.log(this.model);
-
+        console.log(this.genr);
         this.artistService.AddArtist(this.model)
         .subscribe(result => {
             this.successMsg = result;
-        })
+        });
 
         setTimeout(()=>{
             this.successMsg = '';
