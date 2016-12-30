@@ -85,6 +85,46 @@ module.exports = function (models) {
     });
   }
 
+  function updateUserInformation(user, params) {
+    const changes = {};
+
+    for (let param in params) {
+        if (params[param] !== user[param]) {
+            changes[param] = params[param];
+        }
+    }
+
+    return new Promise((resolve, reject) => {
+        User.update({ _id: user._id }, changes, null, (err) => {
+            if (err) {
+                return reject(err);
+            }
+
+            return resolve();
+        });
+    });
+  }
+
+  function updateUserPassword(user, oldPassword, requestPassword) {
+    return new Promise((resolve, reject) => {
+        const requestedOldPassword = encryption.generateHashedPassword(user.salt, oldPassword);
+
+        if (user.hashedPassword !== requestedOldPassword) {
+            return reject("Old password does not match. Please try again");
+        }
+
+        const hashedNewPassword = encryption.generateHashedPassword(user.salt, requestPassword);
+
+        User.update({ _id: user._id }, { hashedPassword: hashedNewPassword }, null, (err) => {
+            if (err) {
+                return reject(err);
+            }
+
+            return resolve();
+        });
+    });
+  }
+
   function getUserByName(name) {
     return new Promise((resolve, reject) => {
       User.findOne({username: name})
@@ -96,6 +136,19 @@ module.exports = function (models) {
           return resolve(user);
         });
     });
+  }
+
+  function getUserByEmail(email) {
+      return new Promise((resolve, reject) => {
+        User.findOne({email: email})
+          .then(user => {
+            if (!user) {
+              return reject(new Error("There is no such User"));
+            }
+
+            return resolve(user);
+          });
+      });
   }
 
   function getUsers() {
@@ -110,10 +163,13 @@ module.exports = function (models) {
 
   return {
     getUserByName,
+    getUserByEmail,
     getUsers,
     registerUser,
     updateFollowers,
     updateFollowings,
-    updateUserProfilePicture
+    updateUserProfilePicture,
+    updateUserInformation,
+    updateUserPassword
   };
 };

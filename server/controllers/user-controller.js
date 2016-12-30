@@ -130,8 +130,49 @@ module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
                   });
           }
       });
+  }
 
+  function updateInformation(req, res) {
+      let email = req.body.email;
 
+      data.getUserByEmail(email)
+          .then((user) => {
+              if (user && user.username !== req.user.username) {
+                  res.status(400);
+                  return res.json("Username with this email already exists");
+              }
+
+              return data.getUserByName(req.user.username);
+          })
+          .then((user) => {
+              return data.updateUserInformation(user, req.body);
+          })
+          .then(() => {
+              res.status(201);
+              return res.json("Successfully changed your personal information.");
+          })
+          .catch((err) => {
+              res.status(400);
+              return res.json("Problem occured while changing your information. Please try again later.");
+          });
+  }
+
+  function updatePassword(req, res) {
+      let oldPassword = req.body.oldPassword;
+      let newPassword = req.body.newPassword;
+
+      data.getUserByName(req.user.username)
+          .then((user) => {
+              return data.updateUserPassword(user, oldPassword, newPassword);
+          })
+          .then(() => {
+              res.status(201);
+              return res.json("Successfully changed your password");
+          })
+          .catch((err) => {
+              res.status(400);
+              return res.json(err);
+          });
   }
 
   function getUserByName(req, res) {
@@ -180,6 +221,8 @@ module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
     loginUser,
     follow,
     uploadProfilePicture,
+    updateInformation,
+    updatePassword,
     getUserByName,
     getUsers
   };

@@ -50,6 +50,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
 
     updateUserInformation(username: string) {
+        console.log('update');
         this.subscription = this.userService.getUser(username)
         .subscribe( user => {
             this.user = user;
@@ -68,4 +69,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
             console.log('REDIRECT TO ERROR PAGE');
         });
     };
+
+    informationUpdated(username: string) {
+        this.updateUserInformation(username);
+    }
 }

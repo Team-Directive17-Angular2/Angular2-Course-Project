@@ -1,0 +1,36 @@
+.personal-information .form-legend {
+    text-align: center;
+    font-size: 20px;
+    margin: 0px 0px 15px 0px;
+}
+
+.personal-information .form-group {
+    margin: 5px 0px;
+    display: inline-block;
+    width: 100%;
+}
+
+.personal-information .form-group label{
+    text-align: right;
+    padding: 10px 0px;
+}
+
+.fileName {
+    display: inline-block;
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+.fileSelect {
+    margin-bottom: 15px;
+}
+
+.picture-btn {
+    min-width: 150px;
+}
+@media (max-width: 767px) {
+    .personal-information .form-group label{
+        text-align: left;
+        padding: 0px 15px;
+    }
+}

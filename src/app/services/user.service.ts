@@ -58,4 +58,20 @@ export class UserService {
           }
       })
   }
+
+  updateInformation(firstName: string, lastName: string, email:string): Observable<boolean> {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      let body = { firstName: firstName, lastName: lastName, email: email };
+
+      return this.http.put('/api/profile/profile-information', body, options)
+      .map((response:Response) => {
+          if(response.status === 201){
+              return true;
+          }
+          else{
+              return false;
+          }
+      })
+  }
 }

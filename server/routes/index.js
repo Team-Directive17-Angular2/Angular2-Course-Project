@@ -12,7 +12,9 @@ module.exports = function ({ app, controllers }) {
              .get('/users', controllers.user.getUsers)
              .get('/user/:username', controllers.user.getUserByName)
              .put('/follow', auth.isAuthenticated(), controllers.user.follow)
-             .put('/profile/profile-picture', controllers.user.uploadProfilePicture)
+             .put('/profile/profile-picture', auth.isAuthenticated(),  controllers.user.uploadProfilePicture)
+             .put('/profile/profile-information', auth.isAuthenticated(),  controllers.user.updateInformation)
+             .put('/profile/password', controllers.user.updatePassword)
              .post('/artist', auth.isInRole(adminRole), controllers.artist.AddArtist)
 
 

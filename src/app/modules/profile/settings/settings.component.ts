@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import {Router, ActivatedRoute} from "@angular/router";
 
 import { UserService } from '../../../services/user.service';
 import { NotificationsService } from 'angular2-notifications';
@@ -10,25 +10,38 @@ import { NotificationsService } from 'angular2-notifications';
   styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit {
-
+    model: any = {};
     options: Object;
+    file: any;
+    fileName: string;
 
-    constructor(private routeParams: ActivatedRoute,
+    constructor(private router: Router,
+        private routeParams: ActivatedRoute,
         private notificationsService: NotificationsService,
         private userService:UserService) { }
 
+    @Input() uFirstName: string;
+    @Input() uLastName: string;
+    @Input() uEmail: string;
+    @Output() informationUpdated = new EventEmitter<any>();
 
     ngOnInit() {
         this.options = { timeOut: 2000, pauseOnHover: true, showProgressBar: false, animate: 'fromRight', position: ['right', 'bottom'], theClass: 'custom-notification', icons: null };
+        this.fileName = 'No file chosen';
     }
 
     public onProfilePictureUpload(event: any): void {
-        let file = event.target.files[0];
+        event.preventDefault();
+        this.file = event.target.files[0];
+        this.fileName = this.file.name;
+        console.log(this.file);
+    }
 
-        if(file.type === 'image/jpeg' || file.type === 'image/png') {
+    public uploadProfilePicture() {
+        if(this.file.type === 'image/jpeg' || this.file.type === 'image/png') {
 
             let reader: FileReader = new FileReader();
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(this.file);
 
             reader.onload = () => {
                 let username = JSON.parse(localStorage.getItem('currentUser')).username;
@@ -38,17 +51,37 @@ export class SettingsComponent implements OnInit {
                     .subscribe(res => {
                         if (res) {
                             this.notificationsService.success('', 'Successfully saved profile picture');
-                            // this.updateUserInformation(this.username);
+                            this.fileName = 'No file chosen';
+                            this.informationUpdated.emit();
                         } else {
                             this.notificationsService.error('', 'Problem occured with saving the picture. Please try again later.');
                         }
                     },
-                    err => {
-                        console.log('Error')
+                    error => {
+                        let message = JSON.parse(error._body);
+
+                        this.notificationsService.error('', message);
                     });
             };
         } else {
             this.notificationsService.alert('', 'Please upload .jped or .png file.');
         }
+    }
+
+    public updateInformation() {
+        this.userService.updateInformation(this.model.firstName, this.model.lastName, this.model.email)
+            .subscribe(result => {
+                if (result === true) {
+                    this.notificationsService.success('', 'Successfully updated information');
+                    this.informationUpdated.emit();
+                } else {
+                    this.notificationsService.error('', 'Problem occured while updating your information. Please try again later.');
+                }
+            },
+            error => {
+                let message = JSON.parse(error._body);
+
+                this.notificationsService.error('', message);
+            });
     }
 }
