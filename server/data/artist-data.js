@@ -7,16 +7,14 @@ module.exports = function (models) {
     return new Promise((resolve, reject) => {
      
      console.log(body)
-     let genresArray = body.genres.split(',');
-     let albumsArray = body.albums.split(',');
+     
       Artist.create({
         
             artist:body.artist,
-            genres: genresArray,
+            genres: body.genres,
             nationality: body.nationality,
             imgUrl: body.imgUrl,
             yearsActive: body.yearsActive,
-            albums:albumsArray,
             bio: body.bio
 
       })
@@ -48,14 +46,32 @@ module.exports = function (models) {
           return resolve();
         })
         .catch(err => {
+          console.log("boom")
           return reject(err);
         });
     });
   }
 
-
+function removeFromSingles(songs,artistname){
+  return new Promise((resolve,reject) => {
+       Artist.findOne({'artist':artistname})
+       .then((artist) => {
+        let newSongs = artist.singles.filter(s => songs.indexOf(s.name)== -1);
+        console.log(newSongs);
+        Artist.findOneAndUpdate({artist:artistname},{$set:{
+          singles:newSongs
+        } },{new:true},(err,artist1) => {
+          if(err){
+            return reject(err);
+          }
+          return resolve();
+        })
+       })
+  })
+}
 
   return {
-    AddArtist
+    AddArtist,
+    removeFromSingles
   };
 };

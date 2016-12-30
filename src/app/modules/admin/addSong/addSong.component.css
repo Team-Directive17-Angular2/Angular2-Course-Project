@@ -1,0 +1,17 @@
+.addSong-content {
+    background-color: #FFFFFF;
+    padding: 40px 0px;
+}
+
+.addSong-content .form-legend {
+    text-align: center;
+}
+
+.addSong-content .btn-addSong {
+    width: 195px;
+    margin: 15px 0px;
+}
+
+.addSong-content  .song-submit {
+    text-align: center;
+}
