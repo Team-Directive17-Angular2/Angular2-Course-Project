@@ -15,8 +15,23 @@ module.exports = function ({data}) {
       });
   }
 
+  function getAllSongs(req, res) {
+    data.getAllSongs()
+        .then((songs) => {
+          res.status(200);
+          return res.json({data:songs})
+        })
+        .catch((err) => {
+
+          res.status(404);
+          return res.json(err.message);
+
+        })
+  }
+
   return {
     name: "song",
-    addSong
+    addSong,
+    getAllSongs
   };
 };

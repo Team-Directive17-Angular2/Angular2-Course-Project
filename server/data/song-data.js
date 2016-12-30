@@ -60,9 +60,19 @@ module.exports = function (models) {
     });
   }
 
+ function getAllSongs(){
+    return new Promise((resolve,reject) => {
+         Song.find({})
+             .then((songs) => {
+               return resolve(songs);
+             })
+    })
+  }
+
 
 
   return {
-    addSong
+    addSong,
+    getAllSongs
   };
 };

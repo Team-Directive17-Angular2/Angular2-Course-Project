@@ -1,0 +1,20 @@
+<div class="songs-list">
+    <ul>
+        <li *ngFor="let song of songs | search: parameters:searchPattern | sort: sortType:sortOrder | paginate: { itemsPerPage: 12, currentPage: p }" class="col-xs-6 col-sm-3 col-md-2 container">
+            <div class="song-info">
+                <a [routerLink]="['/songs/',song.name]" [routerLinkActive]="['active']">
+                    <div class="song-container">
+                        <div class="image-container">
+                            <img src="../../../assets/images/profile-pictures/{{song.avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg" alt="{{song.name}}" />
+                        </div>
+                        <p class="songname">{{song.name}}</p>
+                        <p class="artist">{{song.artist}} {{song.album}}</p>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="songs-pagination">
+    <pagination-controls directionLinks="false" maxSize="3" (pageChange)="p = $event"></pagination-controls>
+</div>

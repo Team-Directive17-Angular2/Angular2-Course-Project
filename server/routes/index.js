@@ -18,6 +18,7 @@ module.exports = function ({ app, controllers }) {
              .post('/artist', auth.isInRole(adminRole), controllers.artist.addArtist)
              .post('/album', auth.isInRole(adminRole), controllers.album.addAlbum)
              .post('/song', auth.isInRole(adminRole), controllers.song.addSong)
+             .get('/song', auth.isAuthenticated(), controllers.song.getAllSongs)
 
 
     app.use('/api', apiRouter);

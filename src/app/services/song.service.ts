@@ -29,4 +29,12 @@ export class SongService {
       })
   }
 
+  getSongs(): Observable<any[]> {
+    
+    return this.http.get('api/song')
+     .map((response:Response) => {
+       return response.json().data;
+     })
+  }
+
 }

@@ -11,9 +11,12 @@ import { UsersComponent } from './all-users/users.component';
 import { UsersListComponent } from './all-users/users-list/users-list.component';
 import { DetailedUserComponent } from './detailed-user/detailed-user.component';
 import { FollowListComponent } from './detailed-user/follow-list/follow-list.component';
-import { SearchPipe, SortPipe } from '../../pipes';
+
 import { UserService } from '../../services/user.service';
 import { SimpleNotificationsModule, NotificationsService } from '../../../../node_modules/angular2-notifications';
+
+import { SearchPipeModule } from '../../pipes/search.pipe.module';
+import { SortPipeModule } from '../../pipes/sort.pipe.module';
 
 @NgModule({
     imports: [
@@ -22,6 +25,8 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
         SimpleNotificationsModule,
         Ng2PaginationModule,
         DirectivesModule,
+        SearchPipeModule,
+        SortPipeModule,
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     declarations: [
@@ -29,8 +34,6 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
         UsersListComponent,
         DetailedUserComponent,
         FollowListComponent,
-        SearchPipe,
-        SortPipe
     ],
     providers: [
         UserService,

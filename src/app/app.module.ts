@@ -29,6 +29,7 @@ import { IsAdminEventsManager } from './services/isAdminEventManager';
 import {AuthGuard} from './guards/auth.guard';
 import {AdminGuard} from './guards/admin.guard';
 
+
 @NgModule({
   imports: [
     BrowserModule,
