@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {GlobalEventsManager} from '../../../services/globalEventsManager';
+
 import { SongService } from '../../../services/song.service';
 import { Song } from '../../../models/song.model'
 import { routerTransition } from '../../../animations/router.animations';
+
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
     selector: 'app-addArtist',
@@ -15,30 +17,33 @@ import { routerTransition } from '../../../animations/router.animations';
 
 export class AddSongComponent implements OnInit {
     model:any = {};
-    loading = false;
-    error = '';
-    successMsg = '';
-    
-    constructor(private router: Router,
-          private songService: SongService) {
-    }
-    
-    ngOnInit() {
-       
-    }
-    
-    AddSong(){
-        this.loading = true;
-        console.log(this.model);
-       
-        this.songService.AddSong(this.model)
-        .subscribe(result => {
-            this.successMsg = result;
-        });
+    options: Object;
 
-        setTimeout(()=>{
-            this.successMsg = '';
-        },2000);
-        
+    constructor(private router: Router,
+          private songService: SongService,
+          private notificationsService: NotificationsService) {
+    }
+
+    ngOnInit() {
+       this.options = { timeOut: 2000, pauseOnHover: true, showProgressBar: false, animate: 'fromRight', position: ['right', 'bottom'], theClass: 'custom-notification', icons: null };
+    }
+
+    AddSong(){
+        console.log(this.model);
+
+        this.songService.addSong(this.model)
+        .subscribe(result => {
+                if (result) {
+                    this.notificationsService.success('', 'Successfully added new song');
+                } else {
+                    this.notificationsService.error('', 'Problem occured while adding a new song. Please try again later.');
+                }
+            },
+            error => {
+                let message = JSON.parse(error._body);
+
+                this.notificationsService.error('', message);
+            }
+        );
     }
 }

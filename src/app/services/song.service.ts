@@ -12,7 +12,7 @@ export class SongService {
 
   }
 
-  AddSong(model:any): Observable<string> {
+  addSong(model:any): Observable<string> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers:headers});
     let body = {

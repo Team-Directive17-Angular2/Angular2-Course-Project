@@ -57,7 +57,7 @@ export class AddArtistComponent implements OnInit {
             reader.onload = () => {
                 let dataUrl = reader.result;
 
-                this.artistService.AddArtist(artist, dataUrl)
+                this.artistService.addArtist(artist, dataUrl)
                     .subscribe(res => {
                         if (res) {
                             this.notificationsService.success('', 'Successfully added new artist');

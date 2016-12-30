@@ -14,7 +14,7 @@ export class ArtistService {
 
   }
 
-  AddArtist(model:any, dataUrl: string): Observable<string> {
+  addArtist(model:any, dataUrl: string): Observable<string> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers:headers});
     let body = {
