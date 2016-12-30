@@ -11,6 +11,8 @@ import { SongsComponent } from '../modules/songs/songs.component';
 import { UsersComponent } from '../modules/users/all-users/users.component';
 import { DetailedUserComponent } from '../modules/users/detailed-user/detailed-user.component';
 import { AddArtistComponent } from '../modules/admin/addArtist/addArtist.component';
+import { AddAlbumComponent } from '../modules/admin/addAlbum/addAlbum.component';
+import { AddSongComponent  } from '../modules/admin/addSong/addSong.component';
 
 import {AuthGuard} from '../guards/auth.guard';
 import { AdminGuard } from '../guards/admin.guard';
@@ -28,6 +30,8 @@ export const appRoutes: Routes = [
     { path: 'logout', component: LogoutComponent},
     { path: 'profile', component:ProfileComponent, canActivate: [AuthGuard] },
     { path: 'admin/addArtist', component:AddArtistComponent, canActivate:[AuthGuard,AdminGuard]},
+    { path: 'admin/addAlbum', component:AddAlbumComponent, canActivate:[AuthGuard,AdminGuard]},
+    { path: 'admin/addSong', component:AddSongComponent, canActivate:[AuthGuard,AdminGuard]},
     { path: '**', redirectTo: '' }
 
 ];

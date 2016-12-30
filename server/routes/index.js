@@ -16,6 +16,8 @@ module.exports = function ({ app, controllers }) {
              .put('/profile/profile-information', auth.isAuthenticated(),  controllers.user.updateInformation)
              .put('/profile/password', controllers.user.updatePassword)
              .post('/artist', auth.isInRole(adminRole), controllers.artist.AddArtist)
+             .post('/album', auth.isInRole(adminRole), controllers.album.AddAlbum)
+             .post('/song', auth.isInRole(adminRole), controllers.song.AddSong)
 
 
     app.use('/api', apiRouter);

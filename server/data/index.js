@@ -5,7 +5,9 @@ module.exports = function() {
     const User = require("../models/user-model");
     const Message = require("../models/message-model")
     const Artist = require("../models/artist-model")
-    const models = { User, Message, Artist };
+    const Song = require("../models/song-model")
+    const Album = require("../models/album-model")
+    const models = { User, Message, Artist, Song, Album };
 
     let data = {};
 
