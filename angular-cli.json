@@ -24,9 +24,7 @@
       ],
       "scripts": [
         "scripts/jquery.min.js",
-        "scripts/jquery.match-height.min.js",
-        "scripts/bootstrap.min.js",
-        "scripts/match-height.js"
+        "scripts/bootstrap.min.js"
       ],
       "environments": {
         "source": "environments/environment.ts",

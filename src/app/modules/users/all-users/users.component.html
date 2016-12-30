@@ -27,11 +27,13 @@
             <li *ngFor="let user of users | search: parameters:searchPattern | sort: sortType:sortOrder | paginate: { itemsPerPage: 12, currentPage: p }" class="col-xs-6 col-sm-3 col-md-2 container">
                 <div class="user-info">
                     <a [routerLink]="['/users/',user.username]" [routerLinkActive]="['active']">
-                        <div class="image-container">
-                            <img src="../../../assets/images/profile-pictures/{{user.avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg" alt="{{user.username}}" class="img-responsive matchheight-profile-picture">
+                        <div class="user-container">
+                            <div class="image-container">
+                                <img src="../../../assets/images/profile-pictures/{{user.avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg" alt="{{user.username}}" />
+                            </div>
+                            <p class="username">{{user.username}}</p>
+                            <p class="name">{{user.firstName}} {{user.lastName}}</p>
                         </div>
-                        <p class="username">{{user.username}}</p>
-                        <p class="name">{{user.firstName}} {{user.lastName}}</p>
                     </a>
                 </div>
             </li>

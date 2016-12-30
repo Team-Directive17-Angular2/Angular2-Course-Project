@@ -55,6 +55,26 @@
     padding: 0px;
 }
 
+.profile-content .image-container {
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #F5F5F5;
+    display: inline-block;
+}
+
+.profile-content .image-container img {
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+
+    max-height: 100%;
+}
+
 .profile-content .user-info {
     background-color: #F5F5F5;
     text-align: center;
@@ -69,8 +89,8 @@
 }
 
 .profile-content .user-info .username {
-    font-size: 14px;
-    padding: 5px 0px;
+    font-size: 18px;
+    margin: 5px 0px;
 }
 
 .users-pagination {
