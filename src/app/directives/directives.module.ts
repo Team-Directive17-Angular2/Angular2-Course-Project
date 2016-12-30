@@ -5,7 +5,7 @@ import { DefaultImageDirective } from './default-image-backup.directive';
 @NgModule({
     imports: [],
     declarations: [
-        DefaultImageDirective
+        DefaultImageDirective,
     ],
     providers: [],
     exports: [ DefaultImageDirective ]

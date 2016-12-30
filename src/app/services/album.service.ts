@@ -11,7 +11,7 @@ export class AlbumService {
 
   }
 
-  addAlbum(model:Album): Observable<string> {
+  addAlbum(model:any, dataUrl:string): Observable<string> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers:headers});
     let body = {
@@ -19,8 +19,8 @@ export class AlbumService {
     genres: model.genres,
     year:model.year,
     album:model.album,
-    imgUrl: model.imgUrl,
     songs: model.songs,
+    dataUrl: dataUrl
     };
     console.log(body);
     return this.http.post('/api/album', body, options)

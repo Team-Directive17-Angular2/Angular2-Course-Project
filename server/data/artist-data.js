@@ -5,7 +5,7 @@ module.exports = function (models) {
 
   function createNewArtist(body) {
     return new Promise((resolve, reject) => {
-    
+
       Artist.create({
 
             artist:body.artist,
@@ -50,7 +50,7 @@ function removeFromSingles(songs,artistname){
        .then((artist) => {
 
            if (!artist) {
-             return reject(new Error("This artist is not in the database"));
+             return reject(new Error("This artist is not in the database. Please add him before adding new album."));
            }
 
             let newSongs = artist.singles.filter(s => songs.indexOf(s.name)== -1);

@@ -52,7 +52,7 @@ module.exports = function (models) {
       Artist.findOne({ artist: body.artist })
       .then(artist1 => {
           if (!artist1) {
-            return reject(new Error("This artist is not in the database"));
+            return reject(new Error("This artist is not in the database. Please add him before adding new album."));
           }
           for(let name of body.songs){
             Song.findOneAndUpdate({'artist':body.artist,'name':name},{$set:{'album':body.album}},{new:true},(err2,song) => {

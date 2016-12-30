@@ -1,7 +1,7 @@
 <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 addArtist-content">
     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
         <h2 class="form-legend">Add Artist</h2>
-        <form name="form" (ngSubmit)="f.form.valid && AddArtist(); f.reset()" #f="ngForm" novalidate>
+        <form name="form" (ngSubmit)="f.form.valid && addArtist(); f.reset()" #f="ngForm" novalidate>
             <div class="form-group">
                 <label for="artist">Artist</label>
                 <input type="text" class="form-control" name="artist" [(ngModel)]="model.artist" #artist="ngModel" required />

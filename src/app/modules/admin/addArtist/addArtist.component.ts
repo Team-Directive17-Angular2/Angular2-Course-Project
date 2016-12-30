@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {GlobalEventsManager} from '../../../services/globalEventsManager';
+
 import { ArtistService } from '../../../services/artist.service';
 import { Artist } from '../../../models/artist.model'
 import { routerTransition } from '../../../animations/router.animations';
@@ -25,8 +25,7 @@ export class AddArtistComponent implements OnInit {
 
     constructor(private router: Router,
           private artistService: ArtistService,
-          private notificationsService: NotificationsService,
-          private globalEventsManager: GlobalEventsManager) {
+          private notificationsService: NotificationsService) {
     }
 
     ngOnInit() {
@@ -34,12 +33,14 @@ export class AddArtistComponent implements OnInit {
         this.genresCollection = ["Pop", "Jazz", "Metal", "Rock", "Hip-Hop", "Rap", "Electronic", "Country", "Blues"];
        this.fileName = 'No file chosen';
     }
+
     change(options) {
     this.genr = Array.apply(null,options)  // convert to real array
       .filter(option => option.selected)
       .map(option => option.value)
-  }
-    AddArtist(){
+    }
+
+    addArtist(){
         let artist : Object = {};
 
         artist["yearsActive"] = this.model.from +' - ' + this.model.to;

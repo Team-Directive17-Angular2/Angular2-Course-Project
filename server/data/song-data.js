@@ -46,7 +46,7 @@ module.exports = function (models) {
       })
         .then(artist1 => {
           if (!artist1) {
-            return reject(new Error("This artist is not in the database."));
+            return reject(new Error("This artist is not in the database. Please add him before adding new song."));
           }
 
           return createNewSong(body);

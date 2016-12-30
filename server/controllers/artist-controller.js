@@ -2,9 +2,7 @@
 module.exports = function ({data, fs, path, imageDecoder}) {
 
   function addArtist(req, res) {
-
       const artist = req.body;
-      console.log(artist);
       const imageData = req.body.dataUrl;
 
       let imageBuffer = imageDecoder.decode(imageData);
