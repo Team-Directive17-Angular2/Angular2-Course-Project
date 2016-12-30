@@ -5,9 +5,9 @@ module.exports = function (models) {
 
   function createNewSong(body) {
     return new Promise((resolve, reject) => {
-     
+
      console.log(body)
-     
+
       Song.create({
             name:body.name,
             artist:body.artist,
@@ -27,7 +27,7 @@ module.exports = function (models) {
                    console.log(err)
                }
          });
-       
+
           return resolve();
         })
         .catch(err2 => {
@@ -37,18 +37,18 @@ module.exports = function (models) {
     });
   }
 
-  function AddSong(body) {
+  function addSong(body) {
     return new Promise((resolve, reject) => {
       Artist.findOne({
-     
+
           artist: body.artist
-        
+
       })
         .then(artist1 => {
           if (!artist1) {
-            return reject(new Error("this artist is not in db"));
+            return reject(new Error("This artist is not in the database."));
           }
-          
+
           return createNewSong(body);
         })
         .then(() => {
@@ -63,6 +63,6 @@ module.exports = function (models) {
 
 
   return {
-    AddSong
+    addSong
   };
 };

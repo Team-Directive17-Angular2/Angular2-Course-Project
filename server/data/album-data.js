@@ -5,7 +5,7 @@ module.exports = function (models) {
 
   function createNewAlbum(body,songs) {
     return new Promise((resolve, reject) => {
- 
+
      let songsToBeAdd = [];
 
      for(let song of songs){
@@ -36,51 +36,35 @@ module.exports = function (models) {
             }
           },{upsert:true},(err,artist) => {
              if(err){
-               console.log(err);
+               return reject(err);
              }
           });
           return resolve();
         })
         .catch(err2 => {
-          console.log(err2);
           return reject(err2);
         });
     });
   }
 
-  function AddAlbum(body) {
+  function addAlbum(body) {
     return new Promise((resolve, reject) => {
-      Artist.findOne({
-     
-          artist: body.artist
-        
-      })
-        .then(artist1 => {
+      Artist.findOne({ artist: body.artist })
+      .then(artist1 => {
           if (!artist1) {
-            return reject(new Error("this artist is not in db"));
+            return reject(new Error("This artist is not in the database"));
           }
-
-          
           for(let name of body.songs){
-            
-             Song.findOneAndUpdate({'artist':body.artist,'name':name},{$set:{'album':body.album}},{new:true},(err2,song) => {
+            Song.findOneAndUpdate({'artist':body.artist,'name':name},{$set:{'album':body.album}},{new:true},(err2,song) => {
                if(err2){
-                 console.log(err2)
                }
              });
-             
           }
-            
-          
-        }).
-        then(() => {
-          
-            Song.find({'artist':body.artist,'name':{$in:body.songs}})
-            .then((songs)=>{
-              
-              createNewAlbum(body,songs)
-            })
-          
+
+          return Song.find({'artist': body.artist,'name': {$in:body.songs}});
+        })
+        .then((songs)=>{
+          return createNewAlbum(body,songs);
         })
         .then(() => {
           return resolve();
@@ -94,6 +78,6 @@ module.exports = function (models) {
 
 
   return {
-    AddAlbum
+    addAlbum
   };
 };

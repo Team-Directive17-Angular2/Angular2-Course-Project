@@ -1,13 +1,13 @@
 
 module.exports = function ({data}) {
 
-  function AddArtist(req, res) {
+  function addArtist(req, res) {
     const artist = req.body;
-    
-    data.AddArtist(artist)
+
+    data.addArtist(artist)
       .then(() => {
         res.status(201);
-        return res.json("Successfully Added new artist");
+        return res.json("Successfully added new artist");
       })
       .catch((err) => {
         res.status(400);
@@ -18,6 +18,6 @@ module.exports = function ({data}) {
 
   return {
     name: "artist",
-    AddArtist
+    addArtist
   };
 };

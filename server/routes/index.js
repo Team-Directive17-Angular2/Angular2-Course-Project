@@ -15,9 +15,9 @@ module.exports = function ({ app, controllers }) {
              .put('/profile/profile-picture', auth.isAuthenticated(),  controllers.user.uploadProfilePicture)
              .put('/profile/profile-information', auth.isAuthenticated(),  controllers.user.updateInformation)
              .put('/profile/password', controllers.user.updatePassword)
-             .post('/artist', auth.isInRole(adminRole), controllers.artist.AddArtist)
-             .post('/album', auth.isInRole(adminRole), controllers.album.AddAlbum)
-             .post('/song', auth.isInRole(adminRole), controllers.song.AddSong)
+             .post('/artist', auth.isInRole(adminRole), controllers.artist.addArtist)
+             .post('/album', auth.isInRole(adminRole), controllers.album.addAlbum)
+             .post('/song', auth.isInRole(adminRole), controllers.song.addSong)
 
 
     app.use('/api', apiRouter);
