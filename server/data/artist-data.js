@@ -65,11 +65,22 @@ function removeFromSingles(songs,artistname){
        .catch(err => {
          return reject(err);
        });
-  })
-}
+    })
+  }
+
+  function getArtists() {
+    return new Promise((resolve, reject) => {
+      Artist.find({}, '_id name imgUrl genres')
+        .then(users => {
+
+          return resolve(users);
+        });
+    });
+  }
 
   return {
     addArtist,
-    removeFromSingles
+    removeFromSingles,
+    getArtists
   };
 };

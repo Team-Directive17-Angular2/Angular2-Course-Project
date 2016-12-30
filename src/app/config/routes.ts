@@ -5,7 +5,8 @@ import { RegisterComponent } from '../modules/auth/register/register.component';
 import { LogoutComponent } from '../modules/auth/logout/logout.component';
 import { ProfileComponent } from '../modules/profile/profile.component';
 import { ContactComponent } from '../modules/contact/contact.component';
-import { ArtistsComponent } from '../modules/artists/artists.component';
+import { ArtistsComponent } from '../modules/artists/all-artists/artists.component';
+import { DetailedArtistComponent } from '../modules/artists/detailed-artist/detailed-artist.component';
 import { AlbumsComponent } from '../modules/albums/albums.component';
 import { SongsComponent } from '../modules/songs/all-songs/songs.component';
 import { UsersComponent } from '../modules/users/all-users/users.component';
@@ -24,6 +25,7 @@ export const appRoutes: Routes = [
     { path: 'songs', component: SongsComponent },
     { path: 'users', component: UsersComponent },
     { path: 'users/:username', component: DetailedUserComponent, canActivate: [AuthGuard] },
+    { path: 'artists/:id', component: DetailedArtistComponent, canActivate: [AuthGuard] },
     { path: 'contact', component: ContactComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},

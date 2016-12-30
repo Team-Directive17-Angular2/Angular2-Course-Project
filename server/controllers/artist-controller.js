@@ -30,9 +30,23 @@ module.exports = function ({data, fs, path, imageDecoder}) {
       });
   }
 
+  function getArtists(req, res) {
+    data.getArtists()
+      .then((artists) => {
+
+        res.status(200).json({data: artists})
+      })
+      .catch((err) => {
+
+        res.status(404);
+        return res.json(err.message);
+
+      })
+  }
 
   return {
     name: "artist",
-    addArtist
+    addArtist,
+    getArtists
   };
 };

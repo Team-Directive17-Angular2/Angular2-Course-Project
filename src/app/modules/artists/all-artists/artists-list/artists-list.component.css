@@ -1,52 +1,47 @@
-.users-list {
+.artists-list {
     margin: 15px 0px;
     display:block;
     overflow:auto;
 }
 
-.user-info {
+.artist-info {
     background-color: #F5F5F5;
     text-align: center;
 }
 
-.user-info a{
+.artist-info a{
     color: #2c3e50;
 }
 
-.user-info a:hover{
+.artist-info a:hover{
     text-decoration: none;
 }
 
-.user-info .username {
+.artist-info .artistname {
     font-size: 18px;
-    margin: 0px;
-}
-
-.user-info .name {
-    font-size: 14px;
     padding: 5px 0px 10px 0px;
     margin: 0px;
 }
 
-.users-pagination {
+.artists-pagination {
     text-align: center;
     margin-top: 30px;
 }
 
-.users-pagination *{
+.artists-pagination *{
     font-size: 18px !important;
     text-decoration: none;
 }
 
-.users-pagination .current{
+.artists-pagination .current{
     background-color: #2c3e50 !important;
 }
 
-.users-pagination span{
+.artists-pagination span{
     margin: 0px 5px !important;
 }
 
-.users-pagination a:hover{
+.artists-pagination a:hover{
     background-color: inherit !important;
     text-decoration: none !important;
     color: #25b09c !important;

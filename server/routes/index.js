@@ -15,6 +15,7 @@ module.exports = function ({ app, controllers }) {
              .put('/profile/profile-picture', auth.isAuthenticated(),  controllers.user.uploadProfilePicture)
              .put('/profile/profile-information', auth.isAuthenticated(),  controllers.user.updateInformation)
              .put('/profile/password', controllers.user.updatePassword)
+             .get('/artists', controllers.artist.getArtists)
              .post('/artist', auth.isInRole(adminRole), controllers.artist.addArtist)
              .post('/album', auth.isInRole(adminRole), controllers.album.addAlbum)
              .post('/song', auth.isInRole(adminRole), controllers.song.addSong)

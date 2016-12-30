@@ -6,8 +6,6 @@ module.exports = function (models) {
   function createNewSong(body) {
     return new Promise((resolve, reject) => {
 
-     console.log(body)
-
       Song.create({
             name:body.name,
             artist:body.artist,
@@ -24,14 +22,13 @@ module.exports = function (models) {
               }
            },{upsert:true},(err,artist) =>{
                if(err){
-                   console.log(err)
+                   return reject(err);
                }
          });
 
           return resolve();
         })
         .catch(err2 => {
-          console.log(err2);
           return reject(err2);
         });
     });

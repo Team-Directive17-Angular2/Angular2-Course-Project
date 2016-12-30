@@ -14,7 +14,6 @@ import { SongsModule } from './modules/songs/songs.module';
 import { UsersModule } from './modules/users/users.module';
 import { appRoutes } from './config/routes';
 import { AdminModule } from './modules/admin/admin.module';
-import { DirectivesModule } from './directives/directives.module';
 
 import { AppComponent } from './app.component';
 import {NavComponent} from './modules/navigation/app-nav.component';
@@ -45,8 +44,7 @@ import {AdminGuard} from './guards/admin.guard';
     AlbumsModule,
     SongsModule,
     UsersModule,
-    AdminModule,
-    DirectivesModule
+    AdminModule
   ],
   declarations: [
     AppComponent,
