@@ -3,8 +3,8 @@
         <h2 class="form-legend">Add Artist</h2>
         <form name="form" (ngSubmit)="f.form.valid && addArtist(); f.reset()" #f="ngForm" novalidate>
             <div class="form-group">
-                <label for="artist">Artist</label>
-                <input type="text" class="form-control" name="artist" [(ngModel)]="model.artist" #artist="ngModel" required />
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required />
             </div>
             <div>
              <select multiple="" class="form-control"  (change)="change($event.target.options)" >

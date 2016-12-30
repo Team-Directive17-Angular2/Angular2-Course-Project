@@ -17,7 +17,7 @@ module.exports = function (models) {
      }
 
       Album.create({
-            album:body.album,
+            name:body.name,
             artist:body.artist,
             genres: body.genres,
             imgUrl: body.imgUrl,
@@ -26,11 +26,11 @@ module.exports = function (models) {
 
       })
         .then((album) => {
-          Artist.update({'artist': album.artist},{
+          Artist.update({'name': album.artist},{
             $push: {
                'albums':{
                  'id':album._id,
-                 'name':album.album,
+                 'name':album.name,
                  'img': album.imgUrl
                }
             }
@@ -49,13 +49,13 @@ module.exports = function (models) {
 
   function addAlbum(body) {
     return new Promise((resolve, reject) => {
-      Artist.findOne({ artist: body.artist })
+      Artist.findOne({ name: body.artist })
       .then(artist1 => {
           if (!artist1) {
             return reject(new Error("This artist is not in the database. Please add him before adding new album."));
           }
-          for(let name of body.songs){
-            Song.findOneAndUpdate({'artist':body.artist,'name':name},{$set:{'album':body.album}},{new:true},(err2,song) => {
+          for(let songName of body.songs){
+            Song.findOneAndUpdate({'artist':body.artist,'name':songName},{$set:{'album':body.name}},{new:true},(err2,song) => {
                if(err2){
                }
              });

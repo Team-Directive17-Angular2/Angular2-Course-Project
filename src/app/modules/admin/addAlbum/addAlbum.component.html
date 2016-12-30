@@ -3,8 +3,8 @@
     <h2 class="form-legend">Add Album</h2>
     <form name="form" (ngSubmit)="f.form.valid && addAlbum(); f.reset()" #f="ngForm" novalidate>
         <div class="form-group">
-            <label for="album">Album name</label>
-            <input type="text"  class="form-control" name="album" [(ngModel)]="model.album" #album="ngModel" required />
+            <label for="name">Name</label>
+            <input type="text"  class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required />
         </div>
         <div class="form-group">
             <label for="artist">Artist</label>

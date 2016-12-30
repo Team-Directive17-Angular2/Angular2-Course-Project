@@ -29,7 +29,6 @@ export class AddSongComponent implements OnInit {
     }
 
     AddSong(){
-        console.log(this.model);
 
         this.songService.addSong(this.model)
         .subscribe(result => {

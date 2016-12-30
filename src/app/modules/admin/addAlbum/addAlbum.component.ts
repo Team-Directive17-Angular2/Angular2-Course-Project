@@ -45,7 +45,7 @@ export class AddAlbumComponent implements OnInit {
 
         album["artist"] = this.model.artist;
         album["year"] = this.model.year;
-        album["album"] = this.model.album;
+        album["name"] = this.model.name;
 
         if(this.file.type === 'image/jpeg' || this.file.type === 'image/png') {
 

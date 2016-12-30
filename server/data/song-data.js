@@ -15,7 +15,7 @@ module.exports = function (models) {
 
       })
         .then((song) => {
-          Artist.update({ 'artist':song.artist },{
+          Artist.update({ 'name':song.artist },{
               $push:{
                   'singles':{
                       'id':song._id,
@@ -39,11 +39,7 @@ module.exports = function (models) {
 
   function addSong(body) {
     return new Promise((resolve, reject) => {
-      Artist.findOne({
-
-          artist: body.artist
-
-      })
+      Artist.findOne({ name: body.artist })
         .then(artist1 => {
           if (!artist1) {
             return reject(new Error("This artist is not in the database. Please add him before adding new song."));

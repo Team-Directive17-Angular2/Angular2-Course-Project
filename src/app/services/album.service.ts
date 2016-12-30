@@ -18,7 +18,7 @@ export class AlbumService {
     artist: model.artist,
     genres: model.genres,
     year:model.year,
-    album:model.album,
+    name:model.name,
     songs: model.songs,
     dataUrl: dataUrl
     };

@@ -18,7 +18,7 @@ export class ArtistService {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers:headers});
     let body = {
-    artist: model.artist,
+    name: model.name,
     genres: model.genres,
     yearsActive:model.yearsActive,
     nationality: model.nationality,

@@ -3,7 +3,7 @@ const mongooseSchema = mongoose.Schema;
 
 const songSchema = mongooseSchema({
     name: {type: String, required: true},
-    album:{type: String, default:'single'},
+    album: {type: String, default:'Single'},
     artist: { type: String, required: true},
     duration: { type: Number, required: true }
 });

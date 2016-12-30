@@ -45,7 +45,7 @@ export class AddArtistComponent implements OnInit {
 
         artist["yearsActive"] = this.model.from +' - ' + this.model.to;
         artist["genres"] = this.genr;
-        artist["artist"] = this.model.artist;
+        artist["name"] = this.model.name;
         artist["bio"] = this.model.bio;
         artist["nationality"] = this.model.nationality;
 

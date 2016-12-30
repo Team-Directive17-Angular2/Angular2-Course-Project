@@ -8,7 +8,7 @@ module.exports = function (models) {
 
       Artist.create({
 
-            artist:body.artist,
+            name:body.name,
             genres: body.genres,
             nationality: body.nationality,
             imgUrl: body.imgUrl,
@@ -27,7 +27,7 @@ module.exports = function (models) {
 
   function addArtist(body) {
     return new Promise((resolve, reject) => {
-      Artist.findOne({ artist: body.artist })
+      Artist.findOne({ name: body.name })
         .then(artist1 => {
           if (artist1) {
             return reject(new Error("This artist is already in the database"));
@@ -46,7 +46,7 @@ module.exports = function (models) {
 
 function removeFromSingles(songs,artistname){
   return new Promise((resolve,reject) => {
-       Artist.findOne({'artist':artistname})
+       Artist.findOne({'name':artistname})
        .then((artist) => {
 
            if (!artist) {
@@ -55,7 +55,7 @@ function removeFromSingles(songs,artistname){
 
             let newSongs = artist.singles.filter(s => songs.indexOf(s.name)== -1);
 
-            return Artist.findOneAndUpdate({artist:artistname},{$set:{ singles:newSongs } }, {new:true}, (err,artist1) => {
+            return Artist.findOneAndUpdate({name:artistname},{$set:{ singles:newSongs } }, {new:true}, (err,artist1) => {
               if(err) {
                 return reject(err);
               }
