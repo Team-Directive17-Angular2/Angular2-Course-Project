@@ -7,7 +7,8 @@ import { ProfileComponent } from '../modules/profile/profile.component';
 import { ContactComponent } from '../modules/contact/contact.component';
 import { ArtistsComponent } from '../modules/artists/all-artists/artists.component';
 import { DetailedArtistComponent } from '../modules/artists/detailed-artist/detailed-artist.component';
-import { AlbumsComponent } from '../modules/albums/albums.component';
+import { AlbumsComponent } from '../modules/albums/all-albums/albums.component';
+import { DetailedAlbumComponent } from '../modules/albums/detailed-album/detailed-album.component';
 import { SongsComponent } from '../modules/songs/all-songs/songs.component';
 import { UsersComponent } from '../modules/users/all-users/users.component';
 import { DetailedUserComponent } from '../modules/users/detailed-user/detailed-user.component';
@@ -21,11 +22,12 @@ import { AdminGuard } from '../guards/admin.guard';
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'artists', component: ArtistsComponent },
+    { path: 'artists/:id', component: DetailedArtistComponent, canActivate: [AuthGuard] },
     { path: 'albums', component: AlbumsComponent },
+    { path: 'albums/:id', component: DetailedAlbumComponent, canActivate: [AuthGuard] },
     { path: 'songs', component: SongsComponent },
     { path: 'users', component: UsersComponent },
     { path: 'users/:username', component: DetailedUserComponent, canActivate: [AuthGuard] },
-    { path: 'artists/:id', component: DetailedArtistComponent, canActivate: [AuthGuard] },
     { path: 'contact', component: ContactComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},

@@ -33,8 +33,23 @@ module.exports = function ({data, fs, path, imageDecoder}) {
     });
   }
 
+  function getAlbums(req, res) {
+    data.getAlbums()
+      .then((albums) => {
+
+        res.status(200).json({data: albums})
+      })
+      .catch((err) => {
+
+        res.status(404);
+        return res.json(err.message);
+
+      })
+  }
+
   return {
     name: "album",
-    addAlbum
+    addAlbum,
+    getAlbums
   };
 };

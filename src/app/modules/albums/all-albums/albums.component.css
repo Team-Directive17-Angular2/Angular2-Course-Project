@@ -1,0 +1,104 @@
+.albums-content {
+    background-color: #FFFFFF;
+    height: 100%;
+    padding: 30px 15px;
+}
+
+.albums-content ul{
+    list-style: none;
+    padding: 0px;
+}
+
+.albums-content .albums-form {
+    margin: 15px 0px;
+    display:block;
+    overflow:auto;
+}
+
+.albums-content .albums-list {
+    margin: 15px 0px;
+    display:block;
+    overflow:auto;
+}
+
+.albums-content .albums-option {
+    padding: 0px 0px 0px 15px;
+    display: inline-block;
+}
+
+.albums-content .albums-option .albums-sub-option{
+    padding: 0px 0px 0px 15px;
+}
+
+.albums-content .albums-option .albums-sub-option-label{
+    text-align: right;
+    vertical-align: middle;
+    padding: 10px 0px;
+}
+
+.image-container {
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #F5F5F5;
+    display: inline-block;
+}
+
+.image-container img {
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+
+    max-height: 100%;
+}
+
+.album-info {
+    background-color: #F5F5F5;
+    text-align: center;
+}
+
+.album-info a{
+    color: #2c3e50;
+}
+
+.album-info a:hover{
+    text-decoration: none;
+}
+
+.album-info .albumname {
+    font-size: 18px;
+    margin: 5px 0px;
+}
+
+.album-info .name {
+    padding: 5px 0px 10px 0px;
+}
+
+.albums-pagination {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.albums-pagination *{
+    font-size: 18px !important;
+    text-decoration: none;
+}
+
+.albums-pagination .current{
+    background-color: #2c3e50 !important;
+}
+
+.albums-pagination span{
+    margin: 0px 5px !important;
+}
+
+.albums-pagination a:hover{
+    background-color: inherit !important;
+    text-decoration: none !important;
+    color: #25b09c !important;
+    cursor: pointer;
+}

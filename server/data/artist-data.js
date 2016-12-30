@@ -71,9 +71,9 @@ function removeFromSingles(songs,artistname){
   function getArtists() {
     return new Promise((resolve, reject) => {
       Artist.find({}, '_id name imgUrl genres')
-        .then(users => {
+        .then(artists => {
 
-          return resolve(users);
+          return resolve(artists);
         });
     });
   }

@@ -75,9 +75,18 @@ module.exports = function (models) {
     });
   }
 
+  function getAlbums() {
+    return new Promise((resolve, reject) => {
+      Album.find({}, '_id name imgUrl genres')
+        .then(albums => {
 
+          return resolve(albums);
+        });
+    });
+  }
 
   return {
-    addAlbum
+    addAlbum,
+    getAlbums
   };
 };
