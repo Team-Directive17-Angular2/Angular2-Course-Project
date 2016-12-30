@@ -5,7 +5,7 @@ module.exports = function (models) {
 
   function createNewArtist(body) {
     return new Promise((resolve, reject) => {
-
+    
       Artist.create({
 
             artist:body.artist,

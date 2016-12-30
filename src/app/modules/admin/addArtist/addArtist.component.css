@@ -15,3 +15,21 @@
 .addArtist-content  .artist-submit {
     text-align: center;
 }
+
+select {
+    margin-bottom: 15px;
+}
+
+.picture-btn {
+    min-width: 150px;
+}
+
+.fileName {
+    display: inline-block;
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+.fileSelect {
+    margin-bottom: 20px;
+}

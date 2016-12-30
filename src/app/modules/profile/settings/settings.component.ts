@@ -34,7 +34,6 @@ export class SettingsComponent implements OnInit {
         event.preventDefault();
         this.file = event.target.files[0];
         this.fileName = this.file.name;
-        console.log(this.file);
     }
 
     public uploadProfilePicture() {

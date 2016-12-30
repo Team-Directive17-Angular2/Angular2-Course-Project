@@ -11,10 +11,13 @@ import { AlbumService } from '../../services/album.service';
 import { SongService } from '../../services/song.service';
 import { AddSongComponent } from '../admin/addSong/addSong.component';
 
+import { SimpleNotificationsModule, NotificationsService } from '../../../../node_modules/angular2-notifications';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    SimpleNotificationsModule,
     RouterModule.forRoot(appRoutes, { useHash: true })
   ],
   declarations: [
@@ -25,7 +28,8 @@ import { AddSongComponent } from '../admin/addSong/addSong.component';
   providers: [
     ArtistService,
     AlbumService,
-    SongService
+    SongService,
+    NotificationsService
     ]
 })
 

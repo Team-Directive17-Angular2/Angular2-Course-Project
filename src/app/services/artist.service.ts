@@ -14,7 +14,7 @@ export class ArtistService {
 
   }
 
-  AddArtist(model:Artist): Observable<string> {
+  AddArtist(model:any, dataUrl: string): Observable<string> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers:headers});
     let body = {
@@ -22,10 +22,10 @@ export class ArtistService {
     genres: model.genres,
     yearsActive:model.yearsActive,
     nationality: model.nationality,
-    imgUrl: model.imgUrl,
     bio: model.bio,
+    dataUrl: dataUrl
     };
-    console.log(body);
+
     return this.http.post('/api/artist', body, options)
       .map((response: Response) => {
 

@@ -29,9 +29,9 @@ export const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent},
     { path: 'logout', component: LogoutComponent},
     { path: 'profile', component:ProfileComponent, canActivate: [AuthGuard] },
-    { path: 'admin/addArtist', component:AddArtistComponent, canActivate:[AuthGuard,AdminGuard]},
-    { path: 'admin/addAlbum', component:AddAlbumComponent, canActivate:[AuthGuard,AdminGuard]},
-    { path: 'admin/addSong', component:AddSongComponent, canActivate:[AuthGuard,AdminGuard]},
+    { path: 'admin/add-artist', component:AddArtistComponent, canActivate:[AuthGuard,AdminGuard]},
+    { path: 'admin/add-album', component:AddAlbumComponent, canActivate:[AuthGuard,AdminGuard]},
+    { path: 'admin/add-song', component:AddSongComponent, canActivate:[AuthGuard,AdminGuard]},
     { path: '**', redirectTo: '' }
 
 ];
