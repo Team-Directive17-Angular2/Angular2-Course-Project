@@ -110,7 +110,7 @@ module.exports = function (models) {
         const requestedOldPassword = encryption.generateHashedPassword(user.salt, oldPassword);
 
         if (user.hashedPassword !== requestedOldPassword) {
-            return reject("Old password does not match. Please try again");
+            return reject("Incorrect old password. Please try again");
         }
 
         const hashedNewPassword = encryption.generateHashedPassword(user.salt, requestPassword);

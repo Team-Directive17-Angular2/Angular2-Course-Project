@@ -84,4 +84,23 @@ export class SettingsComponent implements OnInit {
                 this.notificationsService.error('', message);
             });
     }
+
+    public updatePassword() {
+
+        this.userService.updatePassword(this.model.oldPassword, this.model.newPassword)
+            .subscribe(result => {
+                if (result === true) {
+                    this.notificationsService.success('', 'Successfully updated password');
+                    // this.informationUpdated.emit();
+                } else {
+                    this.notificationsService.error('', 'Problem occured while updating your password. Please try again later.');
+                }
+            },
+            error => {
+                let message = JSON.parse(error._body);
+
+                this.notificationsService.error('', message);
+            });
+
+    }
 }

@@ -16,7 +16,7 @@
                 <label for="confirmPass">Confirm Password</label>
                 <input type="password" class="form-control" name="confirmPass" [(ngModel)]="model.confirmPass" #confirmPass="ngModel" required />
                 <div *ngIf="f.submitted && !confirmPass.valid" class="help-block">Password is required</div>
-                <div *ngIf="password.value != confirmPass.value" class="help-block">Password should match confirm password</div>
+                <div *ngIf="password.value != confirmPass.value" class="help-block">Passwords should match</div>
             </div>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
                 <label for="firstName">First name</label>

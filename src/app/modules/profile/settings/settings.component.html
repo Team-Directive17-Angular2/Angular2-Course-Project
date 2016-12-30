@@ -16,26 +16,56 @@
         <h2 class="form-legend">Personal Information</h2>
         <form name="form" (ngSubmit)="f.form.valid && updateInformation(); f.reset()" #f="ngForm" novalidate>
             <div class="form-group">
-                <label for="firstName" class="col-xs-12 col-sm-2">First Name</label>
+                <label for="firstName" class="col-xs-12 col-sm-3">First Name</label>
                 <div class="col-xs-12 col-sm-8">
                     <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required [placeholder]="uFirstName"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="lastName" class="col-xs-12 col-sm-2">Last Name</label>
+                <label for="lastName" class="col-xs-12 col-sm-3">Last Name</label>
                 <div class="col-xs-12 col-sm-8">
                     <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required [placeholder]="uLastName"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="email" class="col-xs-12 col-sm-2">Email</label>
+                <label for="email" class="col-xs-12 col-sm-3">Email</label>
                 <div class="col-xs-12 col-sm-8">
                     <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required [placeholder]="uEmail"/>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 information-submit">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-3 information-submit">
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block" [disabled]="!f.form.valid">Update information</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-12"><hr></div>
+    <div class="col-xs-12 password">
+        <h2 class="form-legend">Password</h2>
+        <form name="form" (ngSubmit)="f2.form.valid && updatePassword(); f2.reset()" #f2="ngForm" novalidate>
+            <div class="form-group">
+                <label for="oldPassword" class="col-xs-12 col-sm-3">Old password</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="password" class="form-control" name="oldPassword" [(ngModel)]="model.oldPassword" #oldPassword="ngModel" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="newPassword" class="col-xs-12 col-sm-3">New password</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="password" class="form-control" name="newPassword" [(ngModel)]="model.newPassword" #newPassword="ngModel" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword" class="col-xs-12 col-sm-3">Confirm password</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="model.confirmPassword" #confirmPassword="ngModel" required/>
+                </div>
+                <div *ngIf="newPassword.value != confirmPassword.value" class="help-block col-xs-12 col-sm-8"> Passwords should match </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-sm-offset-3 password-submit">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" [disabled]="!f2.form.valid || newPassword.value != confirmPassword.value">Update password</button>
                 </div>
             </div>
         </form>

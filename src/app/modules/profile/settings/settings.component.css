@@ -15,6 +15,23 @@
     padding: 10px 0px;
 }
 
+.password .form-legend {
+    text-align: center;
+    font-size: 20px;
+    margin: 0px 0px 15px 0px;
+}
+
+.password .form-group {
+    margin: 5px 0px;
+    display: inline-block;
+    width: 100%;
+}
+
+.password .form-group label{
+    text-align: right;
+    padding: 10px 0px;
+}
+
 .fileName {
     display: inline-block;
     font-size: 16px;
