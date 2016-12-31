@@ -125,6 +125,18 @@ module.exports = function (models) {
     });
   }
 
+  function updateUserRole(user) {
+    return new Promise((resolve, reject) => {
+        User.update({ _id: user._id }, { role: user.role }, null, (err) => {
+            if (err) {
+                return reject(err);
+            }
+
+            return resolve();
+        });
+    });
+  }
+
   function getUserByName(name) {
     return new Promise((resolve, reject) => {
       User.findOne({username: name})
@@ -170,6 +182,7 @@ module.exports = function (models) {
     updateFollowings,
     updateUserProfilePicture,
     updateUserInformation,
-    updateUserPassword
+    updateUserPassword,
+    updateUserRole
   };
 };

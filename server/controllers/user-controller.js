@@ -175,6 +175,24 @@ module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
           });
   }
 
+  function updateUserRole(req, res) {
+    const username = req.body.username;
+
+    data.getUserByUsername(username)
+        .then((user) => {
+            user.role = "Admin";
+            return data.updateUserRole(user);
+        })
+        .then(() => {
+            res.status(201);
+            return res.json('Successfully added to admins');
+        })
+        .catch((err) => {
+            res.status(400);
+            return res.json('Problem occured while adding to admin. Please try again later.');
+        });
+  }
+
   function getUserByName(req, res) {
     data.getUserByName(req.params.username)
       .then((user) => {
@@ -223,6 +241,7 @@ module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
     uploadProfilePicture,
     updateInformation,
     updatePassword,
+    updateUserRole,
     getUserByName,
     getUsers
   };

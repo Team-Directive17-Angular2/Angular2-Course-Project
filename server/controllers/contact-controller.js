@@ -14,8 +14,60 @@ module.exports = function ({data}) {
       });
   }
 
+  function getMessages(req, res) {
+    data.getMessages()
+      .then((messages) => {
+
+        res.status(200).json({data: messages})
+      })
+      .catch((err) => {
+
+        res.status(404);
+        return res.json(err.message);
+
+      })
+  }
+
+  function getSpecificMessage(req, res) {
+    data.getSpecificMessage(req.params.id)
+      .then((message) => {
+
+        res.status(200);
+        return res.json({data: foundUser})
+      })
+      .catch((err) => {
+
+        res.status(404);
+        return res.json(err.message);
+
+      })
+  }
+
+  function updateMessageStatus(req, res) {
+    const id = req.body.messageId;
+    const status = req.body.option;
+    const username = status === "Not Processed" ? "Not Proccessed" : req.body.username;
+
+    data.getSpecificMessage(id)
+        .then((message) => {
+            message.status = status;
+            message.processedBy = username;
+            return data.updateMessageStatus(message);
+        })
+        .then(() => {
+            res.status(201);
+            return res.json('Successfully updated message status');
+        })
+        .catch((err) => {
+            res.status(400);
+            return res.json('Problem occured while updating message status. Please try again later.');
+        });
+  }
+
   return {
     name: "contact",
-    send
+    send,
+    getSpecificMessage,
+    updateMessageStatus
   };
 };
