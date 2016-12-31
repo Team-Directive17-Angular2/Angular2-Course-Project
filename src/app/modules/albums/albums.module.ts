@@ -14,6 +14,7 @@ import { Ng2PaginationModule } from 'ng2-pagination';
 import { AlbumsComponent } from './all-albums/albums.component';
 import { AlbumsListComponent } from './all-albums/albums-list/albums-list.component';
 import { DetailedAlbumComponent } from './detailed-album/detailed-album.component';
+import { SongsListComponent } from './detailed-album/songs-list/songs-list.component';
 import { AlbumService } from '../../services/album.service';
 import { SimpleNotificationsModule, NotificationsService } from '../../../../node_modules/angular2-notifications';
 
@@ -32,7 +33,8 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
     declarations: [
         AlbumsComponent,
         AlbumsListComponent,
-        DetailedAlbumComponent
+        DetailedAlbumComponent,
+        SongsListComponent
     ],
     providers: [
         AlbumService,

@@ -37,4 +37,11 @@ export class AlbumService {
       })
   }
 
+  getAlbum(id: string): Observable<any> {
+    return this.http.get('/api/albums/' + id)
+      .map((response: Response) => {
+
+        return response.json().data;
+      })
+  }
 }
