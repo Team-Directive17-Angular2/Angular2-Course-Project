@@ -4,11 +4,6 @@
     padding: 30px 15px;
 }
 
-.songs-content ul{
-    list-style: none;
-    padding: 0px;
-}
-
 .songs-content .songs-form {
     margin: 15px 0px;
     display:block;

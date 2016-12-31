@@ -9,6 +9,8 @@ import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { SearchPipeModule } from '../../pipes/search.pipe.module';
 import { SortPipeModule } from '../../pipes/sort.pipe.module'
+import { SongDurationPipeModule } from '../../pipes/song-duration.pipe.module'
+
 
 import { SongsComponent } from '../songs/all-songs/songs.component';
 import { SongsListComponent } from '../songs/all-songs/songs-list/songs-list.component';
@@ -28,6 +30,7 @@ import { SongService } from '../../services/song.service'
         DirectivesModule,
         SortPipeModule,
         SearchPipeModule,
+        SongDurationPipeModule,
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     providers: [

@@ -1,30 +1,31 @@
 .songs-list {
-    margin: 15px 0px;
-    display:block;
-    overflow:auto;
+    display: inline-block;
+    width: 100%;
+}
+
+.songs-list ul {
+    list-style: none;
+    padding: 0px;
+}
+
+.song-info-header {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 2px solid #F1F1F1;
+    padding: 10px 0px;
+    color: #25b09c;
 }
 
 .song-info {
-    background-color: #F5F5F5;
-    text-align: center;
-}
-
-.song-info a{
-    color: #2c3e50;
-}
-
-.song-info a:hover{
-    text-decoration: none;
-}
-
-.song-info .songname {
-    font-size: 14px;
-    padding: 5px 0px;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 2px solid #F1F1F1;
+    padding: 10px 0px;
 }
 
 .songs-pagination {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .songs-pagination *{

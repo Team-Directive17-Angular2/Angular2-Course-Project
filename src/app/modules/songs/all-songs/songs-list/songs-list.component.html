@@ -1,16 +1,42 @@
 <div class="songs-list">
     <ul>
-        <li *ngFor="let song of songs | search: parameters:searchPattern | sort: sortType:sortOrder | paginate: { itemsPerPage: 12, currentPage: p }" class="col-xs-6 col-sm-3 col-md-2 container">
-            <div class="song-info">
-                <a [routerLink]="['/songs/',song.name]" [routerLinkActive]="['active']">
-                    <div class="song-container">
-                        <div class="image-container">
-                            <img src="../../../assets/images/profile-pictures/{{song.avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg" alt="{{song.name}}" />
-                        </div>
-                        <p class="songname">{{song.name}}</p>
-                        <p class="artist">{{song.artist}} {{song.album}}</p>
+        <li class="col-xs-12 container">
+            <div class="song-info-header">
+                <div class="song-container">
+                    <div class="col-sm-3">
+                        SONG
                     </div>
-                </a>
+                    <div class="col-sm-3">
+                        ARTIST
+                    </div>
+                    <div class="col-sm-3">
+                        ALBUM
+                    </div>
+                    <div class="col-sm-2">
+                        DURATION
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li *ngFor="let song of songs | search: parameters:searchPattern | sort: sortType:sortOrder | paginate: { itemsPerPage: 15, currentPage: p }" class="col-xs-12 container">
+            <div class="song-info">
+                <div class="song-container">
+                    <div class="col-sm-3">
+                        {{song.name}}
+                    </div>
+                    <div class="col-sm-3">
+                        {{song.artist}}
+                    </div>
+                    <div class="col-sm-3">
+                        {{song.album}}
+                    </div>
+                    <div class="col-sm-2">
+                        {{song.duration | songDuration}}
+                    </div>
+                    <div class="col-sm-1">
+                        <img src="../../../../../assets/images/favorite-icon.png" alt="">
+                    </div>
+                </div>
             </div>
         </li>
     </ul>
