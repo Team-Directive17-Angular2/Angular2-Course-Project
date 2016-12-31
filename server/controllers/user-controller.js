@@ -268,7 +268,7 @@ module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
   function updateUserRole(req, res) {
     const username = req.body.username;
 
-    data.getUserByUsername(username)
+    data.getUserByName(username)
         .then((user) => {
             user.role = "Admin";
             return data.updateUserRole(user);

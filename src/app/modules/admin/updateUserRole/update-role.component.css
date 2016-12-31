@@ -1,0 +1,17 @@
+.updateRole-content {
+    background-color: #FFFFFF;
+    padding: 40px 0px;
+}
+
+.updateRole-content .form-legend {
+    text-align: center;
+}
+
+.updateRole-content .btn-updateRole {
+    width: 195px;
+    margin: 15px 0px;
+}
+
+.updateRole-content  .update-role-submit {
+    text-align: center;
+}

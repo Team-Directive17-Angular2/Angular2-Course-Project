@@ -27,6 +27,7 @@
     "express-session": "^1.14.2",
     "jsonwebtoken": "^7.2.1",
     "mongoose": "^4.7.4",
+    "ng2-auto-complete": "^0.8.4",
     "ng2-pagination": "^1.0.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",

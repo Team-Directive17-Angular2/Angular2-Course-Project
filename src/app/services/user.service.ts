@@ -141,4 +141,20 @@ export class UserService {
           }
       })
   }
+
+  updateUserRole(username:String) : Observable<boolean> {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      let body = { username:username };
+
+      return this.http.put('/api/role', body, options)
+      .map((response:Response) => {
+          if(response.status === 201){
+              return true;
+          }
+          else{
+              return false;
+          }
+      })
+  }
 }

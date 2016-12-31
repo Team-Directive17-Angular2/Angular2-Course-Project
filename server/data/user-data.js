@@ -201,7 +201,7 @@ module.exports = function (models) {
 
   function getUsers() {
       return new Promise((resolve, reject) => {
-        User.find({}, '_id username firstName lastName avatar')
+        User.find({}, '_id username firstName lastName avatar role')
           .then(users => {
 
             return resolve(users);

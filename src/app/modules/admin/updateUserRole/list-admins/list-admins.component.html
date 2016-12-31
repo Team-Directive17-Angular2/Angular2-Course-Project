@@ -1,0 +1,41 @@
+<div class="songs-list">
+     <h2 class="form-legend">Admin List</h2>
+    <ul>
+        <li class="col-xs-12 container">
+            <div class="song-info-header">
+                <div class="song-container">
+                    <div class="col-sm-3">
+                        USERNAME
+                    </div>
+                    <div class="col-sm-3">
+                        FIRSTNAME
+                    </div>
+                    <div class="col-sm-3">
+                        LASTNAME
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li *ngFor="let admin of admins  | paginate: { itemsPerPage: 15, currentPage: p }" class="col-xs-12 container">
+            <div class="song-info">
+                <div class="song-container">
+                    <div class="col-sm-3">
+                        {{admin.username}}
+                    </div>
+                    <div class="col-sm-3">
+                        {{admin.firstName}}
+                    </div>
+                    <div class="col-sm-3">
+                        {{admin.lastName}}
+                    </div>
+                    <div  class="col-sm-1">
+                      <button  (click)="removeFromAdmins(admin.username)" class="btn btn-default btn-remove">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="songs-pagination">
+    <pagination-controls directionLinks="false" maxSize="3" (pageChange)="p = $event"></pagination-controls>
+</div>
