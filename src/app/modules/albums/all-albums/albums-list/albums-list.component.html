@@ -1,6 +1,6 @@
 <div class="albums-list">
     <ul>
-        <li *ngFor="let album of albums | search: parameters:searchPattern | sort: sortType:sortOrder | paginate: { itemsPerPage: 12, currentPage: p }" class="col-xs-6 col-sm-3 col-md-2 container">
+        <li *ngFor="let album of albums | filterGenre:genre | search: parameters:searchPattern | sort: sortType:sortOrder | paginate: { itemsPerPage: 12, currentPage: p }" class="col-xs-6 col-sm-3 col-md-2 container">
             <div class="album-info">
                 <a [routerLink]="['/albums/',album._id]" [routerLinkActive]="['active']">
                     <div class="album-container">

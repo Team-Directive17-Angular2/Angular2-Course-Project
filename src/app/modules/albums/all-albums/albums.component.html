@@ -20,7 +20,15 @@
                     </select>
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-6 albums-option">
+                <label class="col-xs-4 control-label albums-sub-option albums-sub-option-label" for="sort-order">Filter by</label>
+                <div class="col-xs-8 albums-sub-option">
+                    <select class="form-control" id="genre-filter" [(ngModel)]="genre">
+                        <option *ngFor="let g of genres" [value]="g">{{g}}</option>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
-    <app-albums-list [albums]="albums" [searchPattern]="searchPattern" [parameters]="parameters" [sortType]="sortType" [sortOrder]="sortOrder"></app-albums-list>
+    <app-albums-list [genre]="genre" [albums]="albums" [searchPattern]="searchPattern" [parameters]="parameters" [sortType]="sortType" [sortOrder]="sortOrder"></app-albums-list>
 </div>

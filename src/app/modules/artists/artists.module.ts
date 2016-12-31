@@ -36,8 +36,6 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
         ArtistService,
         NotificationsService
     ],
-    exports: [
-        ArtistsListComponent
-    ]
+    exports: []
 })
 export class ArtistsModule { }

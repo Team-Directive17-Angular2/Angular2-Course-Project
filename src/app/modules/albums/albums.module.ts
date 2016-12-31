@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { DirectivesModule } from '../../directives/directives.module';
 import { SearchPipeModule } from '../../pipes/search.pipe.module';
 import { SortPipeModule } from '../../pipes/sort.pipe.module';
+import { FilterGenrePipeModule } from '../../pipes/filter-genre.pipe.module';
 
 import { appRoutes } from '../../config/routes';
 
@@ -25,6 +26,7 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
         DirectivesModule,
         SearchPipeModule,
         SortPipeModule,
+        FilterGenrePipeModule,
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     declarations: [

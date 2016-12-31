@@ -13,6 +13,8 @@ import { routerTransition } from '../../../animations/router.animations';
 })
 export class AlbumsComponent implements OnInit {
     albums: any[];
+    genres: string[];
+    genre: string;
     searchPattern: string;
     parameters: string[];
     sortTypes: string[];
@@ -24,12 +26,15 @@ export class AlbumsComponent implements OnInit {
 
     constructor(private albumService:AlbumService)
     {
+
         this.parameters = ['name'];
         this.searchPattern = '';
 
+        this.genres = ["All", "Pop", "Jazz", "Metal", "Rock", "Hip-Hop", "Rap", "Electronic", "Country", "Blues"]
         this.sortTypes = ['Name'];
         this.sortOrders = ['Ascending', 'Descending'];
 
+        this.genre = this.genres[0];
         this.sortType = this.sortTypes[0];
         this.sortOrder = this.sortOrders[0];
     }
