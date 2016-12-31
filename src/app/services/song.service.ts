@@ -30,8 +30,8 @@ export class SongService {
   }
 
   getSongs(): Observable<any[]> {
-    
-    return this.http.get('api/song')
+
+    return this.http.get('api/songs')
      .map((response:Response) => {
        return response.json().data;
      })

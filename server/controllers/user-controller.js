@@ -95,7 +95,94 @@ module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
         })
         .then(() => {
           res.status(201);
-          return res.json("Successfully followed the person.");
+          return res.json("Successfully updated followers and followings.");
+        })
+        .catch((err) => {
+          res.status(400);
+          return res.json(err.message);
+        });
+  }
+
+  function updateFavoriteArtists(req, res) {
+    const currentUsername = req.body.currentUsername;
+    // if operation is true - add; if operation is false - remove
+    const operation = req.body.operation;
+    const artist = req.body.artist;
+
+    data.getUserByName(currentUsername)
+        .then((user) => {
+
+            if(operation) {
+                user.favoriteArtists.push(artist);
+            } else {
+                user.favoriteArtists = user.favoriteArtists.filter((f) => {
+                    return f._id !== artist._id;
+                })
+            }
+
+            return data.updateFavoriteArtists(user);
+        })
+        .then(() => {
+          res.status(201);
+          return res.json("Successfully updated favorite artists.");
+        })
+        .catch((err) => {
+          res.status(400);
+          return res.json(err.message);
+        });
+  }
+
+  function updateFavoriteAlbums(req, res) {
+    const currentUsername = req.body.currentUsername;
+    // if operation is true - add; if operation is false - remove
+    const operation = req.body.operation;
+    const album = req.body.album;
+
+    data.getUserByName(currentUsername)
+        .then((user) => {
+
+            if(operation) {
+                user.favoriteAlbums.push(album);
+            } else {
+                user.favoriteAlbums = user.favoriteAlbums.filter((f) => {
+                    return f._id !== album._id;
+                })
+            }
+
+            return data.updateFavoriteAlbums(user);
+        })
+        .then(() => {
+          res.status(201);
+          return res.json("Successfully updated favorite albums.");
+        })
+        .catch((err) => {
+          res.status(400);
+          return res.json(err.message);
+        });
+  }
+
+  function updateFavoriteSongs(req, res) {
+    const currentUsername = req.body.currentUsername;
+    // if operation is true - add; if operation is false - remove
+    const operation = req.body.operation;
+    const song = req.body.song;
+
+    data.getUserByName(currentUsername)
+        .then((user) => {
+
+            if(operation) {
+                user.favoriteSongs.push(song);
+            } else {
+                user.favoriteSongs = user.favoriteSongs.filter((f) => {
+                    return f._id !== song._id;
+                })
+            }
+
+            return data.updateFavoriteSongs(user);
+        })
+        .then(() => {
+          res.status(201);
+          return res.json("Successfully updated favorite songs.");
         })
         .catch((err) => {
           res.status(400);
@@ -242,6 +329,9 @@ module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
     updateInformation,
     updatePassword,
     updateUserRole,
+    updateFavoriteArtists,
+    updateFavoriteAlbums,
+    updateFavoriteSongs,
     getUserByName,
     getUsers
   };

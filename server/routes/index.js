@@ -21,12 +21,15 @@ module.exports = function ({ app, controllers }) {
              .put('/profile/password', controllers.user.updatePassword)
              .get('/artists', controllers.artist.getArtists)
              .get('/artists/:id', auth.isAuthenticated(), controllers.artist.getSpecificArtist)
+             .put('/favorite-artist', auth.isAuthenticated(), controllers.artist.updateFavoriteArtists)
              .post('/artist', auth.isInRole(adminRole), controllers.artist.addArtist)
              .get('/albums', controllers.album.getAlbums)
              .get('/albums/:id', auth.isAuthenticated(), controllers.album.getSpecificAlbum)
+             .put('/favorite-album', auth.isAuthenticated(), controllers.user.updateFavoriteAlbums)
              .post('/album', auth.isInRole(adminRole), controllers.album.addAlbum)
+             .get('/songs', auth.isAuthenticated(), controllers.song.getAllSongs)
+             .put('/favorite-song', auth.isAuthenticated(), controllers.user.updateFavoriteSongs)
              .post('/song', auth.isInRole(adminRole), controllers.song.addSong)
-             .get('/song', auth.isAuthenticated(), controllers.song.getAllSongs)
 
 
     app.use('/api', apiRouter);

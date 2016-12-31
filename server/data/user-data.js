@@ -73,6 +73,42 @@ module.exports = function (models) {
     });
   }
 
+  function updateFavoriteArtists(user) {
+    return new Promise((resolve, reject) => {
+        User.update({ _id: user._id }, { favoriteArtists: user.favoriteArtists }, null, (err) => {
+              if (err) {
+                  return reject(err);
+              }
+
+              return resolve();
+          });
+    });
+  }
+
+  function updateFavoriteAlbums(user) {
+    return new Promise((resolve, reject) => {
+        User.update({ _id: user._id }, { favoriteAlbums: user.favoriteAlbums }, null, (err) => {
+              if (err) {
+                  return reject(err);
+              }
+
+              return resolve();
+          });
+    });
+  }
+
+  function updateFavoriteSongs(user) {
+    return new Promise((resolve, reject) => {
+        User.update({ _id: user._id }, { favoriteSongs: user.favoriteSongs }, null, (err) => {
+              if (err) {
+                  return reject(err);
+              }
+
+              return resolve();
+          });
+    });
+  }
+
   function updateUserProfilePicture(user, filename) {
     return new Promise((resolve, reject) => {
         User.update({ _id: user._id }, { avatar: filename }, null, (err) => {
@@ -180,6 +216,9 @@ module.exports = function (models) {
     registerUser,
     updateFollowers,
     updateFollowings,
+    updateFavoriteArtists,
+    updateFavoriteAlbums,
+    updateFavoriteSongs,
     updateUserProfilePicture,
     updateUserInformation,
     updateUserPassword,
