@@ -12,7 +12,7 @@ export class UserService {
   }
 
   getUser(username: string): Observable<User> {
-    return this.http.get('/api/user/' + username)
+    return this.http.get('/api/users/' + username)
       .map((response: Response) => {
 
         return response.json().data as User
@@ -33,6 +33,23 @@ export class UserService {
       let body = { currentUsername: currentUsername, username: username, operation: operation };
 
       return this.http.put('/api/follow', body, options)
+      .map((response:Response) => {
+          if(response.status === 201){
+              return true;
+          }
+          else{
+              return false;
+          }
+      })
+  }
+
+  favoriteSong(currentUsername: string, song: Object, operation: boolean): Observable<boolean> {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      // if operation is true - follow; if operation is false - unfollow
+      let body = { currentUsername: currentUsername, song: song, operation: operation };
+
+      return this.http.put('/api/favorite-song', body, options)
       .map((response:Response) => {
           if(response.status === 201){
               return true;

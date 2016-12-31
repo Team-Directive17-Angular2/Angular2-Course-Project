@@ -40,7 +40,7 @@ module.exports = function (models) {
                 return reject(err);
             }
 
-            return resolve();
+            return resolve(message);
         });
     });
   }

@@ -21,11 +21,18 @@ export class SongService {
     duration: model.duration,
 
     };
-    console.log(body);
     return this.http.post('/api/song', body, options)
       .map((response: Response) => {
 
         return response.json();
+      })
+  }
+
+  getSong(id: string): Observable<any> {
+    return this.http.get('/api/songs/' + id)
+      .map((response: Response) => {
+
+        return response.json().data;
       })
   }
 

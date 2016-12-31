@@ -80,12 +80,12 @@ function removeFromSingles(songs,artistname){
 
   function getSpecificArtist(id) {
     return new Promise((resolve, reject) => {
-        Artist.findOne({ _id: id }, (err, message) => {
+        Artist.findOne({ _id: id }, (err, artist) => {
             if (err) {
                 return reject(err);
             }
 
-            return resolve();
+            return resolve(artist);
         });
     });
   }

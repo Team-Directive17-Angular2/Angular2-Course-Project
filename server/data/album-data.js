@@ -87,12 +87,12 @@ module.exports = function (models) {
 
   function getSpecificAlbum(id) {
     return new Promise((resolve, reject) => {
-        Message.findOne({ _id: id }, (err, message) => {
+        Album.findOne({ _id: id }, (err, album) => {
             if (err) {
                 return reject(err);
             }
 
-            return resolve();
+            return resolve(album);
         });
     });
   }

@@ -27,6 +27,9 @@ export class AuthenticationService {
                 // login successful if there's a jwt token in the response
                 let token = response.json().auth_token;
                 let role = response.json().role;
+                let favoriteArtists = response.json().favoriteArtists;
+                let favoriteAlbums = response.json().favoriteAlbums;
+                let favoriteSongs = response.json().favoriteSongs;
 
                 if (token) {
                     // set token property
@@ -38,7 +41,7 @@ export class AuthenticationService {
                         this.isAdminEventManager.showAdminNav(false);
                     }
                     // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({username: username, token: token, role:role}));
+                    localStorage.setItem('currentUser', JSON.stringify({username: username, favoriteArtists: favoriteArtists, favoriteAlbums: favoriteAlbums, favoriteSongs: favoriteSongs, token: token, role:role}));
                     this.globalEventsManager.showNavBar(true);
                     // return true to indicate successful login
                     return true;

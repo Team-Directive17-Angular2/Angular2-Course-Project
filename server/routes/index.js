@@ -10,7 +10,7 @@ module.exports = function ({ app, controllers }) {
              .post('/register', controllers.user.registerUser)
              .post('/contact', controllers.contact.send)
              .get('/users', controllers.user.getUsers)
-             .get('/user/:username', controllers.user.getUserByName)
+             .get('/users/:username', controllers.user.getUserByName)
              .put('/follow', auth.isAuthenticated(), controllers.user.follow)
              .put('/role', auth.isInRole(adminRole), controllers.user.updateUserRole)
              .get('/messages', auth.isInRole(adminRole), controllers.contact.getMessages)
@@ -27,7 +27,8 @@ module.exports = function ({ app, controllers }) {
              .get('/albums/:id', auth.isAuthenticated(), controllers.album.getSpecificAlbum)
              .put('/favorite-album', auth.isAuthenticated(), controllers.user.updateFavoriteAlbums)
              .post('/album', auth.isInRole(adminRole), controllers.album.addAlbum)
-             .get('/songs', auth.isAuthenticated(), controllers.song.getAllSongs)
+             .get('/songs', controllers.song.getAllSongs)
+             .get('/songs/:id', auth.isAuthenticated(), controllers.song.getSpecificSong)
              .put('/favorite-song', auth.isAuthenticated(), controllers.user.updateFavoriteSongs)
              .post('/song', auth.isInRole(adminRole), controllers.song.addSong)
 

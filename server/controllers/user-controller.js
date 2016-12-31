@@ -38,6 +38,9 @@ module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
 
           res.status(200).json({
             username: req.body.username,
+            favoriteAlbums: user.favoriteAlbums,
+            favoriteArtists: user.favoriteArtists,
+            favoriteSongs: user.favoriteSongs,
             auth_token: jsonwebtoken.sign(webTokenObject, webTokenSecret),
             role:user.role
           });

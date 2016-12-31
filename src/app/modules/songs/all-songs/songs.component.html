@@ -22,5 +22,6 @@
             </div>
         </div>
     </div>
-    <app-songs-list [songs]="songs" [searchPattern]="searchPattern" [parameters]="parameters" [sortType]="sortType" [sortOrder]="sortOrder"></app-songs-list>
+    <app-songs-list (addFavoriteActivated)="addFavoriteSong($event)" (removeFavoriteActivated)="removeFavoriteSong($event)" [favoriteSongs]="favoriteSongs" [showIcons]="showIcons" [songs]="songs" [searchPattern]="searchPattern" [parameters]="parameters" [sortType]="sortType" [sortOrder]="sortOrder"></app-songs-list>
+    <simple-notifications [options]="options"></simple-notifications>
 </div>

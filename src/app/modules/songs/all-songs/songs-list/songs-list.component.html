@@ -33,8 +33,15 @@
                     <div class="col-sm-2">
                         {{song.duration | songDuration}}
                     </div>
-                    <div class="col-sm-1">
-                        <img src="../../../../../assets/images/favorite-icon.png" alt="">
+                    <div *ngIf="showIcons && !song.contains" class="col-sm-1">
+                        <a [id]="song._id" (click)="addFavoriteSong($event); song.contains=true" href="#">
+                            <img src="../../../../../assets/images/favorite-icon.png" alt="">
+                        </a>
+                    </div>
+                    <div *ngIf="showIcons && song.contains" class="col-sm-1">
+                        <a [id]="song._id" (click)="removeFavoriteSong($event); song.contains=false" href="#">
+                            <img src="../../../../../assets/images/unfavorite-icon.png" alt="">
+                        </a>
                     </div>
                 </div>
             </div>

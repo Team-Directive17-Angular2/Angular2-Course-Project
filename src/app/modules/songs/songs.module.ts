@@ -11,11 +11,11 @@ import { SearchPipeModule } from '../../pipes/search.pipe.module';
 import { SortPipeModule } from '../../pipes/sort.pipe.module'
 import { SongDurationPipeModule } from '../../pipes/song-duration.pipe.module'
 
-
 import { SongsComponent } from '../songs/all-songs/songs.component';
 import { SongsListComponent } from '../songs/all-songs/songs-list/songs-list.component';
 import { SimpleNotificationsModule, NotificationsService } from '../../../../node_modules/angular2-notifications';
-import { SongService } from '../../services/song.service'
+import { SongService } from '../../services/song.service';
+import { UserService } from '../../services/user.service';
 
 @NgModule({
     declarations: [
@@ -35,6 +35,7 @@ import { SongService } from '../../services/song.service'
     ],
     providers: [
         SongService,
+        UserService,
         NotificationsService
     ]
 })

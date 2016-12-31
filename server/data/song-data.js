@@ -62,10 +62,21 @@ module.exports = function (models) {
     })
   }
 
+    function getSpecificSong(id) {
+      return new Promise((resolve, reject) => {
+          Song.findOne({ _id: id }, (err, song) => {
+              if (err) {
+                  return reject(err);
+              }
 
+              return resolve(song);
+          });
+      });
+    }
 
   return {
     addSong,
-    getAllSongs
+    getAllSongs,
+    getSpecificSong
   };
 };

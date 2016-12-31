@@ -29,9 +29,25 @@ module.exports = function ({data}) {
         })
   }
 
+  function getSpecificSong(req, res) {
+    data.getSpecificSong(req.params.id)
+      .then((song) => {
+
+        res.status(200);
+        return res.json({data: song})
+      })
+      .catch((err) => {
+
+        res.status(404);
+        return res.json(err.message);
+
+      })
+  }
+
   return {
     name: "song",
     addSong,
-    getAllSongs
+    getAllSongs,
+    getSpecificSong
   };
 };
