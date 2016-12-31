@@ -1,0 +1,19 @@
+<div class="artists-list">
+    <ul>
+        <li *ngFor="let artist of artistsList | paginate: { id: 'artists', itemsPerPage: 6, currentPage: r }" class="col-xs-4 col-sm-3 col-md-2 container">
+            <div class="artist-info">
+                <a [routerLink]="['/artists/',artist._id]" [routerLinkActive]="['active']">
+                    <div class="artist-container">
+                        <div class="image-container">
+                            <img src="../../../assets/images/artist-pictures/{{artist.imgUrl}}" default="../../../assets/images/artist-pictures/default-artist.jpg" alt="{{artist.name}}"/>
+                        </div>
+                        <p class="artistname">{{artist.name}}</p>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="artists-pagination">
+    <pagination-controls id="artists" directionLinks="false" maxSize="3" (pageChange)="r = $event"></pagination-controls>
+</div>

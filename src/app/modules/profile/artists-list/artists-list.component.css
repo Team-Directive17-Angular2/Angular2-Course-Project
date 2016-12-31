@@ -1,0 +1,48 @@
+.artists-list {
+    margin: 15px 0px;
+    display:block;
+    overflow:auto;
+}
+
+.artist-info {
+    background-color: #F5F5F5;
+    text-align: center;
+}
+
+.artist-info a{
+    color: #2c3e50;
+}
+
+.artist-info a:hover{
+    text-decoration: none;
+}
+
+.artist-info .artistname {
+    font-size: 14px;
+    padding: 5px 0px;
+}
+
+.artists-pagination {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.artists-pagination *{
+    font-size: 18px !important;
+    text-decoration: none;
+}
+
+.artists-pagination .current{
+    background-color: #2c3e50 !important;
+}
+
+.artists-pagination span{
+    margin: 0px 5px !important;
+}
+
+.artists-pagination a:hover{
+    background-color: inherit !important;
+    text-decoration: none !important;
+    color: #25b09c !important;
+    cursor: pointer;
+}

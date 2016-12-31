@@ -1,0 +1,43 @@
+<div class="songs-list">
+    <ul>
+        <li class="col-xs-12 container">
+            <div class="song-info-header">
+                <div class="song-container">
+                    <div class="col-sm-3">
+                        SONG
+                    </div>
+                    <div class="col-sm-3">
+                        ARTIST
+                    </div>
+                    <div class="col-sm-3">
+                        ALBUM
+                    </div>
+                    <div class="col-sm-2">
+                        DURATION
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li *ngFor="let song of songsList | paginate: { id: 'songs', itemsPerPage: 6, currentPage: v }" class="col-xs-12 container">
+            <div class="song-info">
+                <div class="song-container">
+                    <div class="col-sm-3">
+                        {{song.name}}
+                    </div>
+                    <div class="col-sm-3">
+                        {{song.artist}}
+                    </div>
+                    <div class="col-sm-3">
+                        {{song.album}}
+                    </div>
+                    <div class="col-sm-2">
+                        {{song.duration | songDuration}}
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="songs-pagination">
+    <pagination-controls id="songs" directionLinks="false" maxSize="3" (pageChange)="v = $event"></pagination-controls>
+</div>

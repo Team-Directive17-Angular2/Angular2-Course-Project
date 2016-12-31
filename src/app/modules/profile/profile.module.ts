@@ -10,8 +10,14 @@ import { Ng2PaginationModule } from 'ng2-pagination';
 import { ProfileComponent } from './profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FollowListComponent } from './follow-list/follow-list.component';
+import { ArtistsListComponent } from './artists-list/artists-list.component';
+import { AlbumsListComponent } from './albums-list/albums-list.component';
+import { SongsListComponent } from './songs-list/songs-list.component';
+
 import { UserService } from '../../services/user.service';
 import { SimpleNotificationsModule, NotificationsService } from '../../../../node_modules/angular2-notifications';
+
+import { SongDurationPipeModule } from '../../pipes/song-duration.pipe.module'
 
 @NgModule({
     imports: [
@@ -20,12 +26,16 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
         SimpleNotificationsModule,
         Ng2PaginationModule,
         DirectivesModule,
+        SongDurationPipeModule,
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     declarations: [
         ProfileComponent,
         SettingsComponent,
-        FollowListComponent
+        FollowListComponent,
+        ArtistsListComponent,
+        AlbumsListComponent,
+        SongsListComponent
     ],
     providers: [
         UserService,

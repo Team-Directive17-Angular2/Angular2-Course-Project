@@ -35,19 +35,17 @@
                 <div class="tab-pane fade active in" id="settings">
                     <app-settings (informationUpdated)="informationUpdated(username)" [uFirstName]="firstName" [uLastName]="lastName" [uEmail]="email"></app-settings>
                 </div>
-                <div class="tab-pane fade" id="artists">
-                    <div id="artists-info">
-                        <h1>Favorite Artists</h1>
-                    </div>
+                <div class="tab-pane fade active in" id="artists">
+                    <app-favorite-artists-list [artistsList]="favoriteArtists"></app-favorite-artists-list>
                 </div>
                 <div class="tab-pane fade" id="albums">
                     <div id="albums-info">
-                        <h1>Favorite Albums</h1>
+                        <app-favorite-albums-list [albumsList]="favoriteAlbums"></app-favorite-albums-list>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="songs">
                     <div id="songs-info">
-                        <h1>Favorite Songs</h1>
+                        <app-favorite-songs-list [songsList]="favoriteSongs"></app-favorite-songs-list>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="followers">
