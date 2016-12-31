@@ -1,6 +1,6 @@
 <div class="artists-list">
     <ul>
-        <li *ngFor="let artist of artists | search: parameters:searchPattern | sort: sortType:sortOrder | paginate: { itemsPerPage: 12, currentPage: p }" class="col-xs-6 col-sm-3 col-md-2 container">
+        <li *ngFor="let artist of artists | filterGenre:genre | search: parameters:searchPattern | sort: sortType:sortOrder | paginate: { itemsPerPage: 12, currentPage: p }" class="col-xs-6 col-sm-3 col-md-2 container">
             <div class="artist-info">
                 <a [routerLink]="['/artists/',artist._id]" [routerLinkActive]="['active']">
                     <div class="artist-container">

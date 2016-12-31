@@ -17,6 +17,7 @@ export class ArtistsListComponent implements OnInit {
     @Input() parameters: string[];
     @Input() sortType;
     @Input() sortOrder;
+    @Input() genre;
 
     ngOnInit() {
     }

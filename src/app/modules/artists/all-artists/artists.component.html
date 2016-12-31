@@ -4,7 +4,7 @@
             <input type="text" class="form-control" [(ngModel)]="searchPattern" placeholder="Search..." />
         </div>
         <div class="form-group col-sm-8 col-lg-8">
-            <div class="col-xs-12 col-sm-6 artists-option">
+            <div class="col-xs-12 col-md-4 artists-option">
                 <label class="col-xs-4 control-label artists-sub-option artists-sub-option-label" for="sort-type">Order by</label>
                 <div class="col-xs-8 artists-sub-option">
                     <select class="form-control" id="sort-type" [(ngModel)]="sortType">
@@ -12,7 +12,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 artists-option">
+            <div class="col-xs-12 col-md-4 artists-option">
                 <label class="col-xs-4 control-label artists-sub-option artists-sub-option-label" for="sort-order">Order in</label>
                 <div class="col-xs-8 artists-sub-option">
                     <select class="form-control" id="sort-order" [(ngModel)]="sortOrder">
@@ -20,7 +20,15 @@
                     </select>
                 </div>
             </div>
+            <div class="col-xs-12 col-md-4 artists-option">
+                <label class="col-xs-4 control-label artists-sub-option artists-sub-option-label" for="sort-order">Filter by</label>
+                <div class="col-xs-8 artists-sub-option">
+                    <select class="form-control" id="genre-filter" [(ngModel)]="genre">
+                        <option *ngFor="let g of genres" [value]="g">{{g}}</option>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
-    <app-artists-list [artists]="artists" [searchPattern]="searchPattern" [parameters]="parameters" [sortType]="sortType" [sortOrder]="sortOrder"></app-artists-list>
+    <app-artists-list [genre]="genre" [artists]="artists" [searchPattern]="searchPattern" [parameters]="parameters" [sortType]="sortType" [sortOrder]="sortOrder"></app-artists-list>
 </div>
