@@ -4,6 +4,16 @@
     padding: 30px;
 }
 
+.detailed-user-content .image-container img {
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+    max-height: 100%;
+}
+
 .detailed-user-content .profile-header{
     display: flex;
     align-items: stretch;
@@ -15,7 +25,6 @@
 
 .detailed-user-content img {
     display: inline-block;
-    max-width: 100%;
     min-height: auto;
 }
 
@@ -55,16 +64,6 @@
     position: relative;
     background-color: #F5F5F5;
     display: inline-block;
-}
-
-.detailed-user-content .image-container img {
-    position: absolute;
-    top: -9999px;
-    bottom: -9999px;
-    left: -9999px;
-    right: -9999px;
-    margin: auto;
-    max-height: 100%;
 }
 
 

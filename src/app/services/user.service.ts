@@ -60,6 +60,40 @@ export class UserService {
       })
   }
 
+  favoriteArtist(currentUsername: string, artist: Object, operation: boolean): Observable<boolean> {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      // if operation is true - follow; if operation is false - unfollow
+      let body = { currentUsername: currentUsername, artist: artist, operation: operation };
+
+      return this.http.put('/api/favorite-artist', body, options)
+      .map((response:Response) => {
+          if(response.status === 201){
+              return true;
+          }
+          else{
+              return false;
+          }
+      })
+  }
+
+  favoriteAlbum(currentUsername: string, album: Object, operation: boolean): Observable<boolean> {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      // if operation is true - follow; if operation is false - unfollow
+      let body = { currentUsername: currentUsername, album: album, operation: operation };
+
+      return this.http.put('/api/favorite-album', body, options)
+      .map((response:Response) => {
+          if(response.status === 201){
+              return true;
+          }
+          else{
+              return false;
+          }
+      })
+  }
+
   updateUserProfilePicture(username: string, data: string): Observable<boolean> {
       let headers = new Headers({'Content-Type': 'application/json'});
       let options = new RequestOptions({headers: headers});

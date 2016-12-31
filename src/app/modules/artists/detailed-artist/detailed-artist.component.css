@@ -1,3 +1,90 @@
-h1 {
-    color: red;
+.detailed-artist-content {
+    background-color: #FFFFFF;
+    height: 100%;
+    padding: 15px 30px 15px 30px;
+}
+
+.detailed-artist-content .profile-header{
+    display: flex;
+    align-items: stretch;
+    background-image: url('../../../../assets/images/artists-cover.jpg');
+    padding: 15px 15px 10px 15px;
+}
+
+.detailed-artist-content .profile-image {
+    text-align: center;
+    padding: 0px;
+}
+
+.detailed-artist-content img {
+    display: inline-block;
+    min-height: auto;
+}
+
+.detailed-artist-content .profile-information {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 10px;
+}
+
+.detailed-artist-content .profile-artistname {
+    font-size: 3em;
+    margin: 5px 0px 0px 20px;
+    color: #FCFCFC;
+}
+
+.detailed-artist-content .profile-nationality {
+    font-size: 1.1em;
+    margin: 0px 0px 0px 20px;
+    color: #DDDDDD;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.detailed-artist-content .profile-follow {
+    text-align: right;
+}
+
+.detailed-artist-content .btn-follow {
+    width: 100%;
+}
+
+.detailed-artist-content ul{
+    list-style: none;
+    padding: 0px;
+}
+
+.detailed-artist-content .image-container {
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #F5F5F5;
+    display: inline-block;
+}
+
+.detailed-artist-content .image-container img {
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+    max-height: 100%;
+}
+
+
+@media (max-width: 767px) {
+    .detailed-artist-content .profile-information {
+        text-align: center;
+    }
+
+    .detailed-artist-content .profile-header{
+        display: initial;
+    }
+
+    .detailed-artist-content .profile-follow {
+        text-align: center;
+        margin-top: 20px;
+    }
 }
