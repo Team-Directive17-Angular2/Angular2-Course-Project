@@ -81,6 +81,25 @@
 
     .detailed-artist-content .profile-header{
         display: initial;
+        background: none;
+    }
+
+    .detailed-artist-content .profile-artistname {
+        font-size: 3em;
+        margin: 0px;
+        color: #2d3e50;
+    }
+    .detailed-artist-content .profile-nationality {
+        font-size: 1.1em;
+        margin: 0px;
+        color: #2d3e50;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+    }
+
+    .detailed-artist-content .header-wrapper {
+        width: 100%;
+        text-align: center;
     }
 
     .detailed-artist-content .profile-follow {

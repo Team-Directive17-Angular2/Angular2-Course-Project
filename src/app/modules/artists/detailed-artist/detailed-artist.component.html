@@ -7,8 +7,8 @@
                         <img src="../../../assets/images/artist-pictures/{{imgUrl}}" default="../../../assets/images/artist-pictures/default-artist.jpg"/>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-8 col-lg-8 profile-information">
-                    <div>
+                <div class="col-sm-6 col-md-7 col-lg-7 profile-information">
+                    <div class="header-wrapper">
                         <div class="row">
                             <h1 class="profile-artistname">{{name}}</h1>
                         </div>
@@ -16,6 +16,10 @@
                             <h2 class="profile-nationality">{{nationality}}</h2>
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 profile-follow">
+                    <button *ngIf="!favorited" (click)="addFavoriteArtist();favorited=true;" class="btn btn-primary btn-favorite">Add to favorites</button>
+                    <button *ngIf="favorited" (click)="removeFavoriteArtist();favorited=false;" class="btn btn-default btn-favorite">Remove from favorites</button>
                 </div>
             </div>
             <hr>
@@ -33,17 +37,17 @@
             <div class="tab-content" id="my-tab-content">
                 <div class="tab-pane fade active in" id="about">
                     <div id="artists-info">
-                        <h1>About</h1>
+                        <app-about [genres]="genres" [bio]="bio" [yearsActive]="yearsActive"></app-about>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="albums">
                     <div id="albums-info">
-                        <h1>Albums</h1>
+                        <app-albums-list [albumsList]="albums"></app-albums-list>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="singles">
                     <div id="songs-info">
-                        <h1>Singles</h1>
+                        <app-singles-list [artist]="name" [singlesList]="singles"></app-singles-list>
                     </div>
                 </div>
             </div>

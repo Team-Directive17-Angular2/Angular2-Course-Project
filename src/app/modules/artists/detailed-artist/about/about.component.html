@@ -1,0 +1,19 @@
+<div class="about-container col-xs-12">
+    <div class="active-years">
+        <span class="about-component"> Active years </span> {{yearsActive}}
+    </div>
+    <div class="genres">
+        <span class="about-component"> Genres </span>
+        <ul>
+            <li *ngFor="let genre of genres">
+                {{genre}}
+            </li>
+        </ul>
+    </div>
+    <div>
+        <hr>
+    </div>
+    <div class="bio">
+        {{bio}}
+    </div>
+</div>

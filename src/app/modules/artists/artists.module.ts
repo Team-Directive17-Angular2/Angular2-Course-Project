@@ -14,6 +14,9 @@ import { Ng2PaginationModule } from 'ng2-pagination';
 import { ArtistsComponent } from './all-artists/artists.component';
 import { ArtistsListComponent } from './all-artists/artists-list/artists-list.component';
 import { DetailedArtistComponent } from './detailed-artist/detailed-artist.component';
+import { AboutComponent } from './detailed-artist/about/about.component';
+import { AlbumsListComponent } from './detailed-artist/albums-list/albums-list.component';
+import { SinglesListComponent } from './detailed-artist/singles-list/singles-list.component';
 import { ArtistService } from '../../services/artist.service';
 import { SimpleNotificationsModule, NotificationsService } from '../../../../node_modules/angular2-notifications';
 
@@ -32,7 +35,10 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
     declarations: [
         ArtistsComponent,
         ArtistsListComponent,
-        DetailedArtistComponent
+        DetailedArtistComponent,
+        AboutComponent,
+        AlbumsListComponent,
+        SinglesListComponent
     ],
     providers: [
         ArtistService,

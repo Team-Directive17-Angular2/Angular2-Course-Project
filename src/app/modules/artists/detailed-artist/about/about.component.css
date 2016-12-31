@@ -1,0 +1,19 @@
+.about-component {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-right: 15px;
+}
+
+.genres ul {
+    display: inline-block;
+    margin: 0px;
+}
+
+.genres ul li {
+    display: inline-block;
+    padding-right: 15px;
+}
+
+.bio {
+    margin-bottom: 20px;
+}

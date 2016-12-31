@@ -25,6 +25,7 @@ export class DetailedArtistComponent implements OnInit, OnDestroy {
     singles: any[];
     albums: any[];
     genres: any[];
+    id: string;
     options: Object;
 
     private currentUsername: string;
@@ -44,9 +45,9 @@ export class DetailedArtistComponent implements OnInit, OnDestroy {
         this.currentUsername = currentUser.username;
 
         this.subscription = this.routeParams.params.subscribe(params => {
-            let id = params['id'];
+            this.id = params['id'];
 
-            this.updateArtistInformation(id);
+            this.updateArtistInformation(this.id);
         });
     }
 
@@ -55,23 +56,34 @@ export class DetailedArtistComponent implements OnInit, OnDestroy {
     }
 
     updateArtistInformation(id: string) {
-        this.artistService.getArtist(id)
-        .subscribe( artist => {
-            this.artist = artist;
-            this.name = artist.name;
-            this.nationality = artist.nationality;
-            this.yearsActive = artist.yearsActive;
-            this.bio = artist.bio;
-            this.imgUrl = artist.imgUrl;
-            this.singles = artist.followers;
-            this.albums = artist.albums;
-            this.genres = artist.genres;
+        this.userService.getUser(this.currentUsername)
+            .subscribe(user => {
 
-            this.favorited = false;
-        },
-        error => {
-            console.log('REDIRECT TO ERROR PAGE');
-        });
+                this.artistService.getArtist(id)
+                .subscribe( artist => {
+                    this.artist = artist;
+                    this.name = artist.name;
+                    this.nationality = artist.nationality;
+                    this.yearsActive = artist.yearsActive;
+                    this.bio = artist.bio;
+                    this.imgUrl = artist.imgUrl;
+                    this.singles = artist.singles;
+                    this.albums = artist.albums;
+                    this.genres = artist.genres;
+
+                    this.favorited = false;
+
+                    if(user.favoriteArtists.find(ar => ar._id == this.id)) {
+                        this.favorited = true;
+                    }
+                },
+                error => {
+                    console.log('REDIRECT TO ERROR PAGE');
+                });
+            },
+            error => {
+                console.log('REDIRECT TO ERROR PAGE');
+            })
     };
 
     addFavoriteArtist() {

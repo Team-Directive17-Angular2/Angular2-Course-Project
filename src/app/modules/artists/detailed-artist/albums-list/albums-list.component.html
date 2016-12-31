@@ -1,0 +1,19 @@
+<div class="albums-list">
+    <ul>
+        <li *ngFor="let album of albumsList | paginate: { id: 'albums', itemsPerPage: 6, currentPage: q }" class="col-xs-4 col-sm-3 col-md-2 container">
+            <div class="album-info">
+                <a [routerLink]="['/albums/',album.id]" [routerLinkActive]="['active']">
+                    <div class="album-container">
+                        <div class="image-container">
+                            <img src="../../../assets/images/album-pictures/{{album.imgSrc}}" default="../../../assets/images/album-pictures/default-album.jpg" alt="{{album.name}}"/>
+                        </div>
+                        <p class="albumname">{{album.name}}</p>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="albums-pagination">
+    <pagination-controls id="albums" directionLinks="false" maxSize="3" (pageChange)="q = $event"></pagination-controls>
+</div>

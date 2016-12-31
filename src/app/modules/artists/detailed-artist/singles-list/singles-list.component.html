@@ -1,0 +1,37 @@
+<div class="singles-list">
+    <ul>
+        <li class="col-xs-12 container">
+            <div class="single-info-header">
+                <div class="single-container">
+                    <div class="col-sm-4">
+                        SONG
+                    </div>
+                    <div class="col-sm-4">
+                        ARTIST
+                    </div>
+                    <div class="col-sm-4">
+                        ALBUM
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li *ngFor="let single of singlesList | paginate: { id: 'singles', itemsPerPage: 10, currentPage: s }" class="container col-xs-12">
+            <div class="single-info">
+                <div class="single-container">
+                    <div class="col-sm-4">
+                        {{single.name}}
+                    </div>
+                    <div class="col-sm-4">
+                        {{artist}}
+                    </div>
+                    <div class="col-sm-4">
+                        Single
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="singles-pagination">
+    <pagination-controls id="singles" directionLinks="false" maxSize="3" (pageChange)="s = $event"></pagination-controls>
+</div>
