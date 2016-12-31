@@ -85,8 +85,21 @@ module.exports = function (models) {
     });
   }
 
+  function getSpecificAlbum(id) {
+    return new Promise((resolve, reject) => {
+        Message.findOne({ _id: id }, (err, message) => {
+            if (err) {
+                return reject(err);
+            }
+
+            return resolve();
+        });
+    });
+  }
+
   return {
     addAlbum,
-    getAlbums
+    getAlbums,
+    getSpecificAlbum
   };
 };

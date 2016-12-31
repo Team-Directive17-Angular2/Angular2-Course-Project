@@ -47,9 +47,25 @@ module.exports = function ({data, fs, path, imageDecoder}) {
       })
   }
 
+  function getSpecificAlbum(req, res) {
+    data.getSpecificAlbum(req.params.id)
+      .then((album) => {
+
+        res.status(200);
+        return res.json({data: album})
+      })
+      .catch((err) => {
+
+        res.status(404);
+        return res.json(err.message);
+
+      })
+  }
+
   return {
     name: "album",
     addAlbum,
-    getAlbums
+    getAlbums,
+    getSpecificAlbum
   };
 };

@@ -33,7 +33,7 @@ module.exports = function ({data}) {
       .then((message) => {
 
         res.status(200);
-        return res.json({data: foundUser})
+        return res.json({data: message})
       })
       .catch((err) => {
 
@@ -44,7 +44,7 @@ module.exports = function ({data}) {
   }
 
   function updateMessageStatus(req, res) {
-    const id = req.body.messageId;
+    const id = req.params.id;
     const status = req.body.option;
     const username = status === "Not Processed" ? "Not Proccessed" : req.body.username;
 
@@ -67,6 +67,7 @@ module.exports = function ({data}) {
   return {
     name: "contact",
     send,
+    getMessages,
     getSpecificMessage,
     updateMessageStatus
   };

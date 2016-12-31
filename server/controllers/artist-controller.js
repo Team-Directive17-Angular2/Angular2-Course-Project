@@ -44,9 +44,25 @@ module.exports = function ({data, fs, path, imageDecoder}) {
       })
   }
 
+  function getSpecificArtist(req, res) {
+    data.getSpecificArtist(req.params.id)
+      .then((artist) => {
+
+        res.status(200);
+        return res.json({data: artist})
+      })
+      .catch((err) => {
+
+        res.status(404);
+        return res.json(err.message);
+
+      })
+  }
+
   return {
     name: "artist",
     addArtist,
-    getArtists
+    getArtists,
+    getSpecificArtist
   };
 };
