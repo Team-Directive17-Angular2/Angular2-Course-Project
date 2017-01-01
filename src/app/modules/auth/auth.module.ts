@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { appRoutes } from '../../config/routes';
 
 import { LoginComponent } from './login/login.component';
@@ -15,6 +15,7 @@ import { SimpleNotificationsModule, NotificationsService } from '../../../../nod
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     SimpleNotificationsModule,
     RouterModule.forRoot(appRoutes, { useHash: true })
   ],
