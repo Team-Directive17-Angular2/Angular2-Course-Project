@@ -1,0 +1,20 @@
+.detailed-message-content {
+    background-color: #FFFFFF;
+    height: 100%;
+    padding: 15px 30px 15px 30px;
+}
+
+.detailed-message-content .message-header {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.detailed-message-content .message-footer {
+    display: flex;
+    align-items: center;
+}
+
+.detailed-message-content .message-option {
+    display: flex;
+    align-items: center;
+}

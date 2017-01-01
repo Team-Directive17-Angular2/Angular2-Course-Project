@@ -23,6 +23,11 @@
     padding: 10px 0px;
 }
 
+.message-container {
+    display: flex;
+    align-items: center;
+}
+
 .messages-pagination {
     text-align: center;
     margin-top: 10px;

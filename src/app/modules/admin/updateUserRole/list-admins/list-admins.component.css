@@ -26,6 +26,11 @@
     padding: 10px 0px;
 }
 
+.admin-container {
+    display: flex;
+    align-items: center;
+}
+
 .admins-pagination {
     text-align: center;
     margin-top: 10px;

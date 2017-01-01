@@ -45,7 +45,7 @@ module.exports = function ({data}) {
 
   function updateMessageStatus(req, res) {
     const id = req.params.id;
-    const status = req.body.option;
+    const status = req.body.status;
     const username = status === "Not Processed" ? "Not Proccessed" : req.body.username;
 
     data.getSpecificMessage(id)

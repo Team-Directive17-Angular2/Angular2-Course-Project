@@ -9,10 +9,6 @@ export class FilterStatusPipe implements PipeTransform{
             return null;
         }
 
-        console.log(status);
-
-        console.log(collection.filter(c => c.status === status));
-
         return collection.filter(c => c.status === status);
     }
 }

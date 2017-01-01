@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-4 messages-option">
-                <label class="col-xs-4 control-label messages-sub-option messages-sub-option-label" for="sort-order">Filter by</label>
+                <label class="col-xs-4 control-label messages-sub-option messages-sub-option-label" for="status-filter">Filter by</label>
                 <div class="col-xs-8 messages-sub-option">
                     <select class="form-control" id="status-filter" [(ngModel)]="status">
                         <option *ngFor="let st of statuses" [value]="st">{{st}}</option>

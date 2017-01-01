@@ -25,4 +25,20 @@ export class MessageService {
         return response.json().data;
       })
   }
+
+  updateStatus(id: string, username: string, status: string) : Observable<boolean> {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      let body = { username:username, status: status };
+
+      return this.http.put('/api/messages/' + id, body, options)
+      .map((response:Response) => {
+          if(response.status === 201){
+              return true;
+          }
+          else{
+              return false;
+          }
+      })
+  }
 }

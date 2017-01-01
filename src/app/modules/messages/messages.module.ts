@@ -11,9 +11,10 @@ import { SearchPipeModule } from '../../pipes/search.pipe.module';
 import { SortPipeModule } from '../../pipes/sort.pipe.module'
 import { FilterStatusPipeModule } from '../../pipes/filter-status.pipe.module'
 
-import { MessagesComponent } from '../messages/all-messages/messages.component';
-import { MessagesListComponent } from '../messages/all-messages/messages-list/messages-list.component';
+import { MessagesComponent } from './all-messages/messages.component';
+import { MessagesListComponent } from './all-messages/messages-list/messages-list.component';
 import { SimpleNotificationsModule, NotificationsService } from '../../../../node_modules/angular2-notifications';
+import { DetailedMessageComponent } from './detailed-message/detailed-message.component';
 import { MessageService } from '../../services/message.service';
 import { UserService } from '../../services/user.service';
 
@@ -21,6 +22,7 @@ import { UserService } from '../../services/user.service';
     declarations: [
         MessagesComponent,
         MessagesListComponent,
+        DetailedMessageComponent
     ],
     imports: [
         CommonModule,
