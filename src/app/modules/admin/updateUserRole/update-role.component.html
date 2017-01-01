@@ -3,7 +3,7 @@
     <h2 class="form-legend">Add Admin</h2>
         <form name="form" (ngSubmit)="f.form.valid && updateRole(); f.reset()" #f="ngForm" novalidate>
             <div class="form-group">
-                <label for="name">username</label>
+                <label for="name">Username</label>
                 <input auto-complete type="text" class="form-control" name="name" [(ngModel)]="model.username" #name="ngModel" [source]="usernames" required />
             </div>
             <div class="update-role-submit">

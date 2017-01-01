@@ -1,17 +1,17 @@
-.songs-list {
+.admins-list {
     display: inline-block;
     width: 100%;
 }
-.song-list .form-legend {
+.admins-list h2 {
     text-align: center;
 }
 
-.songs-list ul {
+.admins-list ul {
     list-style: none;
     padding: 0px;
 }
 
-.song-info-header {
+.admin-info-header {
     display: inline-block;
     width: 100%;
     border-bottom: 1px solid #F1F1F1;
@@ -19,32 +19,32 @@
     color: #25b09c;
 }
 
-.song-info {
+.admin-info {
     display: inline-block;
     width: 100%;
     border-bottom: 1px solid #F1F1F1;
     padding: 10px 0px;
 }
 
-.songs-pagination {
+.admins-pagination {
     text-align: center;
     margin-top: 10px;
 }
 
-.songs-pagination *{
+.admins-pagination *{
     font-size: 18px !important;
     text-decoration: none;
 }
 
-.songs-pagination .current{
+.admins-pagination .current{
     background-color: #2c3e50 !important;
 }
 
-.songs-pagination span{
+.admins-pagination span{
     margin: 0px 5px !important;
 }
 
-.songs-pagination a:hover{
+.admins-pagination a:hover{
     background-color: inherit !important;
     text-decoration: none !important;
     color: #25b09c !important;

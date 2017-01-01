@@ -1,24 +1,24 @@
-<div class="songs-list">
-     <h2 class="form-legend">Admin List</h2>
+<div class="admins-list">
+     <h2 class="form-legend">Admins</h2>
     <ul>
         <li class="col-xs-12 container">
-            <div class="song-info-header">
-                <div class="song-container">
+            <div class="admin-info-header">
+                <div class="admin-container">
                     <div class="col-sm-3">
                         USERNAME
                     </div>
                     <div class="col-sm-3">
-                        FIRSTNAME
+                        FIRST NAME
                     </div>
                     <div class="col-sm-3">
-                        LASTNAME
+                        LAST NAME
                     </div>
                 </div>
             </div>
         </li>
         <li *ngFor="let admin of admins  | paginate: { itemsPerPage: 15, currentPage: p }" class="col-xs-12 container">
-            <div class="song-info">
-                <div class="song-container">
+            <div class="admin-info">
+                <div class="admin-container">
                     <div class="col-sm-3">
                         {{admin.username}}
                     </div>
@@ -36,6 +36,6 @@
         </li>
     </ul>
 </div>
-<div class="songs-pagination">
+<div class="admins-pagination">
     <pagination-controls directionLinks="false" maxSize="3" (pageChange)="p = $event"></pagination-controls>
 </div>
