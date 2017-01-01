@@ -11,7 +11,7 @@ import { routerTransition } from '../../../animations/router.animations';
   host: {'[@routerTransition]': ''},
   encapsulation: ViewEncapsulation.None
 })
-export class AlbumsComponent implements OnInit {
+export class AlbumsComponent implements OnInit, OnDestroy {
     albums: any[];
     genres: string[];
     genre: string;
@@ -38,11 +38,16 @@ export class AlbumsComponent implements OnInit {
         this.sortType = this.sortTypes[0];
         this.sortOrder = this.sortOrders[0];
     }
+
     ngOnInit() {
         this.subscription = this.albumService.getAlbums()
         .subscribe( albums => {
             this.albums = albums;
         });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 
 }

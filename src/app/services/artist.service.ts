@@ -33,6 +33,13 @@ export class ArtistService {
       })
   }
 
+  getArtistsNames(): Observable<any[]> {
+  return this.http.get('/api/artists-names')
+      .map((response: Response) => {
+          return response.json().data;
+      })
+  }
+
   getArtists(): Observable<any[]> {
   return this.http.get('/api/artists')
       .map((response: Response) => {

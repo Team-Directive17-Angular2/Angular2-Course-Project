@@ -68,6 +68,16 @@ function removeFromSingles(songs,artistname){
     })
   }
 
+  function getArtistsNames() {
+    return new Promise((resolve, reject) => {
+      Artist.find({}, 'name')
+        .then(names => {
+
+          return resolve(names);
+        });
+    });
+  }
+
   function getArtists() {
     return new Promise((resolve, reject) => {
       Artist.find({}, '_id name imgUrl genres')
@@ -93,6 +103,7 @@ function removeFromSingles(songs,artistname){
   return {
     addArtist,
     removeFromSingles,
+    getArtistsNames,
     getArtists,
     getSpecificArtist
   };

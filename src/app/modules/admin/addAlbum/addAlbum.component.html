@@ -8,16 +8,17 @@
         </div>
         <div class="form-group">
             <label for="artist">Artist</label>
-            <input type="text" class="form-control" name="artist" [(ngModel)]="model.artist" #artist="ngModel" required />
-        </div>
-          <div>
-         <select multiple="" class="form-control"  (change)="change($event.target.options)" >
-             <option *ngFor="let genre of genresCollection" value="{{genre}}">{{genre}}</option>
-        </select>
+            <input auto-complete type="text" class="form-control" name="artist" [(ngModel)]="model.artist" [source]="suggestedArtists" [min-chars]="2" artist="ngModel" required />
         </div>
         <div class="form-group">
             <label for="year">Year</label>
             <input type="text"  class="form-control" name="year" [(ngModel)]="model.year" #year="ngModel" required />
+        </div>
+        <div>
+            <label for="genres">Genres</label>
+            <select multiple="" class="form-control" name="genres" (change)="change($event.target.options)" >
+                 <option *ngFor="let genre of genresCollection" value="{{genre}}">{{genre}}</option>
+            </select>
         </div>
         <div *ngFor="let input of songs; let i = index" class="form-group">
             <label for="{{i}}">Song {{i + 1}} </label>

@@ -43,13 +43,13 @@ export class MessagesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.options = { timeOut: 2000, pauseOnHover: true, showProgressBar: false, animate: 'fromRight', position: ['right', 'bottom'], theClass: 'custom-notification', icons: null };
 
-      this.subscription = this.messageService.getMessages()
-       .subscribe((result) => {
-         this.messages = result;
-     });
+    this.subscription = this.messageService.getMessages()
+        .subscribe((result) => {
+            this.messages = result;
+        });
   }
 
- ngOnDestroy() {
-   this.subscription.unsubscribe();
- }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

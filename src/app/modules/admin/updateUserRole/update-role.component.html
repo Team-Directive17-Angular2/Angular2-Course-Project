@@ -4,7 +4,7 @@
         <form name="form" (ngSubmit)="f.form.valid && updateRole(); f.reset()" #f="ngForm" novalidate>
             <div class="form-group">
                 <label for="name">Username</label>
-                <input auto-complete type="text" class="form-control" name="name" [(ngModel)]="model.username" #name="ngModel" [source]="usernames" required />
+                <input auto-complete type="text" class="form-control" name="name" [(ngModel)]="model.username" #name="ngModel" [source]="usernames"  [min-chars]="2" required />
             </div>
             <div class="update-role-submit">
                 <div class="form-group">

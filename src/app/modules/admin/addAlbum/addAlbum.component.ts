@@ -2,6 +2,7 @@ import {Component, OnInit,  ElementRef, ComponentRef, ContentChildren, QueryList
 import {Router} from '@angular/router';
 
 import { AlbumService } from '../../../services/album.service';
+import { ArtistService } from '../../../services/artist.service';
 import { Artist } from '../../../models/artist.model'
 import { routerTransition } from '../../../animations/router.animations';
 
@@ -22,10 +23,14 @@ export class AddAlbumComponent implements OnInit {
     genresCollection:string[];
     file: any;
     fileName: string;
+    suggestedArtists: string[];
     options: Object;
+
+    private subscription: any;
 
     constructor(private router: Router,
           private albumService: AlbumService,
+          private artistService: ArtistService,
           private notificationsService: NotificationsService) {
     }
 
@@ -34,6 +39,20 @@ export class AddAlbumComponent implements OnInit {
         this.options = { timeOut: 2000, pauseOnHover: true, showProgressBar: false, animate: 'fromRight', position: ['right', 'bottom'], theClass: 'custom-notification', icons: null };
         this.genresCollection = ["Pop", "Jazz", "Metal", "Rock", "Hip-Hop", "Rap", "Electronic", "Country", "Blues"];
         this.fileName = 'No file chosen';
+
+        this.suggestedArtists = [];
+        
+        this.subscription = this.artistService.getArtistsNames()
+        .subscribe( artists => {
+            artists.forEach(a => {
+                this.suggestedArtists.push(a.name);
+            });
+            console.log(this.suggestedArtists);
+        });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 
     addAlbum(){

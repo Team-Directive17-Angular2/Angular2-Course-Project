@@ -64,6 +64,10 @@ export class SongsComponent implements OnInit, OnDestroy {
         this.updateSongsList();
     }
   }
+  
+  ngOnDestroy() {
+      this.subscription.unsubscribe();
+  }
 
   updateSongsList() {
       this.subscription = this.songService.getSongs()
@@ -78,10 +82,6 @@ export class SongsComponent implements OnInit, OnDestroy {
          })
        })
   }
-
- ngOnDestroy() {
-   this.subscription.unsubscribe();
- }
 
  addFavoriteSong(song) {
      this.userService.favoriteSong(this.currentUsername, song, true)

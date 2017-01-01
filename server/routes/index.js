@@ -21,6 +21,7 @@ module.exports = function ({ app, controllers }) {
              .put('/profile/profile-information', auth.isAuthenticated(),  controllers.user.updateInformation)
              .put('/profile/password', controllers.user.updatePassword)
              .get('/artists', controllers.artist.getArtists)
+             .get('/artists-names', controllers.artist.getArtistsNames)
              .get('/artists/:id', auth.isAuthenticated(), controllers.artist.getSpecificArtist)
              .put('/favorite-artist', auth.isAuthenticated(), controllers.user.updateFavoriteArtists)
              .post('/artist', auth.isInRole(adminRole), controllers.artist.addArtist)
