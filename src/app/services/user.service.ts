@@ -157,4 +157,20 @@ export class UserService {
           }
       })
   }
+
+   demoteAdmin(username:String) : Observable<boolean> {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      let body = { username:username };
+
+      return this.http.put('/api/demote', body, options)
+      .map((response:Response) => {
+          if(response.status === 201){
+              return true;
+          }
+          else{
+              return false;
+          }
+      })
+  }
 }

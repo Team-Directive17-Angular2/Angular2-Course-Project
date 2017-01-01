@@ -283,6 +283,24 @@ module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
         });
   }
 
+    function demoteAdmin(req, res) {
+    const username = req.body.username;
+
+    data.getUserByName(username)
+        .then((user) => {
+            user.role = "User";
+            return data.updateUserRole(user);
+        })
+        .then(() => {
+            res.status(201);
+            return res.json('Successfully demoted to user');
+        })
+        .catch((err) => {
+            res.status(400);
+            return res.json('Problem occured while demoting to user. Please try again later.');
+        });
+  }
+
   function getUserByName(req, res) {
     data.getUserByName(req.params.username)
       .then((user) => {
@@ -332,6 +350,7 @@ module.exports = function ({data, passport, config, fs, path, imageDecoder}) {
     updateInformation,
     updatePassword,
     updateUserRole,
+    demoteAdmin,
     updateFavoriteArtists,
     updateFavoriteAlbums,
     updateFavoriteSongs,

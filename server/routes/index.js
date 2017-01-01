@@ -13,6 +13,7 @@ module.exports = function ({ app, controllers }) {
              .get('/users/:username', controllers.user.getUserByName)
              .put('/follow', auth.isAuthenticated(), controllers.user.follow)
              .put('/role', auth.isInRole(adminRole), controllers.user.updateUserRole)
+             .put('/demote', auth.isInRole(adminRole), controllers.user.demoteAdmin)
              .get('/messages', auth.isInRole(adminRole), controllers.contact.getMessages)
              .get('/messages/:id', auth.isInRole(adminRole), controllers.contact.getSpecificMessage)
              .put('/messages/:id', auth.isInRole(adminRole), controllers.contact.updateMessageStatus)

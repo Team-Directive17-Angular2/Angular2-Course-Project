@@ -69,8 +69,19 @@ export class UpdateRoleComponent implements OnInit {
     }
 
     removeFromAdmins(user){
-       this.admins = this.admins.filter(x=> x.username != user.username);
-       this.users.push(user);
-       this.usernames.push(user.username);
+       this.userService.demoteAdmin(user.username)
+       .subscribe((res) => {
+           if(res){
+                this.admins = this.admins.filter(x=> x.username != user.username);
+                this.users.push(user);
+                this.usernames.push(user.username);
+                this.notificationsService.success('','Succesfuly demoted '+user.username+'s role to user');
+           }
+           else{
+                this.notificationsService.error('','Unsuccesfuly demote '+user.username+'s role to user.Please try again later!');
+           }
+       })
+       
+
     }
 }
