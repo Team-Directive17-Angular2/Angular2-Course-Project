@@ -30,7 +30,6 @@ export class UpdateRoleComponent implements OnInit {
        this.options = { timeOut: 2000, pauseOnHover: true, showProgressBar: false, animate: 'fromRight', position: ['right', 'bottom'], theClass: 'custom-notification', icons: null };
        this.userService.getUsers()
                        .subscribe((res) => {
-                           console.log(res);
                            res.forEach((user) => {
                                if(user.role == 'User'){
                                    this.usernames.push(user.username);
@@ -40,9 +39,8 @@ export class UpdateRoleComponent implements OnInit {
                                   this.admins.push(user);
                                }
                            })
-                           console.log(this.users);    
                        });
-                   
+
     }
 
     updateRole(){
@@ -51,21 +49,19 @@ export class UpdateRoleComponent implements OnInit {
            .subscribe((res) => {
                if(res){
                    this.notificationsService.success('','Succesfuly updated '+username+'s role to admin');
-                console.log(username)
                    for(let user of this.users){
                        if(username == user.username ){
-                           console.log(user);
                            this.admins.push(user);
                            break;
                        }
                    }
-                   
+
                }
                else{
                    this.notificationsService.error('','Unsuccesfuly updated '+this.model.username+'s role to admin.Please try again later!');
                }
            })
-     
+
     }
 
     removeFromAdmins(user){
@@ -81,7 +77,7 @@ export class UpdateRoleComponent implements OnInit {
                 this.notificationsService.error('','Unsuccesfuly demote '+user.username+'s role to user.Please try again later!');
            }
        })
-       
+
 
     }
 }

@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
@@ -31,7 +31,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     private subscription:any;
 
-    constructor(private routeParams: ActivatedRoute,
+    constructor(private router: Router,
+        private routeParams: ActivatedRoute,
         private notificationsService: NotificationsService,
         private userService:UserService) {
 
@@ -65,7 +66,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             this.favoriteSongs = user.favoriteSongs;
         },
         error => {
-            console.log('REDIRECT TO ERROR PAGE');
+            this.router.navigate(['error']);
         });
     };
 

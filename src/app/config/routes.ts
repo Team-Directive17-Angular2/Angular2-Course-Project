@@ -18,6 +18,7 @@ import { AddSongComponent  } from '../modules/admin/addSong/addSong.component';
 import { UpdateRoleComponent } from '../modules/admin/updateUserRole/update-role.component'
 import { MessagesComponent } from '../modules/messages/all-messages/messages.component';
 import { DetailedMessageComponent } from '../modules/messages/detailed-message/detailed-message.component';
+import {ErrorComponent} from '../modules/error/error.component';
 
 import {AuthGuard} from '../guards/auth.guard';
 import { AdminGuard } from '../guards/admin.guard';
@@ -34,14 +35,16 @@ export const appRoutes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
-    { path: 'logout', component: LogoutComponent},
+    { path: 'logout', component: LogoutComponent },
     { path: 'profile', component:ProfileComponent, canActivate: [AuthGuard] },
-    { path: 'admin/add-artist', component:AddArtistComponent, canActivate:[AuthGuard,AdminGuard]},
-    { path: 'admin/add-album', component:AddAlbumComponent, canActivate:[AuthGuard,AdminGuard]},
-    { path: 'admin/add-song', component:AddSongComponent, canActivate:[AuthGuard,AdminGuard]},
-    { path: 'admin/update-user-role', component:UpdateRoleComponent, canActivate:[AuthGuard,AdminGuard]},
-    { path: 'admin/messages', component:MessagesComponent, canActivate:[AuthGuard,AdminGuard]},
-    { path: 'admin/messages/:id', component:DetailedMessageComponent, canActivate:[AuthGuard,AdminGuard]},
-    { path: '**', redirectTo: '' }
+    { path: 'admin/add-artist', component: AddArtistComponent, canActivate: [AuthGuard,AdminGuard] },
+    { path: 'admin/add-album', component: AddAlbumComponent, canActivate: [AuthGuard,AdminGuard] },
+    { path: 'admin/add-song', component: AddSongComponent, canActivate: [AuthGuard,AdminGuard] },
+    { path: 'admin/update-user-role', component: UpdateRoleComponent, canActivate:[AuthGuard,AdminGuard]},
+    { path: 'admin/messages', component: MessagesComponent, canActivate: [AuthGuard,AdminGuard] },
+    { path: 'admin/messages/:id', component: DetailedMessageComponent, canActivate: [AuthGuard,AdminGuard] },
+    { path: 'error', component: ErrorComponent },
+    { path: '**', redirectTo: 'error' }
+
 
 ];

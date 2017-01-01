@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 
 import { Artist } from '../../../models/artist.model';
 import { ArtistService } from '../../../services/artist.service';
@@ -32,7 +32,8 @@ export class DetailedArtistComponent implements OnInit, OnDestroy {
     private favorited: boolean;
     private subscription: any;
 
-    constructor(private routeParams: ActivatedRoute,
+    constructor(private router: Router,
+        private routeParams: ActivatedRoute,
         private notificationsService: NotificationsService,
         private artistService:ArtistService,
         private userService:UserService)
@@ -78,11 +79,11 @@ export class DetailedArtistComponent implements OnInit, OnDestroy {
                     }
                 },
                 error => {
-                    console.log('REDIRECT TO ERROR PAGE');
+                    this.router.navigate(['error']);
                 });
             },
             error => {
-                console.log('REDIRECT TO ERROR PAGE');
+                this.router.navigate(['error']);
             })
     };
 

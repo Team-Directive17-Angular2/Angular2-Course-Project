@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 
 import { Album } from '../../../models/album.model';
 import { AlbumService } from '../../../services/album.service';
@@ -30,7 +30,8 @@ export class DetailedAlbumComponent implements OnInit, OnDestroy {
     private favorited: boolean;
     private subscription: any;
 
-    constructor(private routeParams: ActivatedRoute,
+    constructor(private router: Router,
+        private routeParams: ActivatedRoute,
         private notificationsService: NotificationsService,
         private albumService:AlbumService,
         private userService:UserService)
@@ -74,11 +75,11 @@ export class DetailedAlbumComponent implements OnInit, OnDestroy {
                     }
                 },
                 error => {
-                    console.log('REDIRECT TO ERROR PAGE');
+                    this.router.navigate(['error']);
                 });
             },
             error => {
-                console.log('REDIRECT TO ERROR PAGE');
+                this.router.navigate(['error']);
             })
     };
 

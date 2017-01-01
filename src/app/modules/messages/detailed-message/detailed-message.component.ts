@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 
 import { Message } from '../../../models/message.model';
 import { MessageService } from '../../../services/message.service';
@@ -31,7 +31,8 @@ export class DetailedMessageComponent implements OnInit, OnDestroy {
     private currentUsername: string;
     private subscription: any;
 
-    constructor(private routeParams: ActivatedRoute,
+    constructor(private router: Router,
+        private routeParams: ActivatedRoute,
         private notificationsService: NotificationsService,
         private messageService:MessageService,
         private userService:UserService)
@@ -70,7 +71,7 @@ export class DetailedMessageComponent implements OnInit, OnDestroy {
             this.status = message.status;
         },
         error => {
-            console.log('REDIRECT TO ERROR PAGE');
+            this.router.navigate(['error']);
         });
     };
 
