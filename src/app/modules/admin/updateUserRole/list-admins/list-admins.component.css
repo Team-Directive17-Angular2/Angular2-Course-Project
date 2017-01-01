@@ -50,3 +50,9 @@
     color: #25b09c !important;
     cursor: pointer;
 }
+
+@media (max-width: 767px) {
+    .admin-info-header {
+        display: none;
+    }
+}

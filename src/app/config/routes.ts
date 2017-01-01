@@ -16,6 +16,7 @@ import { AddArtistComponent } from '../modules/admin/addArtist/addArtist.compone
 import { AddAlbumComponent } from '../modules/admin/addAlbum/addAlbum.component';
 import { AddSongComponent  } from '../modules/admin/addSong/addSong.component';
 import { UpdateRoleComponent } from '../modules/admin/updateUserRole/update-role.component'
+import { MessagesComponent } from '../modules/messages/all-messages/messages.component';
 
 import {AuthGuard} from '../guards/auth.guard';
 import { AdminGuard } from '../guards/admin.guard';
@@ -38,7 +39,8 @@ export const appRoutes: Routes = [
     { path: 'admin/add-album', component:AddAlbumComponent, canActivate:[AuthGuard,AdminGuard]},
     { path: 'admin/add-song', component:AddSongComponent, canActivate:[AuthGuard,AdminGuard]},
     { path: 'admin/update-user-role', component:UpdateRoleComponent, canActivate:[AuthGuard,AdminGuard]},
-    
+    { path: 'admin/messages', component:MessagesComponent, canActivate:[AuthGuard,AdminGuard]},
+
     { path: '**', redirectTo: '' }
 
 ];

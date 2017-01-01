@@ -12,8 +12,10 @@ import { ArtistsModule } from './modules/artists/artists.module';
 import { AlbumsModule } from './modules/albums/albums.module';
 import { SongsModule } from './modules/songs/songs.module';
 import { UsersModule } from './modules/users/users.module';
-import { appRoutes } from './config/routes';
 import { AdminModule } from './modules/admin/admin.module';
+import { MessagesModule } from './modules/messages/messages.module';
+import { appRoutes } from './config/routes';
+
 
 import { AppComponent } from './app.component';
 import {NavComponent} from './modules/navigation/app-nav.component';
@@ -44,7 +46,8 @@ import {AdminGuard} from './guards/admin.guard';
     AlbumsModule,
     SongsModule,
     UsersModule,
-    AdminModule
+    AdminModule,
+    MessagesModule
   ],
   declarations: [
     AppComponent,

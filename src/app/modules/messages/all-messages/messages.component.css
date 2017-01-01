@@ -1,55 +1,55 @@
-.songs-content {
+.messages-content {
     background-color: #FFFFFF;
     height: 100%;
     padding: 30px 15px;
 }
 
-.songs-content .songs-form {
+.messages-content .messages-form {
     margin: 15px 0px;
     display:block;
     overflow:auto;
 }
 
-.songs-content .songs-list {
+.messages-content .messages-list {
     margin: 15px 0px;
     display:block;
     overflow:auto;
 }
 
-.songs-content .songs-option {
+.messages-content .messages-option {
     padding: 0px 0px 0px 15px;
     display: inline-block;
 }
 
-.songs-content .songs-option .songs-sub-option{
+.messages-content .messages-option .messages-sub-option{
     padding: 0px 0px 0px 15px;
 }
 
-.songs-content .songs-option .songs-sub-option-label{
+.messages-content .messages-option .messages-sub-option-label{
     text-align: right;
     vertical-align: middle;
     padding: 10px 0px;
 }
 
-.songs-pagination {
+.messages-pagination {
     text-align: center;
     margin-top: 30px;
 }
 
-.songs-pagination *{
+.messages-pagination *{
     font-size: 18px !important;
     text-decoration: none;
 }
 
-.songs-pagination .current{
+.messages-pagination .current{
     background-color: #2c3e50 !important;
 }
 
-.songs-pagination span{
+.messages-pagination span{
     margin: 0px 5px !important;
 }
 
-.songs-pagination a:hover{
+.messages-pagination a:hover{
     background-color: inherit !important;
     text-decoration: none !important;
     color: #25b09c !important;
