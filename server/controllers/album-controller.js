@@ -7,7 +7,7 @@ module.exports = function ({data, fs, path, imageDecoder}) {
 
     let imageBuffer = imageDecoder.decode(imageData);
     let imageName = "album-" + Date.now() + ".jpg";
-    let imagePath = path.join(__dirname, "..", "..", "/src/assets/images/album-pictures/", imageName)
+    let imagePath = path.join(__dirname, "..", "..", "/dist/assets/images/album-pictures/", imageName)
 
     fs.writeFile(imagePath, imageBuffer.data, (err) => {
         if(err) {
