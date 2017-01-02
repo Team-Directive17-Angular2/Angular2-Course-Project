@@ -41,7 +41,7 @@ export class AddAlbumComponent implements OnInit {
         this.fileName = 'No file chosen';
 
         this.suggestedArtists = [];
-        
+
         this.subscription = this.artistService.getArtistsNames()
         .subscribe( artists => {
             artists.forEach(a => {
