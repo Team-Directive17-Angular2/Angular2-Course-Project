@@ -5,7 +5,7 @@
                 <a [routerLink]="['/users/',follower.username]" [routerLinkActive]="['active']">
                     <div class="user-container">
                         <div class="image-container">
-                            <img src="../../../assets/images/profile-pictures/{{follower.avatar}}" default="../../../assets/images/profile-pictures/default-avatar.jpg" alt="{{follower.username}}"/>
+                            <img src="./assets/images/profile-pictures/{{follower.avatar}}" default="./assets/images/profile-pictures/default-avatar.jpg" alt="{{follower.username}}"/>
                         </div>
                         <p class="username">{{follower.username}}</p>
                     </div>

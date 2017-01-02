@@ -5,7 +5,7 @@
                 <a [routerLink]="['/albums/',album.id]" [routerLinkActive]="['active']">
                     <div class="album-container">
                         <div class="image-container">
-                            <img src="../../../assets/images/album-pictures/{{album.imgUrl}}" default="../../../assets/images/album-pictures/default-album.jpg" alt="{{album.name}}"/>
+                            <img src="./assets/images/album-pictures/{{album.imgUrl}}" default="./assets/images/album-pictures/default-album.jpg" alt="{{album.name}}"/>
                         </div>
                         <p class="albumname">{{album.name}}</p>
                     </div>

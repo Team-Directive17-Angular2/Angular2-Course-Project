@@ -5,7 +5,7 @@
                 <a [routerLink]="['/artists/',artist._id]" [routerLinkActive]="['active']">
                     <div class="artist-container">
                         <div class="image-container">
-                            <img src="../../../assets/images/artist-pictures/{{artist.imgUrl}}" default="../../../assets/images/artist-pictures/default-artist.jpg" alt="{{artist.name}}" />
+                            <img src="./assets/images/artist-pictures/{{artist.imgUrl}}" default="./assets/images/artist-pictures/default-artist.jpg" alt="{{artist.name}}" />
                         </div>
                         <p class="artistname">{{artist.name}}</p>
                     </div>
