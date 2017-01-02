@@ -9,6 +9,10 @@ body {
     background-size: auto;
 }
 
+textarea {
+    resize: none;
+}
+
 main {
     display: inline-block;
     width: 100%;
