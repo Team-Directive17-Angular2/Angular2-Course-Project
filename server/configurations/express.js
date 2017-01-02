@@ -8,8 +8,8 @@ module.exports = function ({ app }) {
 
     app.use(express.static(path.join(__dirname, '/../../dist/')));
 
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
+    app.use(bodyParser.json({limit: '5mb'}));
+    app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
     app.use(session({
         secret: "42noissesterces",
         resave: true,
